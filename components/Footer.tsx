@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
-import config from "@/config";
-import logo from "@/public/logo.png";
-
-// Add the Footer to the bottom of your landing page and more.
-// The support link is connected to the config.js file. If there's no config.mailgun.supportEmail, the link won't be displayed.
+import Link from 'next/link'
+import Image from 'next/image'
+import config from '@/config'
+import logo from '@/public/logo.png'
 
 const Footer = () => {
   return (
@@ -19,15 +16,13 @@ const Footer = () => {
             >
               <Image
                 src={logo}
-                alt="ShipFast logo"
+                alt="Marc-Antoine Ferland logo"
                 priority={true}
                 className="w-6 h-6"
                 width={24}
                 height={24}
               />
-              <strong className="font-extrabold tracking-tight text-base md:text-lg">
-                ShipFast
-              </strong>
+              <strong className="font-extrabold tracking-tight text-base md:text-lg"></strong>
             </Link>
 
             <p className="mt-3 text-sm text-base-content/80">
@@ -44,9 +39,9 @@ const Footer = () => {
               </div>
 
               <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
-                {config.mailgun.supportEmail && (
+                {config.supportEmail && (
                   <a
-                    href={`mailto:${config.mailgun.supportEmail}`}
+                    href={`mailto:${config.supportEmail}`}
                     target="_blank"
                     className="link link-hover"
                     aria-label="Contact Support"
@@ -54,34 +49,21 @@ const Footer = () => {
                     Support
                   </a>
                 )}
-                <Link href="/#pricing" className="link link-hover">
-                  Pricing
-                </Link>
-                <a href="/#" target="_blank" className="link link-hover">
-                  Affiliates
-                </a>
-              </div>
-            </div>
-
-            <div className="lg:w-1/3 md:w-1/2 w-full px-4">
-              <div className="footer-title font-semibold text-base-content tracking-widest text-sm md:text-left mb-3">
-                LEGAL
-              </div>
-
-              <div className="flex flex-col justify-center items-center md:items-start gap-2 mb-10 text-sm">
-                <Link href="/tos" className="link link-hover">
-                  Terms of services
-                </Link>
-                <Link href="/privacy-policy" className="link link-hover">
-                  Privacy policy
+                <Link
+                  href="https://v2.maferland.com"
+                  className="link link-hover"
+                >
+                  Legacy website
                 </Link>
               </div>
             </div>
+
+            <div className="lg:w-1/3 md:w-1/2 w-full px-4"></div>
           </div>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

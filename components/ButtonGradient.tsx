@@ -1,11 +1,40 @@
-import React from 'react';
+import React from 'react'
 
-const ButtonGradient = ({ title = 'Gradient Button', onClick = () => {} }) => {
+type ButtonProps = (
+  | {
+      title: string
+      children?: never
+    }
+  | {
+      title?: never
+      children: React.ReactNode
+    }
+) &
+  (
+    | {onClick: () => void; href?: never}
+    | {
+        onClick?: never
+        href: string
+      }
+  )
+
+function ButtonGradient(props: ButtonProps) {
+  const content = props.title ?? props.children
+  if (props.href) {
+    return (
+      <a className="btn btn-gradient animate-shimmer" href={props.href}>
+        {content}
+      </a>
+    )
+  }
   return (
-    <button className='btn btn-gradient animate-shimmer' onClick={onClick}>
-      {title}
+    <button
+      className="btn btn-gradient animate-shimmer"
+      onClick={props.onClick}
+    >
+      {content}
     </button>
-  );
-};
+  )
+}
 
-export default ButtonGradient;
+export default ButtonGradient

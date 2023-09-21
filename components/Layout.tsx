@@ -1,49 +1,20 @@
-import "react-tooltip/dist/react-tooltip.css";
-import { ReactNode, useEffect, useState } from "react";
-import { Inter } from "next/font/google";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import NextNProgress from "nextjs-progressbar";
-import { Toaster } from "react-hot-toast";
-import { Crisp } from "crisp-sdk-web";
-import { Tooltip } from "react-tooltip";
-import ErrorBoundary from "./ErrorBoundary";
-import config from "@/config";
+import config from '@/config'
+import {Inter} from 'next/font/google'
+import NextNProgress from 'nextjs-progressbar'
+import {ReactNode, useEffect, useState} from 'react'
+import {Toaster} from 'react-hot-toast'
+import {Tooltip} from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
+import ErrorBoundary from './ErrorBoundary'
 
-const font = Inter({ subsets: ["latin"] });
+const font = Inter({subsets: ['latin']})
 
-export default function Layout({ children }: { children: ReactNode }) {
-  const router = useRouter();
-  const { data } = useSession();
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Set Crisp Chat Support
-  useEffect(() => {
-    if (router.isReady && config?.crisp?.id) {
-      Crisp.configure(config.crisp.id);
-
-      // If config file has onlyShowOnRoutes, will be hidden on the routes in the array. <AppButtonSupport> to toggle it
-      if (config.crisp.onlyShowOnRoutes) {
-        if (!config.crisp.onlyShowOnRoutes.includes(router.pathname)) {
-          Crisp.chat.hide();
-          Crisp.chat.onChatClosed(() => {
-            Crisp.chat.hide();
-          });
-        }
-      }
-    }
-  }, [router.isReady, router.pathname]);
-
-  // Add User Unique ID to Crisp to easily identify users when reaching support
-  useEffect(() => {
-    if (data?.user && config?.crisp?.id) {
-      Crisp.session.setData({ userId: data.user?.id });
-    }
-  }, [data]);
+export default function Layout({children}: {children: ReactNode}) {
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   return (
     // Most errors are catched in ErrorBondary to show a nice error page
@@ -56,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       {/* Automatically show a progress bar at the top when navigating between pages */}
       <NextNProgress
         color={config.colors.main}
-        options={{ showSpinner: false }}
+        options={{showSpinner: false}}
       />
       {children}
       {/* Show Success/Error messages anywhere from the app with toast() */}
@@ -73,5 +44,5 @@ export default function Layout({ children }: { children: ReactNode }) {
         className="z-[60] !opacity-100 max-w-sm shadow-lg"
       />
     </ErrorBoundary>
-  );
+  )
 }

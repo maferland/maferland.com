@@ -1,5 +1,5 @@
-import Link from "next/link";
-import ButtonSupport from "@/components/ButtonSupport";
+import Link from 'next/link'
+import ButtonSupport from '@/components/ButtonSupport'
 
 export default function Custom404() {
   return (
@@ -26,5 +26,5 @@ export default function Custom404() {
 
       <ButtonSupport />
     </section>
-  );
+  )
 }
