@@ -1,8 +1,10 @@
+import config from '@/config'
+
 const ButtonSupport = () => {
   return (
     <a
       className="btn btn-sm"
-      href="mailto:mame@maferland.com"
+      href={`mailto:${config.supportEmail}`}
       data-tooltip-id="tooltip"
       data-tooltip-content="Email support"
       title="Email support"
