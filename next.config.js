@@ -10,6 +10,17 @@ const nextConfig = {
       'logos-world.net',
     ],
   },
+
+  async redirects() {
+    return [
+      {
+        // this will match `/english(default)/something` being requested
+        source: '/blog/:slug',
+        destination: 'https://v2.maferland.com/blog/:slug',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
