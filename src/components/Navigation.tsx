@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Link from '@/components/ui/Link'
+import ThemeToggle from '@/components/ui/ThemeToggle'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -24,16 +25,19 @@ export default function Navigation() {
         </Link>
         
         <div className="flex items-center gap-8">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              variant={pathname === link.href ? 'default' : 'subtle'}
-              className={pathname === link.href ? 'font-medium' : ''}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <div className="flex items-center gap-8">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                variant={pathname === link.href ? 'default' : 'subtle'}
+                className={pathname === link.href ? 'font-medium' : ''}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <ThemeToggle />
         </div>
       </div>
     </nav>
