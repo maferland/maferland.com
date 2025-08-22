@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Link from '@/components/ui/Link'
 import ThemeToggle from '@/components/ui/ThemeToggle'
+import { cn } from '@/lib/utils'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -31,7 +32,12 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 variant={pathname === link.href ? 'default' : 'subtle'}
-                className={pathname === link.href ? 'font-medium' : ''}
+                className={cn(
+                  'px-3 py-2 rounded-lg transition-all duration-200',
+                  pathname === link.href 
+                    ? 'font-medium bg-slate-100 dark:bg-slate-800' 
+                    : 'hover:bg-slate-50 dark:hover:bg-slate-900'
+                )}
               >
                 {link.label}
               </Link>
