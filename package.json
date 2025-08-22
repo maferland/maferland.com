@@ -24,16 +24,15 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "dotenv": "^17.2.1",
     "framer-motion": "^12.23.12",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.541.0",
     "next": "15.5.0",
     "posthog-js": "^1.260.2",
     "posthog-node": "^5.7.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tailwind-merge": "^3.3.1",
-    "zod": "^4.0.17"
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
