@@ -1,6 +1,6 @@
-import Link from '@/components/ui/Link'
 import { promises as fs } from 'fs'
 import matter from 'gray-matter'
+import Link from 'next/link'
 import path from 'path'
 
 interface BlogPost {
@@ -69,42 +69,36 @@ export default async function BlogPage() {
                 )
 
                 return (
-                  <article key={post.slug} className="space-y-4">
-                    <div className="space-y-2">
-                      <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        >
+                  <Link key={post.slug} href={`/blog/${post.slug}`}>
+                    <article className="space-y-4 p-6 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 cursor-pointer group">
+                      <div className="space-y-2">
+                        <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                           {post.title}
-                        </Link>
-                      </h2>
-                      <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
-                        <time dateTime={post.date}>{formattedDate}</time>
-                        {post.tags && (
-                          <div className="flex gap-2">
-                            {post.tags.map(tag => (
-                              <span
-                                key={tag}
-                                className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                        </h2>
+                        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+                          <time dateTime={post.date}>{formattedDate}</time>
+                          {post.tags && (
+                            <div className="flex gap-2">
+                              {post.tags.map(tag => (
+                                <span
+                                  key={tag}
+                                  className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                    >
-                      Read more →
-                    </Link>
-                  </article>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                      <div className="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                        Read more →
+                      </div>
+                    </article>
+                  </Link>
                 )
               })}
             </div>
