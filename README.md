@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 maferland.com
 
-## Getting Started
+> My personal website, **vibe coded** with attention to detail.
 
-First, run the development server:
+## The Vibe
+
+Built by feeling rather than rigid specifications. Every animation, color choice, and micro-interaction was crafted to feel just right.
+
+## Tech Stack
+
+- **Next.js 15** — App Router + Turbopack
+- **TailwindCSS v4** — Custom dark mode  
+- **Framer Motion** — Delightful animations
+- **Storybook** — Component documentation
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Visit http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Component Library
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**[View Storybook →](https://main--68a89824f9be1c1eb5ed584a.chromatic.com/)**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run storybook
+# Visit http://localhost:6007
+```
 
-## Learn More
+## 🌙 Special Features
 
-To learn more about Next.js, take a look at the following resources:
+**Theme Toggle Animation** — The moon rotates to show its "dark side" when switching to dark mode. A small detail that brings personality to the interface.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Animated Navigation** — Links feature smooth underline animations and subtle hover states that feel responsive and polished.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Performance First** — Static generation, optimized images, and minimal JavaScript for fast loading.
 
-## Deploy on Vercel
+## 📝 Development Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project follows modern best practices:
+- Component composition over inheritance
+- Atomic design principles
+- Accessible by default
+- Mobile-first responsive design
+- Type-safe development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔮 What's Next
+
+- [ ] Blog with MDX support
+- [ ] Project showcase
+- [ ] Legacy content migration
+- [ ] Contact form
+- [ ] Newsletter integration
+
+## 📄 License
+
+MIT © Marc-Antoine Ferland
+
+---
+
+*Built with care, attention to detail, and a love for great user experiences.*
