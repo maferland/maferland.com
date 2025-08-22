@@ -1,3 +1,2 @@
-npm run format:check
-npm run lint
+npx lint-staged
 npm run typecheck
