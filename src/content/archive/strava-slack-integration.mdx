@@ -1,0 +1,109 @@
+---
+title: 'How to integrate Strava into Slack'
+date: '2021-02-04T16:18:19.856Z'
+excerpt: "If like me you use Strava and want to brag about your latest PR with your coworkers here's the best way I found to automatically post my results in Slack. Thanks Zapier!"
+tags: ['Strava', 'Slack', 'Zapier', 'API Integration', 'Automation', 'Webhooks']
+---
+
+## But why?
+
+I could answer with _Why not?_ but there are valid reasons do to so!
+
+1. Why not automate mundane tasks?
+2. I love to share my physical activity. I've found out it helps everyone to stay motivated.
+3. When you're working remotely any chance you get to bond with your team should be taken!
+
+So let's get started.
+
+## Zapier
+
+I'm not going to explain what's [Zapier](https://zapier.com/), they do it well enough by themselves. If you're not familiar with them go check it out, it's pretty useful to automate mundane tasks.
+
+If you're too lazy to read this post and only want the Zap, I got something for you. Zapier now allows us to share Zaps. That's a super cool feature I wasn't aware of (until now). You probably will have to change one or two things but here is the end product I created for this post.
+
+[BRING ME TO THE THING NOW](https://zapier.com/shared/2e057cdc4e53ff1c3820ac910d17b0e01c9f9392)
+
+If you don't have an account go ahead and create it, we're going to need it :)
+
+## Make a Zap
+
+First, you're going to need to create your Zap.
+
+![make a zap](/images/blog/make-a-zap.jpg)
+
+### Trigger
+
+You need to select the trigger. A trigger is the app + event combo that will start the Zap.
+
+In our case, we'll select Strava.
+
+![select trigger app](/images/blog/select-trigger-app.jpg)
+
+Then you can choose what event should start the Zap. We want to use `New Activity`.
+
+![select trigger event](/images/blog/select-trigger-event.jpg)
+
+You will be asked to log into your Strava account. Mine was already linked!
+
+![link strava account](/images/blog/link-strava-account.jpg)
+
+Then, you can test the trigger. Zapier will pull the last event of this type and display the payload content. All those information will be available in the next step.
+
+![test trigger payload](/images/blog/test-trigger-payload.jpg)
+
+### Action
+
+Now that we have a trigger, we need to choose what we want to do with it.
+I found that I always end up posting to Slack. This might be because my use cases are a bit trivial but you can come up with much more complex flows.
+
+Here, you're asked to select which app will react to the trigger. You could push your data into a spreadsheet to compile your results and maybe even pull the weather and find some sort of correlation between the temperature and your pace 🙃. Sky's the limit!
+
+For now, let's just show off to our colleagues. So I'll pick Slack.
+
+![select action app](/images/blog/select-action-app.jpg)
+
+For the event, we want to submit to a channel. I suggest selecting `Direct message` to debug the Zap before sending it to a channel.
+
+⚠️ **I don't recomment sending your results to any a public channel such as #general** ⚠️
+
+![select action event](/images/blog/select-action-event.jpg)
+
+As before, you will be asked to log into your Slack account. Mine was already linked (again)!
+
+![link slack account](/images/blog/link-slack-account.jpg)
+
+### Configuration
+
+Here comes the fun part. This is also the part where you can go off-script if you'd like. These are just my personal preferences.
+
+The message builder is quite intuitive. Try it! If you're too lazy you can always use the zap sharing link I've put at the top of the article.
+
+I picked the name of the activity, the distance, the duration, the pace and the URL (so people can go five me _kudos_ 😍). Also, I picked `Send as a bot`. But feel free to do otherwise.
+
+![configure zap](/images/blog/configure-zap.jpg)
+
+Also, I didn't like having the Zap link at the end of the message. Plus, we get the event emoji from Zapier. Let's use it.
+
+![advanced config](/images/blog/advanced-config.jpg)
+
+If you want to tag someone you will have to enable `Link Usernames and Channel Names` feature. Also, [check this](https://zapier.com/help/doc/tips-formatting-your-slack-messages#slack-announcements) if you want to learn why @username doesn't work. You will have to dig a bit for that 🙃.
+
+I highly suggest that you tag yourself so people know who's the activity owner
+
+In my case, I could do that by adding `<@UB7L6HMUL>` to my message.
+
+![link username](/images/blog/link-username.jpg)
+
+## Release it
+
+Woops, don't forget to activate it 🙈.
+![turn it on](/images/blog/turn-it-on.jpg)
+
+Zapier only collect/submit event in a while (unless you're on a paid plan). So don't worry if it takes a few minutes for the event to appear in Slack.
+
+## Conclusion
+
+Here you go, you did it! Congrats :)
+Feel free to try out other triggers and action combinations.
+
+![see the result](/images/blog/see-the-result.jpg)

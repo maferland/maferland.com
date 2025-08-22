@@ -1,0 +1,81 @@
+---
+title: 'How to generate your sitemap.xml for Next.js and Netlify CMS'
+date: '2020-05-20T01:23:12.969Z'
+excerpt: 'There are many steps to improve the SEO ranking of your website. Having a sitemap cannot hurt. Here is a method to generate a proper and up-to-date sitemap for a Next.js website powered by Netlify CMS.'
+tags: ['Next.js', 'SEO', 'Sitemap', 'Netlify CMS', 'XML', 'Web Development']
+---
+
+## Why did you build a custom solution ?
+
+When I started to look for `nextjs generate sitemap.xml`, I was slightly disapointed. Maybe because I remember how easy it was to setup while using Nuxt.js. But mostly because most solution seemed either overkill (with a lot of configuration) or on the other hand a bit too bare metal and naive.
+
+Odly enough, I decided to build a fully custom solution. [Martin Beierling-Mutz](https://dev.to/embiem) posted an article that is very close to what I need so I edited his [solution](https://embiem.me/blog/auto-generate-sitemap-in-next-js/) to meet my needs.
+
+## List the content
+
+My website being very simple I only have a handfull of pages (the home, /about and /blog). The most important part was to be able to automatically add new blog posts to the sitemap.
+
+I use [Netlify CMS](https://www.netlifycms.org/) to write control the content of my website. It works very for simple static site generator. The logic of this git-based CMS is that all post/page/etc. are commited in the repo. Whenever there's a new commit the website is built and deployed again.
+
+This mean there is no API to query to know the current articles available on the website. Martin's solution tried to solve this issue by listing the files found in the `/pages/` directory.
+
+Since my articles are already in the repo I figured I could use that instead. I use custom slug in configuration so I have to read everyfile to define it's route. I can't rely on the file name. This is a bit of a drawback of my solution compared to Martin's. But, it's already online as I write this 🙈.
+
+```jsx
+paths.push(
+  ...fs.readdirSync('site/blog/').map(file => {
+    const rawfile = fs.readFileSync(`site/blog/${file}`)
+    const post = JSON.parse(rawfile)
+    return `/blog/${post.slug}`
+  })
+)
+```
+
+## Writting the file on disk
+
+My version only relies on newer `fs` features that weren't available (I think) when the original post was written. The files have to be at the root of the website. In my case, the output folder id `/out`;
+
+This way, I can write the `robots.txt` like this
+
+```js
+const robotsTxt = `User-agent: *
+Sitemap: https://maferland.com/sitemap.xml
+Disallow:`
+
+fs.writeFile('out/robots.txt', robotsTxt, () => {
+  console.log('robots.txt saved!')
+})
+```
+
+Then, I write the sitemap.xml like this
+
+```js
+let xmlPaths = ''
+
+paths
+  .map(
+    path => `
+  <url>
+    <loc>https://maferland.com${path}</loc>
+  </url>`
+  )
+  .forEach(xmlPath => {
+    xmlPaths += xmlPath
+  })
+
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${xmlPaths}
+</urlset>`
+
+fs.writeFile('out/sitemap.xml', sitemapXml, () => {
+  console.log('sitemap.xml saved!')
+})
+```
+
+## Conclusion
+
+I think writting this helped me a bit figure out the orginal post solution. You simply have to add [the full script](https://github.com/maferland/maferland/commit/fae200bb00043576c402f0b95829eb74bab9c17b) as a `postexport` script in your `package.json`.
+
+Whenever your website will be deployed again this will be ran again. If your website is built using a flat-file cms this should provide an alway up-to-date sitemap.xml for Google to crawl 🙃.
+
+I will probably write another version of this script very soon to apply my newly acquired knowledge. Don't copy paste it without asking yourself if it's good enough for your use case!

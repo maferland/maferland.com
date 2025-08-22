@@ -1,0 +1,154 @@
+---
+title: 'Publishing a react library with minimal config'
+date: '2020-09-30T01:40:24.234Z'
+excerpt: 'Looking to create your own react library? Want to avoid using create-react-library? Let me walk you through a super simple solution using microbundle!'
+tags:
+  [
+    'React',
+    'TypeScript',
+    'NPM',
+    'Library Publishing',
+    'Microbundle',
+    'Open Source',
+  ]
+---
+
+## Setting up
+
+First thing first, this way of doing things might not be optimal! However, this is the fastest way I found to build/publish a library. My project is [here](https://github.com/maferland/hooks). As of writing this, the README is empty, there's no examples nor test. But for the sake of _shipping it_ it's online. Use it at your own risk 😜.
+
+First, let's init our package.json :
+
+```
+npm init --yes
+```
+
+Then, install our dependencies. I'll skip explaining the linting and publishing steps as there are a lot of great articles on the topic.
+
+```
+yarn add -D react react-dom microbundle
+```
+
+`react` and `react-dom` are pretty straightforward. [microbundle](https://github.com/developit/microbundle) is a really sweet project I found while looking if I could use [parcel](https://github.com/parcel-bundler/parcel/) for the task. It does everything we need to bundle our library. Big perks, it takes barely any config 💪.
+
+## Configuring our bundler
+
+As I said, there's really not a lot to do here! Add the following to your package.json!
+
+```
+  "source": "src/index.js",
+  "main": "dist/hooks.js",
+  "module": "dist/hooks.module.js",
+  "unpkg": "dist/hooks.umd.js",
+```
+
+Basically, we're saying `index.js` is our entry file and the other three are the output file for each bundle type.
+
+Then, we can add two new scripts to use microbundle:
+
+```
+  "build": "microbundle",
+  "dev": "microbundle watch",
+```
+
+`build` will bundle everything and output it into the `dist/` folder while `dev` will let us work on our hooks in peace.
+
+Right now, nothing is working and that's perfectly fine. We didn't code anything just yet.
+
+## Creating your custom hook
+
+Here's what your repo will look like in just a few seconds:
+
+```
+├── package.json
+├── src
+│   ├── index.js
+│   └── use-interval.js
+└── yarn.lock
+```
+
+You have to create a `src/` folder and add `index.js` and `use-interval.js`. We will define the following hook in `use-interval.js`:
+
+```
+import {useRef, useEffect} from 'react'
+
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef()
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback
+  }, [callback])
+
+  // Set up the interval.
+  useEffect(() => {
+    if (delay === null) {
+      return () => {}
+    }
+    const id = setInterval(() => savedCallback.current(), delay)
+    return () => clearInterval(id)
+  }, [delay])
+}
+
+export default useInterval
+```
+
+I didn't write this hook. I simply updated Dan Abramov's implementation of the useInterval hook. There's a brilliant [article](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) about this hook. You should definitely have a look at it to learn why you might not be able to use setInterval with react hooks.
+
+I needed it for another project and felt like making a lib out of it 🙃.
+
+Then, for your `index.js` we simply want an entry point for us to import the hook in our other projects.
+
+```
+export {default as useInterval} from './use-interval'
+```
+
+We're set! `yarn build` should generate something like this:
+
+```
+├── dist
+│   ├── hooks.js
+│   ├── hooks.js.map
+│   ├── hooks.modern.js
+│   ├── hooks.modern.js.map
+│   ├── hooks.module.js
+│   ├── hooks.module.js.map
+│   ├── hooks.umd.js
+│   └── hooks.umd.js.map
+├── package.json
+├── src
+│   ├── index.js
+│   └── use-interval.js
+└── yarn.lock
+```
+
+## Publishing time!
+
+I don't want to get into the specifics here but make sure you fill your `peerDependencies`, `repository` and `bugs`:
+
+```
+  "peerDependencies": {
+    "react": "^16.x",
+    "react-dom": "^16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maferland/hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maferland/hooks/issues"
+  }
+```
+
+Then you can proceed with npm cli:
+
+```
+npm login
+npm publish --access=public
+```
+
+In the futre, you can run `yarn add @maferland/hooks` in any project to install your shiny new library. I was able to `import { useInterval } from '@maferland/hooks'` and make it work out of the box as you can see in this here [commit](https://github.com/maferland/maferland/commit/8df2b1aa73925f8a9277cb5ffe1fde4a4e8c4f2e).
+
+## Wishful thinking
+
+I'll try to refine this repo to add and deploy an example project soon! I definitely hope to write some doc as well. Let me know if you have any questions or comments. Enjoy!

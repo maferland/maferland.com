@@ -1,197 +1,36 @@
 ---
-title: "Building Better Developer Tools: A Frontend Engineer's Perspective"
-date: '2025-01-15'
-excerpt: "After years of building systems that multiply team productivity, here's what I've learned about creating developer tools that teams actually want to use."
-tags: ['developer-experience', 'frontend', 'tooling']
+title: 'Welcome to the new blog'
+date: '2024-01-01T00:00:00.000Z'
+excerpt: 'This is a sample post to demonstrate the blog functionality. More content coming soon!'
+tags: ['Meta', 'Welcome']
 ---
 
-# Building Better Developer Tools: A Frontend Engineer's Perspective
+## Welcome!
 
-After 10 years in frontend development, I've discovered that the most impactful work often happens _around_ the code we ship. The tools, systems, and processes we build to support our teams can have exponential effects on productivity and happiness.
+This is a sample blog post to show how the new blog system works.
 
-## The Problem with Most Developer Tools
+### Features
 
-Most developer tools fail because they're built by engineers for engineers, without considering the human element. We optimize for technical elegance over user experience, leading to tools that are powerful but painful to use.
-
-Here's a simple React hook I built that changed how our team thinks about data fetching:
-
-```tsx
-import { useState, useEffect } from 'react'
-
-interface UseApiState<T> {
-  data: T | null
-  loading: boolean
-  error: string | null
-}
-
-function useApi<T>(url: string): UseApiState<T> {
-  const [state, setState] = useState<UseApiState<T>>({
-    data: null,
-    loading: true,
-    error: null,
-  })
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setState(prev => ({ ...prev, loading: true, error: null }))
-        const response = await fetch(url)
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-
-        const data = await response.json()
-        setState({ data, loading: false, error: null })
-      } catch (error) {
-        setState({
-          data: null,
-          loading: false,
-          error: error instanceof Error ? error.message : 'Unknown error',
-        })
-      }
-    }
-
-    fetchData()
-  }, [url])
-
-  return state
-}
-
-export default useApi
-```
-
-This hook seems simple, but it solved three major pain points:
-
-1. **Consistent error handling** across all API calls
-2. **Predictable loading states** that designers could rely on
-3. **Type safety** that prevented runtime errors
-
-## The Multiplier Effect
-
-The best developer tools don't just solve one problem—they create a foundation that makes everything else easier. When we built our component library, we didn't just create reusable UI components. We created:
-
-- **Design consistency** that reduced back-and-forth with designers
-- **Accessibility by default** that improved our compliance score
-- **Performance optimization** that happened automatically
-
-> "The best developer experience is one where the pit of success is so deep that you have to actively try to do the wrong thing."
->
-> — Me, probably after too much coffee
-
-## Building for Adoption
-
-Here's what I've learned about building tools that teams actually adopt:
-
-### 1. Start with the Developer Journey
-
-Before writing any code, map out the current developer journey:
-
-```bash
-# Current painful workflow
-git checkout -b feature/new-component
-mkdir src/components/NewComponent
-touch src/components/NewComponent/index.ts
-touch src/components/NewComponent/NewComponent.tsx
-touch src/components/NewComponent/NewComponent.stories.tsx
-touch src/components/NewComponent/NewComponent.test.tsx
-# ... 15 more manual steps
-```
-
-### 2. Optimize for the 80% Use Case
-
-Don't try to solve every edge case on day one. Build something that handles the most common scenarios perfectly:
-
-```bash
-# New streamlined workflow
-npm run create:component NewComponent
-# Done. Everything generated with best practices.
-```
-
-### 3. Make Migration Painless
-
-The best migration strategy is no migration strategy. Build tools that work alongside existing workflows:
+- **MDX Support**: Write in Markdown with React components
+- **Syntax Highlighting**: Code blocks with proper highlighting
+- **Tags**: Categorize your posts
+- **Dark Mode**: Automatic theme support
 
 ```typescript
-// Old way still works
-import Button from './components/Button'
-
-// New way is just better
-import { Button } from '@company/design-system'
-```
-
-## The Technical Implementation
-
-When building developer tools, I follow these principles:
-
-1. **Convention over Configuration**: Sensible defaults that work 90% of the time
-2. **Progressive Enhancement**: Basic functionality works immediately, advanced features are opt-in
-3. **Excellent Error Messages**: When things go wrong, guide users to the solution
-
-Here's how we implemented our component generator:
-
-```javascript
-#!/usr/bin/env node
-
-const fs = require('fs')
-const path = require('path')
-
-function createComponent(name) {
-  const componentDir = path.join('src/components', name)
-
-  // Ensure directory exists
-  fs.mkdirSync(componentDir, { recursive: true })
-
-  // Generate files from templates
-  const templates = [
-    'component.tsx.template',
-    'stories.tsx.template',
-    'test.tsx.template',
-    'index.ts.template',
-  ]
-
-  templates.forEach(template => {
-    const templatePath = path.join(__dirname, 'templates', template)
-    const templateContent = fs.readFileSync(templatePath, 'utf8')
-
-    // Replace placeholders
-    const content = templateContent.replace(/{{componentName}}/g, name)
-
-    // Write file
-    const outputFile = template
-      .replace('.template', '')
-      .replace('component', name)
-    fs.writeFileSync(path.join(componentDir, outputFile), content)
-  })
-
-  console.log(`✅ Created component: ${name}`)
+// Example TypeScript code
+interface BlogPost {
+  title: string
+  date: string
+  excerpt: string
+  tags: string[]
 }
 
-// CLI handling
-const componentName = process.argv[2]
-if (!componentName) {
-  console.error('❌ Please provide a component name')
-  process.exit(1)
+const welcomePost: BlogPost = {
+  title: 'Welcome to the new blog',
+  date: '2024-01-01T00:00:00.000Z',
+  excerpt: 'This is a sample post...',
+  tags: ['Meta', 'Welcome'],
 }
-
-createComponent(componentName)
 ```
 
-## The Results
-
-After implementing these developer experience improvements:
-
-- **Component creation time**: 15 minutes → 30 seconds
-- **Design system adoption**: 23% → 89%
-- **Accessibility compliance**: 67% → 94%
-- **Developer satisfaction**: "It's fine" → "This is actually awesome"
-
-## What's Next?
-
-The future of developer tooling is about creating systems that understand context and adapt to individual workflows. AI-powered code generation, intelligent error recovery, and personalized development environments.
-
-But the fundamental principle remains the same: **build for humans first, engineers second**.
-
----
-
-_What developer tools have had the biggest impact on your workflow? I'd love to hear about your experiences with building or adopting new development tools._
+More posts coming soon!
