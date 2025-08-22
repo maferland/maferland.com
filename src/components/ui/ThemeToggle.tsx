@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Sun, Moon, Monitor } from 'lucide-react'
+import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '@/lib/theme-provider'
 
 export default function ThemeToggle() {
@@ -23,7 +23,7 @@ export default function ThemeToggle() {
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
       <motion.div
-        animate={{ 
+        animate={{
           rotate: isDark ? 180 : 0,
         }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}

@@ -18,24 +18,21 @@ export default function Navigation() {
   return (
     <nav className="max-w-4xl mx-auto px-8 py-6">
       <div className="flex items-center justify-between">
-        <Link 
-          href="/" 
-          className="font-medium text-lg"
-        >
+        <Link href="/" className="font-medium text-lg">
           Marc-Antoine Ferland
         </Link>
-        
+
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-8">
-            {links.map((link) => (
+            {links.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
                 variant={pathname === link.href ? 'default' : 'subtle'}
                 className={cn(
                   'px-3 py-2 rounded-lg transition-all duration-200',
-                  pathname === link.href 
-                    ? 'font-medium bg-slate-100 dark:bg-slate-800' 
+                  pathname === link.href
+                    ? 'font-medium bg-slate-100 dark:bg-slate-800'
                     : 'hover:bg-slate-50 dark:hover:bg-slate-900'
                 )}
               >

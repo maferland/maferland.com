@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 }
 
 interface AnimatedSectionProps {
@@ -15,7 +15,11 @@ interface AnimatedSectionProps {
   delay?: number
 }
 
-export default function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
+export default function AnimatedSection({
+  children,
+  className,
+  delay = 0,
+}: AnimatedSectionProps) {
   return (
     <motion.div
       className={cn(className)}

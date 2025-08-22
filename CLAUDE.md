@@ -1,13 +1,37 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [Technical Documentation - maferland.com](#technical-documentation---maferlandcom)
+  - [Project Overview](#project-overview)
+  - [Technical Stack Decisions](#technical-stack-decisions)
+    - [Framework: Next.js 15 (App Router)](#framework-nextjs-15-app-router)
+    - [Content Management: File-based MDX (when needed)](#content-management-file-based-mdx-when-needed)
+    - [Styling: Modern Custom Design System](#styling-modern-custom-design-system)
+    - [Component Design System Guidelines](#component-design-system-guidelines)
+    - [Visual Design Direction](#visual-design-direction)
+    - [Performance Optimizations](#performance-optimizations)
+    - [Dependencies Philosophy](#dependencies-philosophy)
+  - [Development Commands](#development-commands)
+  - [Implementation Plan](#implementation-plan)
+  - [Future Considerations](#future-considerations)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Technical Documentation - maferland.com
 
 ## Project Overview
+
 Professional portfolio website for Marc-Antoine Ferland, featuring blog content, project showcase, and personal branding.
 
 ## Technical Stack Decisions
 
 ### Framework: Next.js 15 (App Router)
+
 **Decision**: Fresh Next.js 15 project with App Router and Turbopack
-**Rationale**: 
+**Rationale**:
+
 - Latest performance optimizations with Turbopack
 - Better SEO with built-in metadata API
 - Enhanced performance with React Server Components
@@ -15,8 +39,10 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - Excellent developer experience
 
 ### Content Management: File-based MDX (when needed)
+
 **Decision**: Use MDX with front matter for blog posts when we implement blog functionality
 **Rationale**:
+
 - No external dependencies or CMS complexity
 - Version controlled content
 - Rich markdown with React component integration
@@ -24,20 +50,24 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - Fast builds and deployment
 
 ### Styling: Modern Custom Design System
+
 **Decision**: Build custom design system with TailwindCSS 4
 **Rationale**:
+
 - Complete control over design aesthetics
 - Professional, unique look and feel
 - Better performance without component library overhead
 - Easier to maintain long-term
 
 **Design System Components**:
+
 - TailwindCSS 4 with new `@theme` syntax
 - Built-in CSS variables with Tailwind's design tokens
 - Framer Motion for smooth animations
 - Lucide React for consistent iconography
 
 **Important: TailwindCSS 4 Best Practices**:
+
 - Use `@theme inline` syntax for custom design tokens
 - Leverage built-in CSS variables (--color-background, --color-foreground)
 - Avoid external CSS imports - keep everything in Tailwind's system
@@ -47,30 +77,35 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 ### Component Design System Guidelines
 
 **Component Architecture**:
+
 - Build reusable UI components with proper TypeScript interfaces
 - Use variant maps with `keyof typeof variants` for type-safe component APIs
 - Extract base styles as constants to keep components clean and readable
 - Implement proper class merging with `tailwind-merge` (twMerge + twJoin)
 
 **Code Style Standards**:
+
 - Create `/src/components/ui/` directory for base UI components
 - Use `/src/lib/utils.ts` for shared utilities like class merging
 - Follow the pattern: `base styles` + `variant styles` + `className override`
 - Prefer explicit variant maps over inline conditional objects
 
 **Storybook Integration**:
+
 - Setup Storybook to showcase component system and demonstrate craft
 - Host on Chromatic for public component library documentation
 - Link to Storybook from main site to showcase systems thinking and DX focus
 - Document all component variants, states, and usage examples
 
 **Storybook Story Guidelines**:
+
 - Create one story per variant for better isolated testing
 - Use descriptive story names that match variant names
 - Include comprehensive argTypes with descriptions
 - Tag stories with 'autodocs' for automatic documentation generation
 
 **Chromatic Setup**:
+
 - Install Chromatic CLI: `npm install --save-dev chromatic`
 - Add script: `"chromatic": "chromatic --exit-zero-on-changes"`
 - Create account at https://chromatic.com with GitHub
@@ -79,6 +114,7 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - Link to published Storybook from main website to showcase component system
 
 **GitHub Actions Integration**:
+
 - Created `.github/workflows/chromatic.yml` for automatic deployments
 - Runs on pushes to main branch and pull requests
 - Uses `chromaui/action@latest` for optimized builds
@@ -87,6 +123,7 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - Requires `CHROMATIC_PROJECT_TOKEN` secret in GitHub repository settings
 
 ### Visual Design Direction
+
 **Style**: Minimalist, typography-focused, professional
 **Colors**: Neutral slate palette with built-in Tailwind variables
 **Typography**: System fonts with Tailwind's font stack
@@ -94,7 +131,9 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 **Interactions**: Subtle animations, smooth micro-interactions
 
 ### Performance Optimizations
+
 **Decisions**:
+
 - Static generation for blog posts (when implemented)
 - Dynamic imports for heavy components
 - Next.js Image optimization
@@ -102,8 +141,10 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - Automatic light/dark mode support
 
 ### Dependencies Philosophy
+
 **Decision**: Minimal dependencies, add only when needed
 **Current essentials**:
+
 - Next.js 15 with App Router & Turbopack
 - TailwindCSS 4
 - TypeScript
@@ -112,12 +153,38 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - @tailwindcss/typography (for blog content)
 
 ## Development Commands
+
 - `npm run dev` - Development server with Turbopack
 - `npm run build` - Production build with Turbopack
 - `npm run start` - Production server
 - `npm run lint` - Code linting
+- `npm run typecheck` - TypeScript compiler check
+- `npm run doctoc` - Generate table of contents for README
+- `npm run storybook` - Start Storybook dev server
+- `npm run chromatic` - Deploy to Chromatic for visual testing
+
+## Code Quality & Tooling
+
+**Pre-commit Hooks (Husky)**:
+
+- Automatically runs lint and typecheck before each commit
+- Prevents broken code from being committed
+- Fast checks only to keep commits smooth
+
+**CI/CD Pipeline**:
+
+- Separate GitHub Actions workflow for comprehensive testing
+- Runs lint, typecheck, and build on all PRs and pushes
+- Chromatic integration for visual regression testing
+
+**Storybook Import Guidelines**:
+
+- Use `@storybook/nextjs-vite` instead of `@storybook/react`
+- Prevents linting errors and ensures proper framework integration
+- This matches our `@storybook/nextjs-vite` setup in the project
 
 ## Implementation Plan
+
 1. ✅ Setup fresh Next.js 15 project with App Router
 2. ✅ Create minimal, professional homepage
 3. 🔄 Enhance design system with proper Tailwind 4 patterns
@@ -128,6 +195,7 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 8. SEO and performance optimizations
 
 ## Future Considerations
+
 - Add search functionality for blog posts
 - Implement newsletter subscription
 - Add contact form

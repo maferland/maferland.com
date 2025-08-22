@@ -1,15 +1,32 @@
-# 🎨 maferland.com
+<div align="center">
+<h1>maferland.com</h1>
 
-> My personal website, **vibe coded** with attention to detail.
+<p>Vibe coded with love</p>
+</div>
 
-## The Vibe
+---
 
-Built by feeling rather than rigid specifications. Every animation, color choice, and micro-interaction was crafted to feel just right.
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with
+[DocToc](https://github.com/thlorenz/doctoc)_
+
+- [maferland.com](#maferlandcom)
+  - [Tech Stack](#tech-stack)
+  - [Quick Start](#quick-start)
+  - [Component Library](#component-library)
+  - [🌙 Special Features](#-special-features)
+  - [📝 Development Notes](#-development-notes)
+  - [🔮 What's Next](#-whats-next)
+  - [📄 License](#-license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Tech Stack
 
 - **Next.js 15** — App Router + Turbopack
-- **TailwindCSS v4** — Custom dark mode  
+- **TailwindCSS v4** — Custom dark mode
 - **Framer Motion** — Delightful animations
 - **Storybook** — Component documentation
 
@@ -32,15 +49,19 @@ npm run storybook
 
 ## 🌙 Special Features
 
-**Theme Toggle Animation** — The moon rotates to show its "dark side" when switching to dark mode. A small detail that brings personality to the interface.
+**Theme Toggle Animation** — The moon rotates to show its "dark side" when
+switching to dark mode. A small detail that brings personality to the interface.
 
-**Animated Navigation** — Links feature smooth underline animations and subtle hover states that feel responsive and polished.
+**Animated Navigation** — Links feature smooth underline animations and subtle
+hover states that feel responsive and polished.
 
-**Performance First** — Static generation, optimized images, and minimal JavaScript for fast loading.
+**Performance First** — Static generation, optimized images, and minimal
+JavaScript for fast loading.
 
 ## 📝 Development Notes
 
 This project follows modern best practices:
+
 - Component composition over inheritance
 - Atomic design principles
 - Accessible by default
@@ -57,8 +78,6 @@ This project follows modern best practices:
 
 ## 📄 License
 
-MIT © Marc-Antoine Ferland
+[MIT](LICENSE) © Marc-Antoine Ferland
 
 ---
-
-*Built with care, attention to detail, and a love for great user experiences.*
