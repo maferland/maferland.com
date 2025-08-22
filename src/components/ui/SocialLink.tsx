@@ -12,12 +12,12 @@ interface SocialLinkProps {
   className?: string
 }
 
-export default function SocialLink({ 
-  href, 
-  icon: Icon, 
-  label, 
+export default function SocialLink({
+  href,
+  icon: Icon,
+  label,
   external = false,
-  className 
+  className,
 }: SocialLinkProps) {
   return (
     <motion.a
@@ -29,15 +29,18 @@ export default function SocialLink({
         'transition-all duration-300 ease-out',
         className
       )}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
       whileHover={{ y: -3, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
       <Icon size={18} />
       <span className="font-medium">{label}</span>
       {external && (
-        <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+        <ArrowUpRight
+          size={16}
+          className="opacity-0 group-hover:opacity-100 transition-opacity"
+        />
       )}
     </motion.a>
   )

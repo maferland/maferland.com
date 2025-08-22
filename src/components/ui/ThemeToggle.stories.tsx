@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { ThemeProvider } from '@/lib/theme-provider'
 import ThemeToggle from './ThemeToggle'
 
@@ -10,7 +10,7 @@ const meta: Meta<typeof ThemeToggle> = {
   },
   tags: ['autodocs'],
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider>
         <div className="p-8 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-lg">
           <Story />
@@ -39,8 +39,12 @@ export const InNavigation: Story = {
     <div className="flex items-center justify-between w-96 p-4 border border-slate-200 dark:border-slate-700 rounded-lg">
       <span className="font-medium">Marc-Antoine Ferland</span>
       <div className="flex items-center gap-6">
-        <span className="text-sm text-slate-600 dark:text-slate-400">About</span>
-        <span className="text-sm text-slate-600 dark:text-slate-400">Projects</span>
+        <span className="text-sm text-slate-600 dark:text-slate-400">
+          About
+        </span>
+        <span className="text-sm text-slate-600 dark:text-slate-400">
+          Projects
+        </span>
         <ThemeToggle />
       </div>
     </div>

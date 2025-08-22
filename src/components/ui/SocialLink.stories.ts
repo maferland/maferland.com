@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import SocialLink from './SocialLink'
 
@@ -45,7 +45,7 @@ export const LinkedIn: Story = {
   args: {
     href: 'https://www.linkedin.com/in/marcantoineferland',
     icon: Linkedin,
-    label: 'LinkedIn', 
+    label: 'LinkedIn',
     external: true,
   },
 }

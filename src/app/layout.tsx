@@ -1,7 +1,7 @@
 import Navigation from '@/components/Navigation'
-import {ThemeProvider} from '@/lib/theme-provider'
-import type {Metadata} from 'next'
-import {Geist, Geist_Mono} from 'next/font/google'
+import { ThemeProvider } from '@/lib/theme-provider'
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
 const geistSans = Geist({
@@ -45,7 +45,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ThemeProvider>
           <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
             <Navigation />

@@ -8,14 +8,14 @@ import SocialLink from '@/components/ui/SocialLink'
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 }
 
 export default function Hero() {
   return (
-    <motion.div 
+    <motion.div
       className="space-y-12"
       variants={stagger}
       initial="initial"
@@ -27,27 +27,32 @@ export default function Hero() {
           Marc-Antoine Ferland
         </h1>
         <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-          Senior Frontend Engineer crafting delightful experiences and building systems that multiply team productivity
+          Senior Frontend Engineer crafting delightful experiences and building
+          systems that multiply team productivity
         </p>
       </AnimatedSection>
 
       {/* Bio */}
       <AnimatedSection className="space-y-8 max-w-2xl" delay={0.2}>
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-          After 10 years in this field, I've discovered what I love most: being a <em className="text-slate-900 dark:text-slate-100">multiplier</em>. 
-          I build systems and tooling that supercharge teams and help ship pixel-perfect experiences 
-          without compromise.
-        </p>
-        
-        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-          My journey started with dreams of video game development, took a detour through backend work, 
-          and led me to find the perfect balance of great UX and DX in frontend engineering.
+          After 10 years in this field, I&apos;ve discovered what I love most:
+          being a{' '}
+          <em className="text-slate-900 dark:text-slate-100">multiplier</em>. I
+          build systems and tooling that supercharge teams and help ship
+          pixel-perfect experiences without compromise.
         </p>
 
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
-          Beyond code, I find the same craft-focused mindset in cooking everything from scratch and 
-          pushing limits through long-distance running. I'm exploring ways to extend my influence 
-          while staying ahead of AI's transformation of our field.
+          My journey started with dreams of video game development, took a
+          detour through backend work, and led me to find the perfect balance of
+          great UX and DX in frontend engineering.
+        </p>
+
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300">
+          Beyond code, I find the same craft-focused mindset in cooking
+          everything from scratch and pushing limits through long-distance
+          running. I&apos;m exploring ways to extend my influence while staying
+          ahead of AI&apos;s transformation of our field.
         </p>
       </AnimatedSection>
 
@@ -73,11 +78,14 @@ export default function Hero() {
       </AnimatedSection>
 
       {/* Archive Link */}
-      <AnimatedSection className="pt-16 border-t border-foreground/10" delay={0.6}>
+      <AnimatedSection
+        className="pt-16 border-t border-foreground/10"
+        delay={0.6}
+      >
         <p className="text-sm text-foreground/50">
-          Looking for my previous writing?{" "}
-          <motion.a 
-            href="https://v2.maferland.com/blog" 
+          Looking for my previous writing?{' '}
+          <motion.a
+            href="https://v2.maferland.com/blog"
             className="inline-flex items-center gap-1 underline decoration-foreground/30 underline-offset-4 hover:decoration-foreground/60 transition-colors"
             whileHover={{ x: 4 }}
           >

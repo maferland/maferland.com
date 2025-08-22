@@ -9,7 +9,9 @@ interface ThemeProviderContext {
   setTheme: (theme: Theme) => void
 }
 
-const ThemeProviderContext = createContext<ThemeProviderContext | undefined>(undefined)
+const ThemeProviderContext = createContext<ThemeProviderContext | undefined>(
+  undefined
+)
 
 export function useTheme() {
   const context = useContext(ThemeProviderContext)
@@ -33,7 +35,7 @@ export function ThemeProvider({
 
   useEffect(() => {
     setMounted(true)
-    
+
     // Get stored theme or default to system
     const stored = localStorage.getItem('theme') as Theme
     if (stored && ['dark', 'light', 'system'].includes(stored)) {
@@ -49,7 +51,8 @@ export function ThemeProvider({
       root.classList.remove('light', 'dark')
 
       if (theme === 'system') {
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
           ? 'dark'
           : 'light'
         root.classList.add(systemTheme)
