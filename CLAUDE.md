@@ -78,6 +78,14 @@ Professional portfolio website for Marc-Antoine Ferland, featuring blog content,
 - Run `npm run chromatic` to publish stories for visual regression testing
 - Link to published Storybook from main website to showcase component system
 
+**GitHub Actions Integration**:
+- Created `.github/workflows/chromatic.yml` for automatic deployments
+- Runs on pushes to main branch and pull requests
+- Uses `chromaui/action@latest` for optimized builds
+- Auto-accepts changes on main branch (`autoAcceptChanges: main`)
+- Only tests changed stories for faster builds (`onlyChanged: true`)
+- Requires `CHROMATIC_PROJECT_TOKEN` secret in GitHub repository settings
+
 ### Visual Design Direction
 **Style**: Minimalist, typography-focused, professional
 **Colors**: Neutral slate palette with built-in Tailwind variables
