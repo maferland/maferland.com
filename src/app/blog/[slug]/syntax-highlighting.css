@@ -1,0 +1,146 @@
+/* Custom syntax highlighting that works with our theme */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1.5rem;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+/* Keywords */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #c084fc;
+}
+
+/* Strings */
+.hljs-string,
+.hljs-attr {
+  color: #34d399;
+}
+
+/* Numbers */
+.hljs-number,
+.hljs-literal {
+  color: #fbbf24;
+}
+
+/* Comments */
+.hljs-comment,
+.hljs-quote {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Types */
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #60a5fa;
+}
+
+/* Function names */
+.hljs-function .hljs-title,
+.hljs-title.function {
+  color: #fbbf24;
+}
+
+/* Variables */
+.hljs-variable,
+.hljs-template-variable {
+  color: #e2e8f0;
+}
+
+/* Built-ins */
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #f472b6;
+}
+
+/* Tags */
+.hljs-tag,
+.hljs-name {
+  color: #fb7185;
+}
+
+/* Attributes */
+.hljs-attribute {
+  color: #34d399;
+}
+
+/* Operators */
+.hljs-operator {
+  color: #94a3b8;
+}
+
+/* Punctuation */
+.hljs-punctuation {
+  color: #94a3b8;
+}
+
+/* Light mode code blocks */
+.prose pre {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  margin: 1.5rem 0;
+}
+
+.prose pre .hljs {
+  background: #f8fafc;
+  color: #334155;
+}
+
+/* Light mode syntax colors */
+.prose pre .hljs-keyword { color: #7c3aed; }
+.prose pre .hljs-string { color: #059669; }
+.prose pre .hljs-number { color: #ea580c; }
+.prose pre .hljs-comment { color: #64748b; }
+.prose pre .hljs-type { color: #2563eb; }
+.prose pre .hljs-function .hljs-title { color: #d97706; }
+.prose pre .hljs-variable { color: #334155; }
+
+/* Dark mode code blocks */
+.dark .prose pre {
+  background: #0f172a;
+  border: 1px solid #334155;
+}
+
+.dark .prose pre .hljs {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Dark mode syntax colors */
+.dark .prose pre .hljs-keyword { color: #c084fc; }
+.dark .prose pre .hljs-string { color: #34d399; }
+.dark .prose pre .hljs-number { color: #fbbf24; }
+.dark .prose pre .hljs-comment { color: #64748b; }
+.dark .prose pre .hljs-type { color: #60a5fa; }
+.dark .prose pre .hljs-function .hljs-title { color: #fbbf24; }
+.dark .prose pre .hljs-variable { color: #e2e8f0; }
+
+/* Code blocks inside prose */
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Inline code */
+.prose :not(pre) > code {
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Dark mode inline code */
+.dark .prose :not(pre) > code {
+  background: #334155;
+  color: #e2e8f0;
+}
