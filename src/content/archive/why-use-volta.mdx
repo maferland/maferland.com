@@ -1,0 +1,68 @@
+---
+title: 'Why you should use Volta'
+date: '2021-02-27T17:42:35.595Z'
+excerpt: 'Volta is a tool that will make your life better'
+tags: ['Volta', 'Node.js', 'Developer Tools', 'Workflow', 'Version Management']
+---
+
+## Why should I change my workflow
+
+I don't have a large case study about the benefits of using Volta. The reason is pretty simple. Volta just works™️. I tend to forget about it. I think that if you start to forget about a tool you're using daily it's a pretty good indication of how frictionless the tool is.
+
+I have been using the **Y**arn **V**ersion **M**anager (YVM) and the **N**ode **V**ersion **M**anager (NVM). And yeah... I can't really recommend those. They work, don't get me wrong. But I never forgot about them. Even with the `.yvmrc` and `.nvmrc` files to save the version of each of my projects once in a while you always have to run `nvm use` or `yvm use` to change the version.
+
+I don't want my tooling to take a toll on my dev time. Neither do I want it to be burdensome in any way. This is where Volta made a difference for me.
+
+Volta is the kind of tool that does everything silently and doesn't really require your input.
+
+You can install and manage your versions simply:
+
+```
+volta install node@x.y.z
+volta install yarn@a.b.c
+```
+
+Then, you simply need to `pin` the yarn and node version for a project and Volta will handle the rest of it. It's magic:
+
+```
+volta pin node@12.19.0
+volta pin yarn@1.22.10
+```
+
+Volta will add this in your package.json:
+
+```
+ "volta": {
+ "node": "12.19.0",
+ "yarn": "1.22.10"
+ }
+```
+
+Whenever you will `cd` into this folder in the future Volta will automatically know it needs to use this specific version.
+
+Volta can also handle global for you. Yarn and Node aren't the only things it can manage for you. If you often find the need to install `http-server` for each version of node/yarn you're using then you could run `volta install http-server` and it will always be available. Volta handle all of this for you :)
+
+## Performance
+
+Did I mention how fast it was? I often found myself waiting a couple of seconds for NVM and YVM to boot whenever I opened a new console. It not the biggest deal one could say but every second I can shave in my dev process is important. Not so much for my time but for my concentration.
+
+Volta is written in rust and is as fast as it can get. As I said, I keep forgetting about it. The only reason I thought to write this article is that I had to reinstall it to my new dev workstation.
+
+In the following example, you can notice how fast the folder change is even though the node version is changing. I still ran `node -v` and `yarn -v` but you can see that my env picked up the new node version immediately by looking at the `via Node v12.19.0`.
+
+<div style=" width:100%; margin: 1em; position: relative; padding-bottom: 55.65693430656934%; height: 0;">
+  <iframe
+    src="https://www.loom.com/embed/4e96d417c95d4d0495390f9839848151"
+    frameborder="0"
+    webkitallowfullscreen
+    mozallowfullscreen
+    allowfullscreen
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+  ></iframe>
+</div>
+## Drawback I guess having the pinned version info in the package.json is not to
+everyone's taste. I guess they could probably add a `.voltarc` in the future 🤷‍♂️.
+Personally, it doesn't bother me. ## Try it now Give it a shot, you won't regret
+it! If you don't like it you can always go back. 👉 https://volta.sh/ 👈 ``` #
+install Volta curl https://get.volta.sh | bash # install Node volta install node
+# start using Node node ```

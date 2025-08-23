@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 import { getPost, getPosts } from '@/lib/posts'
 import PostLayout from '@/components/blog/PostLayout'
-import './syntax-highlighting.css'
+import '../../blog/[slug]/syntax-highlighting.css'
 
 export async function generateStaticParams() {
-  const posts = await getPosts('src/content/blog')
+  const posts = await getPosts('src/content/archive')
   return posts.map(post => ({
     slug: post.slug,
   }))
@@ -15,7 +15,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }) {
-  const post = await getPost('src/content/blog', params.slug)
+  const post = await getPost('src/content/archive', params.slug)
 
   if (!post) {
     return {
@@ -36,12 +36,12 @@ export async function generateMetadata({
   }
 }
 
-export default async function BlogPostPage({
+export default async function ArchivePostPage({
   params,
 }: {
   params: { slug: string }
 }) {
-  const post = await getPost('src/content/blog', params.slug)
+  const post = await getPost('src/content/archive', params.slug)
 
   if (!post) {
     notFound()

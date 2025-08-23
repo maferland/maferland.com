@@ -1,0 +1,91 @@
+---
+title: 'How to use Icomoon as a font-familly in Next.js'
+date: '2020-04-13T23:05:24.198Z'
+excerpt: 'Most of the icon libraries available are SVG based. In some project, I found useful to have your icons as a font-family instead. Here is how I integrated Icomoon in a Next.js project.'
+tags: ['Next.js', 'Icomoon', 'Icons', 'Fonts', 'Frontend', 'Web Development']
+---
+
+## Getting started
+
+Before going anywhere you have to create an [Icomoon account](https://icomoon.io/). This service allows creating custom icon packs. You can select Icon from various free and premium sources. This allows reducing the size of the icons your website has to load and gives much more flexibility if you want to import icons from a variety of packs. It also makes it very easy to add custom icons and use them in your project.
+
+The free tier does all we need for this demo. Simply create an account, create a new project and pick the icons you'd like.
+
+![Icomoon dashboard](/images/blog/icomoon.png)
+
+Once you're ready, you can click on the `Generate font` then on the `Download` button. The archive contains the files we will need in the next step.
+
+## Importing the font
+
+Now that we have the required file we can proceed to import them in our project. For our purpose, we only need the `style.css` file and the `fonts` folder. The font folder will need to be served on our website. For this, simply move the `fonts` folder in the `public` directory of your Next.js website.
+
+Then, you can add the `style.css` file alongside your other global style files. I suggest renaming it to something else (icomoon, icons, etc). You can simply add the following in [./pages/\_app.js](https://nextjs.org/docs/advanced-features/custom-app).
+
+```jsx
+import '../styles/icons.scss'
+```
+
+This solution will add some webpack config to load the font file with `url-loader`.
+
+```shell
+yarn add url-loader
+```
+
+Then, go to your next.config.js file and add the following snippet :
+
+```jsx
+webpack(config) {
+ config.resolve.alias['~'] = path.resolve(__dirname);
+ config.module.rules.push({
+   test: /\.(woff|woff2|eot|ttf|svg)$/,
+   loader: 'url-loader?limit=100000',
+ });
+ return config;
+},
+```
+
+This will let know webpack that these file types should be loaded by `url-loader`. Hence why we needed to make sure our files are in the `public/` folder.
+
+We should edit the content of the `style.css` to make sure our website is looking for the files at the right location.
+
+```jsx
+@font-face {
+ font-family: 'icomoon';
+ src: url('/fonts/icomoon.ttf?ixpxfq') format('truetype'),
+ url('/fonts/icomoon.woff?ixpxfq') format('woff'),
+ url('/fonts/icomoon.svg?ixpxfq#icomoon') format('svg');
+ font-weight: normal;
+ font-style: normal;
+ font-display: block;
+}
+```
+
+We simply add the prefixing slash to clarify that this isn't a relative path. These fille will be served from the root of your website. In my case, it's https://maferland.com/fonts/...
+
+## Using our shiny icons
+
+I made a little wrapper for my Icons
+
+```jsx
+const Icon = props => {
+  return <i className={`${props.icon} ${props.className}`} />
+}
+
+export default Icon
+```
+
+The way to use the icons might be slightly different if you changed the export configuration on Icomoon.
+
+Then, whenever I want to use an icon I simply have to write the following :
+
+```jsx
+<Icon icon="arrow-right" />
+```
+
+## Conclusion
+
+This whole solution allows me to use CSS properties that are exclusive to fonts. This might be a handy solution if you need to use `background-clip: text;` or `text-shadow` to apply a specific design.
+
+Most of the time, you should be able to load font files by using `file-loader` but I ran into some issue in Next.js which prompted me to find this solution with `url-loader`.
+
+You can see the end result [here](https://github.com/maferland/icomoon-next-demo).

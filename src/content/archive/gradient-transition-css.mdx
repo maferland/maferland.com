@@ -1,0 +1,69 @@
+---
+title: 'How to make a gradient transition in CSS'
+date: '2020-11-09T02:32:56.249Z'
+excerpt: "CSS doesn't support transition for background gradient. It will instead change the whole gradient suddenly. But what if you could? I wanna show you how I worked around the limitation of CSS with this nice little trick."
+tags:
+  ['CSS', 'Gradients', 'Animations', 'Transitions', 'Frontend', 'Web Design']
+---
+
+## The problem
+
+Have you ever been asked by a designer if you could make a transition from one background gradient to another? Something like that should work, right?
+
+```css
+.gradient {
+  background: linear-gradient(red, blue);
+  transition: background 0.2s ease-in;
+}
+
+.invert {
+  background: linear-gradient(blue, red);
+}
+```
+
+Well, I did try it when this was part of a design I had to implement this week. Sadly, it doesn't work. The page will instead change suddenly from one gradient to another 😞. And it's pretty understandable. It would be a quite complex feature to take all the pixels of the gradient and compute the transition to another color.
+
+## The workaround
+
+This might not work for every issue but for simple gradients, you can clearly use this little hack to get pretty neat visual effects.
+
+The idea is to use a transparent gradient as an overlay and use the simple background-color transition. To obtain a very similar effect.
+
+```html
+<div class="container" id="container">
+  <div class="gradient"></div>
+</div>
+```
+
+```css
+.container {
+  background: red;
+  transition: background 1s ease-in;
+  width: 400px;
+  height: 400px;
+}
+
+.gradient {
+  background: linear-gradient(white, transparent);
+  width: 100%;
+  height: 100%;
+}
+```
+
+So, now we have this color gradient from red to white. And if we change the `.container` color we'll have the 1s ease in transition.
+
+## Show me the code
+
+Okay, here's a better example!
+
+<br />
+
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="maferland" data-slug-hash="QWEZKYR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="QWEZKYR">
+
+  <span>See the Pen <a href="https://codepen.io/maferland/pen/QWEZKYR">
+
+Color Gradient</a> by Marc-Antoine Ferland (<a href="https://codepen.io/maferland">@maferland</a>)</span>
+
+</p>
+
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
