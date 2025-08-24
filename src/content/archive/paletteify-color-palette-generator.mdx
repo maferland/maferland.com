@@ -2,6 +2,7 @@
 title: 'Building a color palette generator'
 date: '2021-02-20T15:11:09.302Z'
 excerpt: 'Very few of the projects I begin end up being released. For once, I managed to build something useful. Here is how I built Paletteify.'
+heroImage: '/images/color-palette.jpg'
 tags:
   [
     'Node.js',
@@ -58,13 +59,16 @@ So I did that, I built my API calls as two serverless functions. One to screensh
 
 What ended up being a deal-breaker was that my libraries were too big. The slug size was over AWS Lambda limit (on which Netlify Functions are built)
 
-<iframe
-  border="0"
-  frameborder="0"
-  height="250"
-  width="850"
-  src="https://twitframe.com/show?url=https%3A%2F%2Ftwitter.com%2Fma_ferland%2Fstatus%2F1356728708070047754"
-></iframe>
+<div className="mb-6">
+  <iframe
+    border="0"
+    frameBorder="0"
+    height="250"
+    width="850"
+    src="https://twitframe.com/show?url=https%3A%2F%2Ftwitter.com%2Fma_ferland%2Fstatus%2F1356728708070047754"
+    style={{ maxWidth: '100%' }}
+  ></iframe>
+</div>
 
 I had to rewrite my app as a node.js server that I then deployed to Heroku. That was pretty straightforward to do. A couple of bugfixes later I was ready. Or was I? Heroku has its specific sets of limitations.
 
@@ -93,7 +97,12 @@ I configured a bit of long polling and that was it. I had built a minimal produc
 The frontend app handles most of the data normalization and error handling.
 It's where the polling is done and the results displayed for the user to access.
 
-<img src="https://cdn.loom.com/sessions/thumbnails/892bae1e444b4fbd9ae4a33da95092ad-with-play.gif">
+<div className="my-6">
+  <img
+    src="https://cdn.loom.com/sessions/thumbnails/892bae1e444b4fbd9ae4a33da95092ad-with-play.gif"
+    alt="Paletteify demo"
+  />
+</div>
 
 I'm quite satisfied with the general performance of the app and I'm happy because I think for once this app could benefit other people looking for a quick way to get a colour palette.
 
@@ -101,11 +110,11 @@ I'm quite satisfied with the general performance of the app and I'm happy becaus
 
 The precision of the tool isn't great but it does the job. One such example is `example.com`
 
-![](/images/blog/screenshot_2021-02-20-example-domain.png)
+![](/images/screenshot_2021-02-20-example-domain.png)
 
 Paletteify will generate the following palette
 
-![](/images/blog/screenshot_2021-02-20-paletteify.png)
+![](/images/screenshot_2021-02-20-paletteify.png)
 
 That's quite a lot of extrapolation, isn't it? I think it's still pretty useful. This tool is more meant as a design starting point. Don't rely too much on it. If you want the real colour code you're better just digging in the CSS and finding it by yourself.
 

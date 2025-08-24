@@ -2,6 +2,7 @@
 title: 'How to make a gradient transition in CSS'
 date: '2020-11-09T02:32:56.249Z'
 excerpt: "CSS doesn't support transition for background gradient. It will instead change the whole gradient suddenly. But what if you could? I wanna show you how I worked around the limitation of CSS with this nice little trick."
+heroImage: '/images/sunset.jpg'
 tags:
   ['CSS', 'Gradients', 'Animations', 'Transitions', 'Frontend', 'Web Design']
 ---
@@ -30,8 +31,8 @@ This might not work for every issue but for simple gradients, you can clearly us
 The idea is to use a transparent gradient as an overlay and use the simple background-color transition. To obtain a very similar effect.
 
 ```html
-<div class="container" id="container">
-  <div class="gradient"></div>
+<div className="container" id="container">
+  <div className="gradient"></div>
 </div>
 ```
 
@@ -58,12 +59,30 @@ Okay, here's a better example!
 
 <br />
 
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="maferland" data-slug-hash="QWEZKYR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="QWEZKYR">
-
-  <span>See the Pen <a href="https://codepen.io/maferland/pen/QWEZKYR">
-
-Color Gradient</a> by Marc-Antoine Ferland (<a href="https://codepen.io/maferland">@maferland</a>)</span>
-
+<p
+  className="codepen"
+  data-height="265"
+  data-theme-id="dark"
+  data-default-tab="js,result"
+  data-user="maferland"
+  data-slug-hash="QWEZKYR"
+  style={{
+    height: '265px',
+    boxSizing: 'border-box',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: '2px solid',
+    margin: '1em 0',
+    padding: '1em',
+  }}
+  data-pen-title="QWEZKYR"
+>
+  <span>
+    See the Pen{' '}
+    <a href="https://codepen.io/maferland/pen/QWEZKYR">Color Gradient</a> by
+    Marc-Antoine Ferland (<a href="https://codepen.io/maferland">@maferland</a>)
+  </span>
 </p>
 
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>

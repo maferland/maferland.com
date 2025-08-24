@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPost, getPosts } from '@/lib/posts'
 import PostLayout from '@/components/blog/PostLayout'
-import './syntax-highlighting.css'
 
 export async function generateStaticParams() {
   const posts = await getPosts('src/content/blog')
@@ -13,9 +12,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPost('src/content/blog', params.slug)
+  const { slug } = await params
+  const post = await getPost('src/content/blog', slug)
 
   if (!post) {
     return {
@@ -39,9 +39,10 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPost('src/content/blog', params.slug)
+  const { slug } = await params
+  const post = await getPost('src/content/blog', slug)
 
   if (!post) {
     notFound()

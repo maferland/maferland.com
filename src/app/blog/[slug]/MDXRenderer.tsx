@@ -1,7 +1,9 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
 import { useMDXComponents } from '@/components/mdx-components'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import rehypeHighlight from 'rehype-highlight'
+import typescript from 'highlight.js/lib/languages/typescript'
+import bash from 'highlight.js/lib/languages/bash'
+import json from 'highlight.js/lib/languages/json'
 
 interface MDXRendererProps {
   source: string
@@ -19,14 +21,14 @@ export default function MDXRenderer({ source }: MDXRendererProps) {
           mdxOptions: {
             rehypePlugins: [
               [
-                require('rehype-highlight'),
+                rehypeHighlight,
                 {
                   ignoreMissing: true,
                   languages: {
-                    typescript: require('highlight.js/lib/languages/typescript'),
-                    tsx: require('highlight.js/lib/languages/typescript'),
-                    bash: require('highlight.js/lib/languages/bash'),
-                    json: require('highlight.js/lib/languages/json'),
+                    typescript,
+                    tsx: typescript,
+                    bash,
+                    json,
                   },
                 },
               ],

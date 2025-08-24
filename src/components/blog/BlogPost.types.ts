@@ -4,4 +4,5 @@ export interface BlogPost {
   excerpt: string
   tags: string[]
   slug: string
+  heroImage?: string
 }

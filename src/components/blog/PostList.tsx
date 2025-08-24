@@ -18,7 +18,7 @@ export default function PostList({
   emptyStateMessage = 'No posts found.',
 }: PostListProps) {
   return (
-    <div className="max-w-4xl mx-auto px-8 py-16">
+    <div className="max-w-4xl mx-auto px-8 py-8">
       <div className="space-y-8">
         <div className="space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
