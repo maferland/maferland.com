@@ -1,5 +1,6 @@
+import MDXLink from '@/components/mdx/MDXLink'
 import type { MDXComponents } from 'mdx/types'
-import Link from '@/components/ui/Link'
+import Image from 'next/image'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -24,11 +25,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </p>
     ),
-    a: ({ href, children }) => (
-      <Link href={href || '#'} variant="accent">
-        {children}
-      </Link>
-    ),
+    a: ({ href, children }) => <MDXLink href={href}>{children}</MDXLink>,
+    img: ({ src, alt, width, height, ...props }) => {
+      if (!src) return null
+
+      return (
+        <Image
+          src={src}
+          alt={alt || ''}
+          width={width || 800}
+          height={height || 600}
+          className="rounded-lg shadow-lg max-w-full h-auto"
+          {...props}
+        />
+      )
+    },
     ul: ({ children }) => (
       <ul className="list-disc list-inside mb-6 space-y-2 text-slate-700 dark:text-slate-300">
         {children}
@@ -43,9 +54,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <li className="text-lg leading-relaxed">{children}</li>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-blue-500 pl-6 py-2 mb-6 italic bg-slate-50 dark:bg-slate-800 rounded-r-lg">
-        <div className="text-slate-600 dark:text-slate-400">{children}</div>
-      </blockquote>
+      <div className="mb-6">
+        <blockquote className="border-l-4 border-blue-500 pl-6 py-4 italic bg-slate-50 dark:bg-slate-800 rounded-r-lg [&>div>p:last-child]:mb-0">
+          <div className="text-slate-600 dark:text-slate-400">{children}</div>
+        </blockquote>
+      </div>
     ),
     pre: ({ children }) => (
       <pre className="bg-slate-900 dark:bg-slate-950 text-slate-100 rounded-lg p-6 mb-6 overflow-x-auto text-sm">

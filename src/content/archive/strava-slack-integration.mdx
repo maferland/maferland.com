@@ -2,6 +2,7 @@
 title: 'How to integrate Strava into Slack'
 date: '2021-02-04T16:18:19.856Z'
 excerpt: "If like me you use Strava and want to brag about your latest PR with your coworkers here's the best way I found to automatically post my results in Slack. Thanks Zapier!"
+heroImage: '/images/morning-jog.jpg'
 tags: ['Strava', 'Slack', 'Zapier', 'API Integration', 'Automation', 'Webhooks']
 ---
 
@@ -29,7 +30,7 @@ If you don't have an account go ahead and create it, we're going to need it :)
 
 First, you're going to need to create your Zap.
 
-![make a zap](/images/blog/make-a-zap.jpg)
+![make a zap](/images/make-a-zap.jpg)
 
 ### Trigger
 
@@ -37,19 +38,19 @@ You need to select the trigger. A trigger is the app + event combo that will sta
 
 In our case, we'll select Strava.
 
-![select trigger app](/images/blog/select-trigger-app.jpg)
+![select trigger app](/images/select-trigger-app.jpg)
 
 Then you can choose what event should start the Zap. We want to use `New Activity`.
 
-![select trigger event](/images/blog/select-trigger-event.jpg)
+![select trigger event](/images/select-trigger-event.jpg)
 
 You will be asked to log into your Strava account. Mine was already linked!
 
-![link strava account](/images/blog/link-strava-account.jpg)
+![link strava account](/images/link-strava-account.jpg)
 
 Then, you can test the trigger. Zapier will pull the last event of this type and display the payload content. All those information will be available in the next step.
 
-![test trigger payload](/images/blog/test-trigger-payload.jpg)
+![test trigger payload](/images/test-trigger-payload.jpg)
 
 ### Action
 
@@ -60,17 +61,17 @@ Here, you're asked to select which app will react to the trigger. You could push
 
 For now, let's just show off to our colleagues. So I'll pick Slack.
 
-![select action app](/images/blog/select-action-app.jpg)
+![select action app](/images/select-action-app.jpg)
 
 For the event, we want to submit to a channel. I suggest selecting `Direct message` to debug the Zap before sending it to a channel.
 
 ⚠️ **I don't recomment sending your results to any a public channel such as #general** ⚠️
 
-![select action event](/images/blog/select-action-event.jpg)
+![select action event](/images/select-action-event.jpg)
 
 As before, you will be asked to log into your Slack account. Mine was already linked (again)!
 
-![link slack account](/images/blog/link-slack-account.jpg)
+![link slack account](/images/link-slack-account.jpg)
 
 ### Configuration
 
@@ -80,11 +81,11 @@ The message builder is quite intuitive. Try it! If you're too lazy you can alway
 
 I picked the name of the activity, the distance, the duration, the pace and the URL (so people can go five me _kudos_ 😍). Also, I picked `Send as a bot`. But feel free to do otherwise.
 
-![configure zap](/images/blog/configure-zap.jpg)
+![configure zap](/images/configure-zap.jpg)
 
 Also, I didn't like having the Zap link at the end of the message. Plus, we get the event emoji from Zapier. Let's use it.
 
-![advanced config](/images/blog/advanced-config.jpg)
+![advanced config](/images/advanced-config.jpg)
 
 If you want to tag someone you will have to enable `Link Usernames and Channel Names` feature. Also, [check this](https://zapier.com/help/doc/tips-formatting-your-slack-messages#slack-announcements) if you want to learn why @username doesn't work. You will have to dig a bit for that 🙃.
 
@@ -92,12 +93,12 @@ I highly suggest that you tag yourself so people know who's the activity owner
 
 In my case, I could do that by adding `<@UB7L6HMUL>` to my message.
 
-![link username](/images/blog/link-username.jpg)
+![link username](/images/link-username.jpg)
 
 ## Release it
 
 Woops, don't forget to activate it 🙈.
-![turn it on](/images/blog/turn-it-on.jpg)
+![turn it on](/images/turn-it-on.jpg)
 
 Zapier only collect/submit event in a while (unless you're on a paid plan). So don't worry if it takes a few minutes for the event to appear in Slack.
 
@@ -106,4 +107,4 @@ Zapier only collect/submit event in a while (unless you're on a paid plan). So d
 Here you go, you did it! Congrats :)
 Feel free to try out other triggers and action combinations.
 
-![see the result](/images/blog/see-the-result.jpg)
+![see the result](/images/see-the-result.jpg)

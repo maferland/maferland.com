@@ -2,6 +2,7 @@
 title: 'Why you should use Volta'
 date: '2021-02-27T17:42:35.595Z'
 excerpt: 'Volta is a tool that will make your life better'
+heroImage: '/images/power-pylon.jpg'
 tags: ['Volta', 'Node.js', 'Developer Tools', 'Workflow', 'Version Management']
 ---
 
@@ -17,21 +18,21 @@ Volta is the kind of tool that does everything silently and doesn't really requi
 
 You can install and manage your versions simply:
 
-```
+```bash
 volta install node@x.y.z
 volta install yarn@a.b.c
 ```
 
 Then, you simply need to `pin` the yarn and node version for a project and Volta will handle the rest of it. It's magic:
 
-```
+```bash
 volta pin node@12.19.0
 volta pin yarn@1.22.10
 ```
 
 Volta will add this in your package.json:
 
-```
+```json
  "volta": {
  "node": "12.19.0",
  "yarn": "1.22.10"
@@ -50,19 +51,47 @@ Volta is written in rust and is as fast as it can get. As I said, I keep forgett
 
 In the following example, you can notice how fast the folder change is even though the node version is changing. I still ran `node -v` and `yarn -v` but you can see that my env picked up the new node version immediately by looking at the `via Node v12.19.0`.
 
-<div style=" width:100%; margin: 1em; position: relative; padding-bottom: 55.65693430656934%; height: 0;">
+<div
+  style={{
+    width: '100%',
+    margin: '1em',
+    position: 'relative',
+    paddingBottom: '55.65693430656934%',
+    height: 0,
+  }}
+>
   <iframe
     src="https://www.loom.com/embed/4e96d417c95d4d0495390f9839848151"
-    frameborder="0"
-    webkitallowfullscreen
-    mozallowfullscreen
-    allowfullscreen
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    frameBorder="0"
+    webkitallowfullscreen="true"
+    mozallowfullscreen="true"
+    allowFullScreen
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}
   ></iframe>
 </div>
-## Drawback I guess having the pinned version info in the package.json is not to
-everyone's taste. I guess they could probably add a `.voltarc` in the future 🤷‍♂️.
-Personally, it doesn't bother me. ## Try it now Give it a shot, you won't regret
-it! If you don't like it you can always go back. 👉 https://volta.sh/ 👈 ``` #
-install Volta curl https://get.volta.sh | bash # install Node volta install node
-# start using Node node ```
+## Drawback
+
+I guess having the pinned version info in the package.json is not to everyone's taste. I guess they could probably add a `.voltarc` in the future 🤷‍♂️. Personally, it doesn't bother me.
+
+## Try it now
+
+Give it a shot, you won't regret it! If you don't like it you can always go back.
+
+👉 [https://volta.sh/](https://volta.sh/) 👈
+
+```bash
+# install Volta
+curl https://get.volta.sh | bash
+
+# install Node
+volta install node
+
+# start using Node
+node
+```

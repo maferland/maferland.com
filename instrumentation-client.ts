@@ -16,7 +16,6 @@ function initPostHog() {
     // Dynamic import to avoid server-side issues
     import('posthog-js').then(posthog => {
       posthog.default.init(posthogKey, {
-        api_host: '/ingest',
         ui_host: 'https://us.posthog.com',
         capture_exceptions: true,
         debug: process.env.NODE_ENV === 'development',
@@ -27,4 +26,4 @@ function initPostHog() {
   }
 }
 
-initPostHog()
+// initPostHog()

@@ -13,9 +13,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPost('src/content/archive', params.slug)
+  const { slug } = await params
+  const post = await getPost('src/content/archive', slug)
 
   if (!post) {
     return {
@@ -39,9 +40,10 @@ export async function generateMetadata({
 export default async function ArchivePostPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPost('src/content/archive', params.slug)
+  const { slug } = await params
+  const post = await getPost('src/content/archive', slug)
 
   if (!post) {
     notFound()
