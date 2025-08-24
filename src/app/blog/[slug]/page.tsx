@@ -1,6 +1,7 @@
-import { notFound } from 'next/navigation'
-import { getPost, getPosts } from '@/lib/posts'
 import PostLayout from '@/components/blog/PostLayout'
+import { getPost, getPosts } from '@/lib/posts'
+import { generatePostMetadata } from '@/lib/metadata'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const posts = await getPosts('src/content/blog')
@@ -15,25 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await getPost('src/content/blog', slug)
-
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    }
-  }
-
-  return {
-    title: post.frontmatter.title,
-    description: post.frontmatter.excerpt,
-    openGraph: {
-      title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
-      type: 'article',
-      publishedTime: post.frontmatter.date,
-      tags: post.frontmatter.tags,
-    },
-  }
+  return generatePostMetadata('src/content/blog', slug)
 }
 
 export default async function BlogPostPage({
@@ -43,6 +26,7 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params
   const post = await getPost('src/content/blog', slug)
+  console.log(post)
 
   if (!post) {
     notFound()
