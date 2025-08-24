@@ -68,14 +68,6 @@ This project follows modern best practices:
 - Mobile-first responsive design
 - Type-safe development
 
-## 🔮 What's Next
-
-- [ ] Blog with MDX support
-- [ ] Project showcase
-- [ ] Legacy content migration
-- [ ] Contact form
-- [ ] Newsletter integration
-
 ## 📄 License
 
 [MIT](LICENSE) © Marc-Antoine Ferland
