@@ -23,7 +23,7 @@ export default function SocialLink({
     <motion.a
       href={href}
       className={cn(
-        'group relative flex items-center gap-3 px-6 py-3 rounded-xl',
+        'group relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl',
         'border border-foreground/15 bg-background/50 backdrop-blur-sm',
         'hover:border-foreground/40 hover:bg-foreground/15 hover:shadow-lg hover:shadow-foreground/10',
         'transition-all duration-300 ease-out',
@@ -34,12 +34,12 @@ export default function SocialLink({
       whileHover={{ y: -3, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
-      <Icon size={18} />
-      <span className="font-medium">{label}</span>
+      <Icon size={16} className="sm:size-[18px]" />
+      <span className="font-medium text-sm sm:text-base">{label}</span>
       {external && (
         <ArrowUpRight
-          size={16}
-          className="opacity-0 group-hover:opacity-100 transition-opacity"
+          size={14}
+          className="sm:size-4 opacity-0 group-hover:opacity-100 transition-opacity"
         />
       )}
     </motion.a>

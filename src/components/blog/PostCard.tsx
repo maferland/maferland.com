@@ -10,9 +10,9 @@ interface PostCardProps {
 export default function PostCard({ post, basePath }: PostCardProps) {
   return (
     <Link key={post.slug} href={`${basePath}/${post.slug}`}>
-      <article className="space-y-4 p-6 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 cursor-pointer group">
+      <article className="space-y-4 p-4 sm:p-6 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200 cursor-pointer group">
         <div className="space-y-2">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {post.title}
           </h2>
           <PostMeta date={post.date} tags={post.tags} />
