@@ -1,5 +1,5 @@
 <div align="center">
-<h1>maferland.com</h1>
+<h1>🖥️ maferland.com</h1>
 
 <p>Vibe coded with love</p>
 </div>
