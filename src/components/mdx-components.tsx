@@ -1,4 +1,5 @@
 import MDXLink from '@/components/mdx/MDXLink'
+import { GitHubCard, StorybookCard } from '@/components/mdx/ProjectCard'
 import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 
@@ -71,6 +72,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </code>
     ),
     hr: () => <hr className="border-slate-200 dark:border-slate-700 my-12" />,
+    // Custom components
+    GitHubCard,
+    StorybookCard,
     ...components,
   }
 }
