@@ -18,16 +18,16 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 hover:-translate-y-1 flex flex-col ${className}`}
+      className={`group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 p-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 hover:-translate-y-1 flex flex-col ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       <div className="relative flex-1 flex flex-col">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-start sm:items-center gap-3 mb-3">
           <div className="flex-shrink-0 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors duration-300">
             {icon}
           </div>
-          <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+          <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-tight">
             {title}
           </h3>
         </div>

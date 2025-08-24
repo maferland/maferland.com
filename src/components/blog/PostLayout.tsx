@@ -11,15 +11,15 @@ interface PostLayoutProps {
 
 export default function PostLayout({ frontmatter, content }: PostLayoutProps) {
   return (
-    <article className="max-w-4xl mx-auto px-8 py-8">
+    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       <header className="mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-900 dark:text-slate-100">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-900 dark:text-slate-100">
           {frontmatter.title}
         </h1>
         <div className="mb-6">
           <PostMeta date={frontmatter.date} tags={frontmatter.tags} />
         </div>
-        <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+        <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
           {frontmatter.excerpt}
         </p>
       </header>

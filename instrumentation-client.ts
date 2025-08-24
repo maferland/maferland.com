@@ -1,29 +1,11 @@
-function initPostHog() {
-  // Early return if not in browser
-  if (typeof window === 'undefined') {
-    return
-  }
+import posthog from 'posthog-js'
 
-  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY
+const NEXT_PUBLIC_POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
+const NEXT_PUBLIC_POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST
 
-  // Early return with warning if key is missing
-  if (!posthogKey) {
-    console.warn('PostHog key not found in environment variables')
-    return
-  }
-
-  try {
-    // Dynamic import to avoid server-side issues
-    import('posthog-js').then(posthog => {
-      posthog.default.init(posthogKey, {
-        ui_host: 'https://us.posthog.com',
-        capture_exceptions: true,
-        debug: process.env.NODE_ENV === 'development',
-      })
-    })
-  } catch (error) {
-    console.error('Failed to initialize PostHog:', error)
-  }
+if (NEXT_PUBLIC_POSTHOG_KEY && NEXT_PUBLIC_POSTHOG_HOST) {
+  posthog.init(NEXT_PUBLIC_POSTHOG_KEY, {
+    api_host: NEXT_PUBLIC_POSTHOG_HOST,
+    defaults: '2025-05-24',
+  })
 }
-
-// initPostHog()

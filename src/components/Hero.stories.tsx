@@ -134,45 +134,6 @@ export const BiographySection: Story = {
   },
 }
 
-// Story showing different background contexts
-export const OnDarkBackground: Story = {
-  decorators: [
-    Story => (
-      <div className="bg-slate-900 p-8 rounded-lg">
-        <Story />
-      </div>
-    ),
-  ],
-  parameters: {
-    backgrounds: { default: 'dark' },
-    docs: {
-      description: {
-        story:
-          'Hero component displayed on a dark background to test contrast and readability.',
-      },
-    },
-  },
-}
-
-export const OnLightBackground: Story = {
-  decorators: [
-    Story => (
-      <div className="bg-white p-8 rounded-lg border">
-        <Story />
-      </div>
-    ),
-  ],
-  parameters: {
-    backgrounds: { default: 'light' },
-    docs: {
-      description: {
-        story:
-          'Hero component displayed on a light background showing gradient text effects.',
-      },
-    },
-  },
-}
-
 // Story with no animations for static preview
 export const StaticPreview: Story = {
   render: () => {
