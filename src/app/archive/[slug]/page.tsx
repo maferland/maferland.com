@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPost, getPosts } from '@/lib/posts'
+import { generatePostMetadata } from '@/lib/metadata'
 import PostLayout from '@/components/blog/PostLayout'
 import '../../blog/[slug]/syntax-highlighting.css'
 
@@ -16,25 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = await getPost('src/content/archive', slug)
-
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    }
-  }
-
-  return {
-    title: post.frontmatter.title,
-    description: post.frontmatter.excerpt,
-    openGraph: {
-      title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
-      type: 'article',
-      publishedTime: post.frontmatter.date,
-      tags: post.frontmatter.tags,
-    },
-  }
+  return generatePostMetadata('src/content/archive', slug)
 }
 
 export default async function ArchivePostPage({
