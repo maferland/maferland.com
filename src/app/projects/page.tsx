@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Footprints, Clipboard } from 'lucide-react'
+import { Footprints, ShieldCheck } from 'lucide-react'
 import ProjectHeroCard from '@/components/projects/ProjectHeroCard'
 
 export const metadata: Metadata = {
@@ -16,14 +16,15 @@ const projects = [
     icon: <Footprints className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
     techStack: ['TypeScript', 'Next.js', 'React'],
     liveUrl: 'https://quebec.run',
-    githubUrl: 'https://github.com/maferland/quebec.run',
   },
   {
     title: 'CleanCopy',
     tagline: 'Strips tracking params from your clipboard',
     description:
       'A macOS menu bar app that automatically removes tracking parameters from URLs when you copy them. No manual action required - just copy links normally and get clean URLs.',
-    icon: <Clipboard className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
+    icon: (
+      <ShieldCheck className="w-6 h-6 text-slate-700 dark:text-slate-300" />
+    ),
     techStack: ['Swift', 'macOS'],
     githubUrl: 'https://github.com/maferland/clean-copy',
   },

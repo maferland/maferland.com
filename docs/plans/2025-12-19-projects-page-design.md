@@ -11,16 +11,16 @@ Add a dedicated `/projects` page to showcase personal projects with a clean, min
 
 ## Decisions
 
-| Decision | Choice |
-|----------|--------|
-| Location | `/projects` page |
-| Navigation | Add "Projects" link between Home and Blog |
-| Card style | Full-width hero cards, stacked vertically |
-| Order | quebec.run first, CleanCopy second |
-| Visuals | Icons + tech badges, no screenshots |
-| Colors | Uniform slate palette |
-| Animations | Existing framer-motion patterns |
-| Links per card | Live site + GitHub repo |
+| Decision       | Choice                                    |
+| -------------- | ----------------------------------------- |
+| Location       | `/projects` page                          |
+| Navigation     | Add "Projects" link between Home and Blog |
+| Card style     | Full-width hero cards, stacked vertically |
+| Order          | quebec.run first, CleanCopy second        |
+| Visuals        | Icons + tech badges, no screenshots       |
+| Colors         | Uniform slate palette                     |
+| Animations     | Existing framer-motion patterns           |
+| Links per card | Live site + GitHub repo                   |
 
 ## Page Structure
 
