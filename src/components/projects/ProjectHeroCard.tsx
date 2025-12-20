@@ -11,7 +11,7 @@ interface ProjectHeroCardProps {
   icon: ReactNode
   techStack: string[]
   liveUrl?: string
-  githubUrl: string
+  githubUrl?: string
 }
 
 export default function ProjectHeroCard({
@@ -67,30 +67,35 @@ export default function ProjectHeroCard({
         </div>
 
         {/* Links */}
-        <div className="flex flex-wrap gap-4 pt-2">
+        <div className="flex flex-wrap gap-3 pt-2">
           {liveUrl && (
             <a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 font-medium transition-colors"
+              className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-medium hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
             >
               View Project
               <ArrowUpRight
                 size={16}
-                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
               />
             </a>
           )}
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 font-medium transition-colors"
-          >
-            GitHub
-            <ArrowUpRight size={16} />
-          </a>
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              GitHub
+              <ArrowUpRight
+                size={16}
+                className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
+              />
+            </a>
+          )}
         </div>
       </div>
     </motion.article>
