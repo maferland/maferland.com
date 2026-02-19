@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import InteractiveTypography from '@/components/playground/InteractiveTypography'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
 export default function PlaygroundPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-      {/* Hero slot — Task 2 */}
+      <div className="mb-12">
+        <InteractiveTypography />
+      </div>
 
       <header className="mb-12 text-center">
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
