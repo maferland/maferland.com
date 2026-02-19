@@ -6,6 +6,7 @@ import MagneticButtons from '@/components/playground/MagneticButtons'
 import MorphingCards from '@/components/playground/MorphingCards'
 import NumberTicker from '@/components/playground/NumberTicker'
 import ParticleField from '@/components/playground/ParticleField'
+import MagneticMesh from '@/components/playground/MagneticMesh'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -60,7 +61,13 @@ export default function PlaygroundPage() {
         >
           <ParticleField />
         </DemoCard>
-        {/* More demos — Tasks 8-9 */}
+        <DemoCard
+          title="Magnetic Mesh"
+          description="Grid that warps toward your cursor like rubber"
+        >
+          <MagneticMesh />
+        </DemoCard>
+        {/* More demos — Task 9 */}
       </div>
     </div>
   )
