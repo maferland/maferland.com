@@ -5,6 +5,7 @@ import SpringReorder from '@/components/playground/SpringReorder'
 import MagneticButtons from '@/components/playground/MagneticButtons'
 import MorphingCards from '@/components/playground/MorphingCards'
 import NumberTicker from '@/components/playground/NumberTicker'
+import ParticleField from '@/components/playground/ParticleField'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -53,7 +54,13 @@ export default function PlaygroundPage() {
         >
           <NumberTicker />
         </DemoCard>
-        {/* More demos — Tasks 7-9 */}
+        <DemoCard
+          title="Particle Field"
+          description="Constellation dots with cursor repulsion"
+        >
+          <ParticleField />
+        </DemoCard>
+        {/* More demos — Tasks 8-9 */}
       </div>
     </div>
   )
