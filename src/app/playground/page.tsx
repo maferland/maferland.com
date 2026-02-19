@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import InteractiveTypography from '@/components/playground/InteractiveTypography'
+import DemoCard from '@/components/playground/DemoCard'
+import SpringReorder from '@/components/playground/SpringReorder'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -24,7 +26,13 @@ export default function PlaygroundPage() {
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Demo slots — Tasks 3-9 */}
+        <DemoCard
+          title="Spring Reorder"
+          description="Drag items to reorder with spring physics"
+        >
+          <SpringReorder />
+        </DemoCard>
+        {/* More demos — Tasks 4-9 */}
       </div>
     </div>
   )
