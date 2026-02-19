@@ -51,7 +51,7 @@ async function fetchPost(slug: string): Promise<BlogPost | null> {
 }
 
 function convertToMDX(post: BlogPost): string {
-  const { title, date, description, image, body } = post
+  const { title, date, description, body } = post
 
   // Create frontmatter
   const frontmatter = `---
