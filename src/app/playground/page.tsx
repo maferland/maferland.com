@@ -3,6 +3,7 @@ import InteractiveTypography from '@/components/playground/InteractiveTypography
 import DemoCard from '@/components/playground/DemoCard'
 import SpringReorder from '@/components/playground/SpringReorder'
 import MagneticButtons from '@/components/playground/MagneticButtons'
+import MorphingCards from '@/components/playground/MorphingCards'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -38,6 +39,12 @@ export default function PlaygroundPage() {
           description="Buttons that pull toward your cursor with parallax depth"
         >
           <MagneticButtons />
+        </DemoCard>
+        <DemoCard
+          title="Morphing Cards"
+          description="Click cards to see shared layout animation"
+        >
+          <MorphingCards />
         </DemoCard>
         {/* More demos — Tasks 5-9 */}
       </div>
