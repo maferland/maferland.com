@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import InteractiveTypography from '@/components/playground/InteractiveTypography'
 import DemoCard from '@/components/playground/DemoCard'
 import SpringReorder from '@/components/playground/SpringReorder'
+import MagneticButtons from '@/components/playground/MagneticButtons'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -32,7 +33,13 @@ export default function PlaygroundPage() {
         >
           <SpringReorder />
         </DemoCard>
-        {/* More demos — Tasks 4-9 */}
+        <DemoCard
+          title="Magnetic Buttons"
+          description="Buttons that pull toward your cursor with parallax depth"
+        >
+          <MagneticButtons />
+        </DemoCard>
+        {/* More demos — Tasks 5-9 */}
       </div>
     </div>
   )
