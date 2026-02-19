@@ -4,6 +4,7 @@ import DemoCard from '@/components/playground/DemoCard'
 import SpringReorder from '@/components/playground/SpringReorder'
 import MagneticButtons from '@/components/playground/MagneticButtons'
 import MorphingCards from '@/components/playground/MorphingCards'
+import NumberTicker from '@/components/playground/NumberTicker'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -46,7 +47,13 @@ export default function PlaygroundPage() {
         >
           <MorphingCards />
         </DemoCard>
-        {/* More demos — Tasks 5-9 */}
+        <DemoCard
+          title="Number Ticker"
+          description="Odometer-style counter with spring physics"
+        >
+          <NumberTicker />
+        </DemoCard>
+        {/* More demos — Tasks 7-9 */}
       </div>
     </div>
   )
