@@ -7,6 +7,7 @@ import MorphingCards from '@/components/playground/MorphingCards'
 import NumberTicker from '@/components/playground/NumberTicker'
 import ParticleField from '@/components/playground/ParticleField'
 import MagneticMesh from '@/components/playground/MagneticMesh'
+import FluidGradient from '@/components/playground/FluidGradient'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -67,7 +68,12 @@ export default function PlaygroundPage() {
         >
           <MagneticMesh />
         </DemoCard>
-        {/* More demos — Task 9 */}
+        <DemoCard
+          title="Fluid Gradient"
+          description="Blurred color blobs drifting with cursor influence"
+        >
+          <FluidGradient />
+        </DemoCard>
       </div>
     </div>
   )
