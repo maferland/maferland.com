@@ -75,7 +75,7 @@ export default function TextScramble() {
       </div>
       <button
         onClick={handleClick}
-        className="px-4 py-2 rounded-lg text-sm font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
+        className="px-4 py-2 rounded-lg text-sm font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer"
       >
         Scramble
       </button>

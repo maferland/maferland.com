@@ -14,6 +14,8 @@ interface Ball {
 const GRAVITY = 0.3
 const BOUNCE = 0.7
 const FRICTION = 0.99
+const MAX_SPEED = 15
+const COLLISION_ITERATIONS = 3
 
 export default function GravityBalls() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -57,47 +59,58 @@ export default function GravityBalls() {
       }
     }
 
-    // Ball-to-ball collisions
-    for (let i = 0; i < balls.length; i++) {
-      for (let j = i + 1; j < balls.length; j++) {
-        const a = balls[i]
-        const b = balls[j]
-        const dx = b.x - a.x
-        const dy = b.y - a.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        const minDist = a.radius + b.radius
+    // Ball-to-ball collisions (multiple passes to stabilize dense piles)
+    for (let iter = 0; iter < COLLISION_ITERATIONS; iter++) {
+      for (let i = 0; i < balls.length; i++) {
+        for (let j = i + 1; j < balls.length; j++) {
+          const a = balls[i]
+          const b = balls[j]
+          const dx = b.x - a.x
+          const dy = b.y - a.y
+          const distSq = dx * dx + dy * dy
+          const minDist = a.radius + b.radius
 
-        if (dist < minDist && dist > 0) {
-          // Normal vector
-          const nx = dx / dist
-          const ny = dy / dist
+          if (distSq < minDist * minDist && distSq > 0) {
+            const dist = Math.sqrt(distSq)
+            const nx = dx / dist
+            const ny = dy / dist
 
-          // Separate overlapping balls
-          const overlap = (minDist - dist) / 2
-          a.x -= nx * overlap
-          a.y -= ny * overlap
-          b.x += nx * overlap
-          b.y += ny * overlap
+            // Separate overlapping balls
+            const overlap = (minDist - dist) / 2
+            a.x -= nx * overlap
+            a.y -= ny * overlap
+            b.x += nx * overlap
+            b.y += ny * overlap
 
-          // Relative velocity along normal
-          const dvx = a.vx - b.vx
-          const dvy = a.vy - b.vy
-          const dvn = dvx * nx + dvy * ny
+            // Only apply impulse on first iteration to avoid compounding
+            if (iter === 0) {
+              const dvx = a.vx - b.vx
+              const dvy = a.vy - b.vy
+              const dvn = dvx * nx + dvy * ny
 
-          // Only resolve if balls are approaching
-          if (dvn > 0) {
-            // Mass proportional to area
-            const massA = a.radius * a.radius
-            const massB = b.radius * b.radius
-            const totalMass = massA + massB
+              if (dvn > 0) {
+                const massA = a.radius * a.radius
+                const massB = b.radius * b.radius
+                const totalMass = massA + massB
 
-            const impulse = dvn * BOUNCE
-            a.vx -= ((impulse * massB) / totalMass) * nx
-            a.vy -= ((impulse * massB) / totalMass) * ny
-            b.vx += ((impulse * massA) / totalMass) * nx
-            b.vy += ((impulse * massA) / totalMass) * ny
+                const impulse = dvn * BOUNCE
+                a.vx -= ((impulse * massB) / totalMass) * nx
+                a.vy -= ((impulse * massB) / totalMass) * ny
+                b.vx += ((impulse * massA) / totalMass) * nx
+                b.vy += ((impulse * massA) / totalMass) * ny
+              }
+            }
           }
         }
+      }
+    }
+
+    // Clamp velocities
+    for (const ball of balls) {
+      const speed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy)
+      if (speed > MAX_SPEED) {
+        ball.vx = (ball.vx / speed) * MAX_SPEED
+        ball.vy = (ball.vy / speed) * MAX_SPEED
       }
     }
 

@@ -47,19 +47,19 @@ export default function NumberTicker() {
       <div className="flex items-center gap-3">
         <button
           onClick={() => setCount(c => c - 1)}
-          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
         >
           <Minus size={18} className="text-slate-600 dark:text-slate-300" />
         </button>
         <button
           onClick={() => setCount(0)}
-          className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-slate-600 dark:text-slate-300"
+          className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-slate-600 dark:text-slate-300 cursor-pointer"
         >
           Reset
         </button>
         <button
           onClick={() => setCount(c => c + 1)}
-          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
         >
           <Plus size={18} className="text-slate-600 dark:text-slate-300" />
         </button>
