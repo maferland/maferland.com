@@ -55,7 +55,54 @@ export default function GravityBalls() {
         ball.x = w - ball.radius
         ball.vx *= -BOUNCE
       }
+    }
 
+    // Ball-to-ball collisions
+    for (let i = 0; i < balls.length; i++) {
+      for (let j = i + 1; j < balls.length; j++) {
+        const a = balls[i]
+        const b = balls[j]
+        const dx = b.x - a.x
+        const dy = b.y - a.y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        const minDist = a.radius + b.radius
+
+        if (dist < minDist && dist > 0) {
+          // Normal vector
+          const nx = dx / dist
+          const ny = dy / dist
+
+          // Separate overlapping balls
+          const overlap = (minDist - dist) / 2
+          a.x -= nx * overlap
+          a.y -= ny * overlap
+          b.x += nx * overlap
+          b.y += ny * overlap
+
+          // Relative velocity along normal
+          const dvx = a.vx - b.vx
+          const dvy = a.vy - b.vy
+          const dvn = dvx * nx + dvy * ny
+
+          // Only resolve if balls are approaching
+          if (dvn > 0) {
+            // Mass proportional to area
+            const massA = a.radius * a.radius
+            const massB = b.radius * b.radius
+            const totalMass = massA + massB
+
+            const impulse = dvn * BOUNCE
+            a.vx -= ((impulse * massB) / totalMass) * nx
+            a.vy -= ((impulse * massB) / totalMass) * ny
+            b.vx += ((impulse * massA) / totalMass) * nx
+            b.vy += ((impulse * massA) / totalMass) * ny
+          }
+        }
+      }
+    }
+
+    // Draw
+    for (const ball of balls) {
       ctx.beginPath()
       ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2)
       ctx.fillStyle = isDark
