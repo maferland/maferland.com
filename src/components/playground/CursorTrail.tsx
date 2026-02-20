@@ -84,12 +84,30 @@ export default function CursorTrail() {
       }
     }
 
+    const handleClick = (e: MouseEvent) => {
+      const r = canvas.getBoundingClientRect()
+      const cx = e.clientX - r.left
+      const cy = e.clientY - r.top
+      const now = performance.now()
+      // Burst of dots in a circle
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 8) {
+        const radius = 15 + Math.random() * 20
+        dotsRef.current.push({
+          x: cx + Math.cos(a) * radius,
+          y: cy + Math.sin(a) * radius,
+          age: now,
+        })
+      }
+    }
+
     canvas.addEventListener('mousemove', handleMouseMove)
+    canvas.addEventListener('click', handleClick)
     rafRef.current = requestAnimationFrame(animate)
 
     return () => {
       cancelAnimationFrame(rafRef.current)
       canvas.removeEventListener('mousemove', handleMouseMove)
+      canvas.removeEventListener('click', handleClick)
       ro.disconnect()
     }
   }, [animate])

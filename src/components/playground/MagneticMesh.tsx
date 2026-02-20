@@ -108,8 +108,23 @@ export default function MagneticMesh() {
       mouseRef.current = { x: -9999, y: -9999 }
     }
 
+    const handleClick = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      const cx = e.clientX - rect.left
+      const cy = e.clientY - rect.top
+      for (const p of pointsRef.current) {
+        const dx = p.originX - cx
+        const dy = p.originY - cy
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1
+        const force = Math.max(0, 180 - dist) / dist
+        p.vx += dx * force * 0.5
+        p.vy += dy * force * 0.5
+      }
+    }
+
     canvas.addEventListener('mousemove', handleMouseMove)
     canvas.addEventListener('mouseleave', handleMouseLeave)
+    canvas.addEventListener('click', handleClick)
 
     const ro = new ResizeObserver(() => init(canvas))
     ro.observe(canvas)
@@ -120,6 +135,7 @@ export default function MagneticMesh() {
       cancelAnimationFrame(rafRef.current)
       canvas.removeEventListener('mousemove', handleMouseMove)
       canvas.removeEventListener('mouseleave', handleMouseLeave)
+      canvas.removeEventListener('click', handleClick)
       ro.disconnect()
     }
   }, [init, animate])

@@ -18,6 +18,8 @@ const SPRING = 0.04
 const DAMPING = 0.85
 const PARTICLE_SIZE = 1.5
 const SAMPLE_GAP = 3
+const SYSTEM_FONT =
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
 
 export default function InteractiveTypography() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -34,27 +36,26 @@ export default function InteractiveTypography() {
     const rect = canvas.getBoundingClientRect()
     canvas.width = rect.width * dpr
     canvas.height = rect.height * dpr
-    ctx.scale(dpr, dpr)
 
-    // Draw text offscreen to sample pixels
-    const fontSize = Math.min(rect.width / 8, 80)
+    // Work in device pixels directly (no ctx.scale) for accurate sampling
+    const fontSize = Math.min(rect.width / 8, 80) * dpr
     ctx.fillStyle = '#000'
-    ctx.font = `bold ${fontSize}px ${getComputedStyle(canvas).fontFamily}`
+    ctx.font = `bold ${fontSize}px ${SYSTEM_FONT}`
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.fillText(
-      'Marc-Antoine',
-      rect.width / 2,
-      rect.height / 2 - fontSize * 0.6
-    )
-    ctx.fillText('Ferland', rect.width / 2, rect.height / 2 + fontSize * 0.6)
+
+    const centerX = canvas.width / 2
+    const centerY = canvas.height / 2
+    ctx.fillText('Marc-Antoine', centerX, centerY - fontSize * 0.6)
+    ctx.fillText('Ferland', centerX, centerY + fontSize * 0.6)
 
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
     const particles: Particle[] = []
+    const gap = SAMPLE_GAP * dpr
 
-    for (let y = 0; y < canvas.height; y += SAMPLE_GAP * dpr) {
-      for (let x = 0; x < canvas.width; x += SAMPLE_GAP * dpr) {
+    for (let y = 0; y < canvas.height; y += gap) {
+      for (let x = 0; x < canvas.width; x += gap) {
         const i = (y * canvas.width + x) * 4
         if (imageData.data[i + 3] > 128) {
           const px = x / dpr
@@ -105,14 +106,10 @@ export default function InteractiveTypography() {
         p.vy += (dy / dist) * force
       }
 
-      // Spring back to origin
       p.vx += (p.originX - p.x) * SPRING
       p.vy += (p.originY - p.y) * SPRING
-
-      // Damping
       p.vx *= DAMPING
       p.vy *= DAMPING
-
       p.x += p.vx
       p.y += p.vy
 
@@ -127,8 +124,7 @@ export default function InteractiveTypography() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    // Wait for fonts to load before sampling text pixels
-    document.fonts.ready.then(() => initParticles(canvas))
+    initParticles(canvas)
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
@@ -139,11 +135,26 @@ export default function InteractiveTypography() {
       mouseRef.current = { x: -9999, y: -9999 }
     }
 
+    const handleClick = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      const cx = e.clientX - rect.left
+      const cy = e.clientY - rect.top
+      for (const p of particlesRef.current) {
+        const dx = p.x - cx
+        const dy = p.y - cy
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1
+        const force = Math.max(0, 250 - dist) / dist
+        p.vx += dx * force * 0.4
+        p.vy += dy * force * 0.4
+      }
+    }
+
     canvas.addEventListener('mousemove', handleMouseMove)
     canvas.addEventListener('mouseleave', handleMouseLeave)
+    canvas.addEventListener('click', handleClick)
 
     resizeObserverRef.current = new ResizeObserver(() => {
-      document.fonts.ready.then(() => initParticles(canvas))
+      initParticles(canvas)
     })
     resizeObserverRef.current.observe(canvas)
 
@@ -153,6 +164,7 @@ export default function InteractiveTypography() {
       cancelAnimationFrame(rafRef.current)
       canvas.removeEventListener('mousemove', handleMouseMove)
       canvas.removeEventListener('mouseleave', handleMouseLeave)
+      canvas.removeEventListener('click', handleClick)
       resizeObserverRef.current?.disconnect()
     }
   }, [initParticles, animate])
@@ -161,7 +173,6 @@ export default function InteractiveTypography() {
     <canvas
       ref={canvasRef}
       className="w-full h-[300px] sm:h-[400px] cursor-default"
-      style={{ fontFamily: 'var(--font-geist-sans)' }}
     />
   )
 }
