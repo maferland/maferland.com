@@ -43,18 +43,18 @@ export default function InteractiveTypography() {
     const offCtx = offscreen.getContext('2d')
     if (!offCtx) return
 
-    const fontSize = Math.min(rect.width / 10, 72)
+    const fontSize = Math.min(rect.width / 8, 90)
     offCtx.fillStyle = '#000'
     offCtx.font = `bold ${fontSize}px ${SYSTEM_FONT}`
     offCtx.textAlign = 'center'
     offCtx.textBaseline = 'middle'
     offCtx.fillText(
-      'Marc-Antoine',
+      'go ahead,',
       rect.width / 2,
       rect.height / 2 - fontSize * 0.65
     )
     offCtx.fillText(
-      'Ferland',
+      'break it',
       rect.width / 2,
       rect.height / 2 + fontSize * 0.65
     )
