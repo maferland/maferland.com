@@ -127,7 +127,8 @@ export default function InteractiveTypography() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    initParticles(canvas)
+    // Wait for fonts to load before sampling text pixels
+    document.fonts.ready.then(() => initParticles(canvas))
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
@@ -142,7 +143,7 @@ export default function InteractiveTypography() {
     canvas.addEventListener('mouseleave', handleMouseLeave)
 
     resizeObserverRef.current = new ResizeObserver(() => {
-      initParticles(canvas)
+      document.fonts.ready.then(() => initParticles(canvas))
     })
     resizeObserverRef.current.observe(canvas)
 

@@ -8,6 +8,9 @@ import NumberTicker from '@/components/playground/NumberTicker'
 import ParticleField from '@/components/playground/ParticleField'
 import MagneticMesh from '@/components/playground/MagneticMesh'
 import FluidGradient from '@/components/playground/FluidGradient'
+import CursorTrail from '@/components/playground/CursorTrail'
+import TiltCard from '@/components/playground/TiltCard'
+import TextScramble from '@/components/playground/TextScramble'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -73,6 +76,24 @@ export default function PlaygroundPage() {
           description="Blurred color blobs drifting with cursor influence"
         >
           <FluidGradient />
+        </DemoCard>
+        <DemoCard
+          title="Cursor Trail"
+          description="Rainbow trail that fades as it ages"
+        >
+          <CursorTrail />
+        </DemoCard>
+        <DemoCard
+          title="3D Tilt"
+          description="Perspective card with glare that follows your cursor"
+        >
+          <TiltCard />
+        </DemoCard>
+        <DemoCard
+          title="Text Scramble"
+          description="Characters resolve from random noise"
+        >
+          <TextScramble />
         </DemoCard>
       </div>
     </div>
