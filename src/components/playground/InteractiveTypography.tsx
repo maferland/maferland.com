@@ -14,8 +14,8 @@ interface Particle {
 
 const REPEL_RADIUS = 100
 const REPEL_FORCE = 8
-const SPRING = 0.04
-const DAMPING = 0.85
+const SPRING = 0.015
+const DAMPING = 0.92
 const PARTICLE_SIZE = 1.5
 const SAMPLE_GAP = 3
 const SYSTEM_FONT =
