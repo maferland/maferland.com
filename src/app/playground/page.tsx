@@ -11,6 +11,10 @@ import FluidGradient from '@/components/playground/FluidGradient'
 import CursorTrail from '@/components/playground/CursorTrail'
 import TiltCard from '@/components/playground/TiltCard'
 import TextScramble from '@/components/playground/TextScramble'
+import GravityBalls from '@/components/playground/GravityBalls'
+import WaveText from '@/components/playground/WaveText'
+import Spotlight from '@/components/playground/Spotlight'
+import ElasticToggle from '@/components/playground/ElasticToggle'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -94,6 +98,30 @@ export default function PlaygroundPage() {
           description="Characters resolve from random noise"
         >
           <TextScramble />
+        </DemoCard>
+        <DemoCard
+          title="Gravity Balls"
+          description="Click to drop bouncing balls with physics"
+        >
+          <GravityBalls />
+        </DemoCard>
+        <DemoCard
+          title="Wave Text"
+          description="Characters ripple on hover with staggered timing"
+        >
+          <WaveText />
+        </DemoCard>
+        <DemoCard
+          title="Spotlight"
+          description="Radial light follows your cursor across the card"
+        >
+          <Spotlight />
+        </DemoCard>
+        <DemoCard
+          title="Elastic Toggle"
+          description="Satisfying switch with spring overshoot"
+        >
+          <ElasticToggle />
         </DemoCard>
       </div>
     </div>
