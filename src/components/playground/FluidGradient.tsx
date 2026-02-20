@@ -1,117 +1,123 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 const blobs = [
-  { color: '#3b82f6', size: 120, speed: 0.8, phase: 0, orbitX: 70, orbitY: 50 },
+  {
+    color: '#3b82f6',
+    size: 200,
+    speed: 0.5,
+    phase: 0,
+    orbitX: 120,
+    orbitY: 90,
+  },
   {
     color: '#a855f7',
-    size: 100,
-    speed: 0.6,
+    size: 180,
+    speed: 0.4,
     phase: 2.1,
-    orbitX: -60,
-    orbitY: 40,
+    orbitX: -100,
+    orbitY: 80,
   },
   {
     color: '#ec4899',
-    size: 90,
-    speed: 1.0,
+    size: 160,
+    speed: 0.6,
     phase: 4.2,
-    orbitX: 50,
-    orbitY: -60,
+    orbitX: 90,
+    orbitY: -100,
   },
   {
     color: '#14b8a6',
-    size: 80,
-    speed: 0.9,
+    size: 150,
+    speed: 0.55,
     phase: 5.5,
-    orbitX: -40,
-    orbitY: -45,
+    orbitX: -80,
+    orbitY: -85,
   },
 ]
 
-const springConfig = { stiffness: 30, damping: 20 }
-
-function Blob({
-  color,
-  size,
-  speed,
-  phase,
-  orbitX,
-  orbitY,
-  mouseX,
-  mouseY,
-}: (typeof blobs)[number] & {
-  mouseX: ReturnType<typeof useSpring>
-  mouseY: ReturnType<typeof useSpring>
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-
-    let raf: number
-    const animate = (time: number) => {
-      const t = time * 0.001 * speed
-      const ox = Math.sin(t + phase) * orbitX
-      const oy = Math.cos(t + phase * 0.7) * orbitY
-      el.style.transform = `translate(${ox}px, ${oy}px)`
-      raf = requestAnimationFrame(animate)
-    }
-    raf = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(raf)
-  }, [speed, phase, orbitX, orbitY])
-
-  return (
-    <motion.div
-      ref={ref}
-      className="absolute rounded-full"
-      style={{
-        width: size,
-        height: size,
-        background: `radial-gradient(circle, ${color}cc, ${color}00 70%)`,
-        x: mouseX,
-        y: mouseY,
-      }}
-    />
-  )
-}
+const MOUSE_EASE = 0.06
 
 export default function FluidGradient() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const rawX = useMotionValue(0)
-  const rawY = useMotionValue(0)
-  const mouseX = useSpring(rawX, springConfig)
-  const mouseY = useSpring(rawY, springConfig)
+  const blobRefs = useRef<(HTMLDivElement | null)[]>([])
+  const mouseTarget = useRef({ x: 0, y: 0 })
+  const mouseCurrent = useRef({ x: 0, y: 0 })
+  const rafRef = useRef<number>(0)
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect()
-    if (!rect) return
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    rawX.set((e.clientX - centerX) * 0.3)
-    rawY.set((e.clientY - centerY) * 0.3)
-  }
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
 
-  const handleMouseLeave = () => {
-    rawX.set(0)
-    rawY.set(0)
-  }
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      mouseTarget.current = {
+        x: (e.clientX - cx) * 0.3,
+        y: (e.clientY - cy) * 0.3,
+      }
+    }
+
+    const handleMouseLeave = () => {
+      mouseTarget.current = { x: 0, y: 0 }
+    }
+
+    const animate = (time: number) => {
+      // Ease mouse position
+      mouseCurrent.current.x +=
+        (mouseTarget.current.x - mouseCurrent.current.x) * MOUSE_EASE
+      mouseCurrent.current.y +=
+        (mouseTarget.current.y - mouseCurrent.current.y) * MOUSE_EASE
+
+      const t = time * 0.001
+
+      for (let i = 0; i < blobs.length; i++) {
+        const el = blobRefs.current[i]
+        if (!el) continue
+        const b = blobs[i]
+        const orbitX = Math.sin(t * b.speed + b.phase) * b.orbitX
+        const orbitY = Math.cos(t * b.speed + b.phase * 0.7) * b.orbitY
+        const tx = orbitX + mouseCurrent.current.x
+        const ty = orbitY + mouseCurrent.current.y
+        el.style.transform = `translate(${tx}px, ${ty}px)`
+      }
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    container.addEventListener('mousemove', handleMouseMove)
+    container.addEventListener('mouseleave', handleMouseLeave)
+    rafRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      cancelAnimationFrame(rafRef.current)
+      container.removeEventListener('mousemove', handleMouseMove)
+      container.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [])
 
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className="relative w-full h-full flex items-center justify-center overflow-hidden bg-slate-950 rounded-2xl"
     >
-      <div className="absolute inset-0 flex items-center justify-center mix-blend-screen">
-        {blobs.map((blob, i) => (
-          <Blob key={i} {...blob} mouseX={mouseX} mouseY={mouseY} />
-        ))}
-      </div>
+      {blobs.map((blob, i) => (
+        <div
+          key={i}
+          ref={el => {
+            blobRefs.current[i] = el
+          }}
+          className="absolute rounded-full"
+          style={{
+            width: blob.size,
+            height: blob.size,
+            background: `radial-gradient(circle, ${blob.color}bb, ${blob.color}00 70%)`,
+            filter: 'blur(20px)',
+          }}
+        />
+      ))}
     </div>
   )
 }

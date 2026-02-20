@@ -5,11 +5,17 @@ import { useRef, useEffect, useCallback } from 'react'
 interface TrailDot {
   x: number
   y: number
+  vx: number
+  vy: number
   age: number
+  isBurst: boolean
 }
 
-const MAX_DOTS = 40
-const DOT_LIFETIME = 600
+const MAX_DOTS = 80
+const DOT_LIFETIME = 700
+const BURST_LIFETIME = 1000
+const BURST_COUNT = 24
+const BURST_SPEED = 4
 
 export default function CursorTrail() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -30,18 +36,27 @@ export default function CursorTrail() {
 
     const isDark = document.documentElement.classList.contains('dark')
     const now = performance.now()
-    const dots = dotsRef.current
 
-    // Remove expired dots
-    dotsRef.current = dots.filter(d => now - d.age < DOT_LIFETIME)
+    dotsRef.current = dotsRef.current.filter(
+      d => now - d.age < (d.isBurst ? BURST_LIFETIME : DOT_LIFETIME)
+    )
 
     for (let i = 0; i < dotsRef.current.length; i++) {
       const dot = dotsRef.current[i]
-      const life = 1 - (now - dot.age) / DOT_LIFETIME
-      const radius = life * 8
+      const lifetime = dot.isBurst ? BURST_LIFETIME : DOT_LIFETIME
+      const life = 1 - (now - dot.age) / lifetime
 
+      // Apply velocity for burst particles
+      if (dot.isBurst) {
+        dot.x += dot.vx
+        dot.y += dot.vy
+        dot.vx *= 0.96
+        dot.vy *= 0.96
+      }
+
+      const radius = dot.isBurst ? life * 6 : life * 8
       const hue = (i * 8 + now * 0.05) % 360
-      ctx.globalAlpha = life * 0.7
+      ctx.globalAlpha = life * (dot.isBurst ? 0.9 : 0.7)
       ctx.fillStyle = isDark
         ? `hsla(${hue}, 70%, 70%, ${life})`
         : `hsla(${hue}, 60%, 50%, ${life})`
@@ -76,9 +91,15 @@ export default function CursorTrail() {
       const y = e.clientY - r.top
       const last = lastPosRef.current
 
-      // Add dot only if cursor moved enough
       if (Math.abs(x - last.x) > 3 || Math.abs(y - last.y) > 3) {
-        dotsRef.current.push({ x, y, age: performance.now() })
+        dotsRef.current.push({
+          x,
+          y,
+          vx: 0,
+          vy: 0,
+          age: performance.now(),
+          isBurst: false,
+        })
         if (dotsRef.current.length > MAX_DOTS) dotsRef.current.shift()
         lastPosRef.current = { x, y }
       }
@@ -89,13 +110,17 @@ export default function CursorTrail() {
       const cx = e.clientX - r.left
       const cy = e.clientY - r.top
       const now = performance.now()
-      // Burst of dots in a circle
-      for (let a = 0; a < Math.PI * 2; a += Math.PI / 8) {
-        const radius = 15 + Math.random() * 20
+
+      for (let i = 0; i < BURST_COUNT; i++) {
+        const angle = (i / BURST_COUNT) * Math.PI * 2 + Math.random() * 0.3
+        const speed = BURST_SPEED * (0.6 + Math.random() * 0.8)
         dotsRef.current.push({
-          x: cx + Math.cos(a) * radius,
-          y: cy + Math.sin(a) * radius,
-          age: now,
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          age: now + Math.random() * 50,
+          isBurst: true,
         })
       }
     }
