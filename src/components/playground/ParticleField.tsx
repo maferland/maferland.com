@@ -168,5 +168,5 @@ export default function ParticleField() {
     }
   }, [init, animate])
 
-  return <canvas ref={canvasRef} className="w-full h-full" />
+  return <canvas ref={canvasRef} className="w-full h-full cursor-pointer" />
 }

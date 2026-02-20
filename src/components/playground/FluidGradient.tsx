@@ -63,10 +63,6 @@ export default function FluidGradient() {
       }
     }
 
-    const handleMouseLeave = () => {
-      mouseTarget.current = { x: 0, y: 0 }
-    }
-
     const animate = (time: number) => {
       // Spring physics: accelerate toward target, friction slows it down
       const mv = mouseVelocity.current
@@ -95,14 +91,12 @@ export default function FluidGradient() {
       rafRef.current = requestAnimationFrame(animate)
     }
 
-    container.addEventListener('mousemove', handleMouseMove)
-    container.addEventListener('mouseleave', handleMouseLeave)
+    window.addEventListener('mousemove', handleMouseMove)
     rafRef.current = requestAnimationFrame(animate)
 
     return () => {
       cancelAnimationFrame(rafRef.current)
-      container.removeEventListener('mousemove', handleMouseMove)
-      container.removeEventListener('mouseleave', handleMouseLeave)
+      window.removeEventListener('mousemove', handleMouseMove)
     }
   }, [])
 

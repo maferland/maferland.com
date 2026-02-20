@@ -140,5 +140,5 @@ export default function MagneticMesh() {
     }
   }, [init, animate])
 
-  return <canvas ref={canvasRef} className="w-full h-full" />
+  return <canvas ref={canvasRef} className="w-full h-full cursor-pointer" />
 }

@@ -180,7 +180,7 @@ export default function InteractiveTypography() {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-[250px] sm:h-[300px] cursor-default"
+      className="w-full h-[250px] sm:h-[300px] cursor-pointer"
     />
   )
 }
