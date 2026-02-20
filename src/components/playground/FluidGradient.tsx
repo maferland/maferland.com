@@ -37,13 +37,16 @@ const blobs = [
   },
 ]
 
-const MOUSE_EASE = 0.06
+// Spring-like following with momentum
+const SPRING = 0.008
+const FRICTION = 0.92
 
 export default function FluidGradient() {
   const containerRef = useRef<HTMLDivElement>(null)
   const blobRefs = useRef<(HTMLDivElement | null)[]>([])
   const mouseTarget = useRef({ x: 0, y: 0 })
   const mouseCurrent = useRef({ x: 0, y: 0 })
+  const mouseVelocity = useRef({ x: 0, y: 0 })
   const rafRef = useRef<number>(0)
 
   useEffect(() => {
@@ -65,11 +68,16 @@ export default function FluidGradient() {
     }
 
     const animate = (time: number) => {
-      // Ease mouse position
-      mouseCurrent.current.x +=
-        (mouseTarget.current.x - mouseCurrent.current.x) * MOUSE_EASE
-      mouseCurrent.current.y +=
-        (mouseTarget.current.y - mouseCurrent.current.y) * MOUSE_EASE
+      // Spring physics: accelerate toward target, friction slows it down
+      const mv = mouseVelocity.current
+      const mc = mouseCurrent.current
+      const mt = mouseTarget.current
+      mv.x += (mt.x - mc.x) * SPRING
+      mv.y += (mt.y - mc.y) * SPRING
+      mv.x *= FRICTION
+      mv.y *= FRICTION
+      mc.x += mv.x
+      mc.y += mv.y
 
       const t = time * 0.001
 
