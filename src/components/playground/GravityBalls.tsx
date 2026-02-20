@@ -111,11 +111,6 @@ export default function GravityBalls() {
       ctx.fill()
     }
 
-    // Remove balls that have settled (barely moving at bottom)
-    ballsRef.current = balls.filter(
-      b => Math.abs(b.vy) > 0.1 || b.y + b.radius < h - 1 || balls.length < 30
-    )
-
     ctx.restore()
     rafRef.current = requestAnimationFrame(animate)
   }, [])
