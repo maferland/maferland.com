@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Footprints, ShieldCheck } from 'lucide-react'
+import { Flame, Footprints, ShieldCheck } from 'lucide-react'
 import ProjectHeroCard from '@/components/projects/ProjectHeroCard'
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ const projects = [
     liveUrl: 'https://quebec.run',
   },
   {
-    title: 'CleanCopy',
+    title: 'Snip',
     tagline: 'Strips tracking params from your clipboard',
     description:
       'A macOS menu bar app that automatically removes tracking parameters from URLs when you copy them. No manual action required - just copy links normally and get clean URLs.',
@@ -26,7 +26,16 @@ const projects = [
       <ShieldCheck className="w-6 h-6 text-slate-700 dark:text-slate-300" />
     ),
     techStack: ['Swift', 'macOS'],
-    githubUrl: 'https://github.com/maferland/clean-copy',
+    githubUrl: 'https://github.com/maferland/snip',
+  },
+  {
+    title: 'Burn',
+    tagline: 'Track Claude Code spending from your menu bar',
+    description:
+      "A macOS menu bar app that shows Claude Code costs in real-time. Displays today's spend at a glance with a 7-day chart, monthly totals, and configurable auto-refresh.",
+    icon: <Flame className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
+    techStack: ['Swift', 'SwiftUI', 'macOS'],
+    githubUrl: 'https://github.com/maferland/burn',
   },
 ]
 
