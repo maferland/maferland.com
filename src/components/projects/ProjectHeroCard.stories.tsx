@@ -91,7 +91,7 @@ export const LiveUrlOnly: Story = {
 
 export const GitHubOnly: Story = {
   args: {
-    title: 'CleanCopy',
+    title: 'Snip',
     tagline: 'Strips tracking params from your clipboard',
     description:
       'A macOS menu bar app that automatically removes tracking parameters from URLs when you copy them. No manual action required.',
@@ -99,7 +99,7 @@ export const GitHubOnly: Story = {
       <ShieldCheck className="w-6 h-6 text-slate-700 dark:text-slate-300" />
     ),
     techStack: ['Swift', 'macOS'],
-    githubUrl: 'https://github.com/maferland/clean-copy',
+    githubUrl: 'https://github.com/maferland/snip',
   },
   parameters: {
     docs: {
