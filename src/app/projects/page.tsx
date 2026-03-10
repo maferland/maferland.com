@@ -1,13 +1,21 @@
 import type { Metadata } from 'next'
-import { Flame, Footprints, ShieldCheck } from 'lucide-react'
+import {
+  Flame,
+  Footprints,
+  Images,
+  Scissors,
+  ShieldAlert,
+  Sparkles,
+} from 'lucide-react'
 import ProjectHeroCard from '@/components/projects/ProjectHeroCard'
+import UtilityCard from '@/components/projects/UtilityCard'
 
 export const metadata: Metadata = {
   title: 'Projects | Marc-Antoine Ferland',
   description: 'Side projects and open source work',
 }
 
-const projects = [
+const featured = [
   {
     title: 'quebec.run',
     tagline: 'Quebec City running hub',
@@ -18,24 +26,53 @@ const projects = [
     liveUrl: 'https://quebec.run',
   },
   {
-    title: 'Snip',
-    tagline: 'Strips tracking params from your clipboard',
+    title: 'Differ',
+    tagline: 'Pixel-level image comparison',
     description:
-      'A macOS menu bar app that automatically removes tracking parameters from URLs when you copy them. No manual action required - just copy links normally and get clean URLs.',
-    icon: (
-      <ShieldCheck className="w-6 h-6 text-slate-700 dark:text-slate-300" />
-    ),
+      'A desktop app for comparing images side-by-side with pixel-level diffing. Quickly spot visual differences between design iterations, screenshots, or any two images.',
+    icon: <Images className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
+    techStack: ['TypeScript', 'Electron'],
+    githubUrl: 'https://github.com/maferland/differ',
+  },
+]
+
+const aiTools = [
+  {
+    title: 'Burn',
+    tagline:
+      "Track Claude Code spending from the macOS menu bar. See today's cost at a glance with a 7-day chart and monthly totals.",
+    icon: <Flame className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
+    techStack: ['Swift', 'SwiftUI'],
+    githubUrl: 'https://github.com/maferland/burn',
+  },
+]
+
+const utilities = [
+  {
+    title: 'Snip',
+    tagline:
+      'Automatically strips tracking parameters from URLs when you copy them. No manual action required.',
+    icon: <Scissors className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
     techStack: ['Swift', 'macOS'],
     githubUrl: 'https://github.com/maferland/snip',
   },
   {
-    title: 'Burn',
-    tagline: 'Track Claude Code spending from your menu bar',
-    description:
-      "A macOS menu bar app that shows Claude Code costs in real-time. Displays today's spend at a glance with a 7-day chart, monthly totals, and configurable auto-refresh.",
-    icon: <Flame className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
-    techStack: ['Swift', 'SwiftUI', 'macOS'],
-    githubUrl: 'https://github.com/maferland/burn',
+    title: 'Tidy',
+    tagline:
+      'Automatically clean up messy clipboard text on macOS. Fixes formatting, whitespace, and other annoyances.',
+    icon: <Sparkles className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
+    techStack: ['Swift', 'macOS'],
+    githubUrl: 'https://github.com/maferland/tidy',
+  },
+  {
+    title: 'ClipShield',
+    tagline:
+      'Monitors your clipboard for sensitive data like passwords and API keys, then auto-clears it.',
+    icon: (
+      <ShieldAlert className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+    ),
+    techStack: ['Swift', 'macOS'],
+    githubUrl: 'https://github.com/maferland/clipshield',
   },
 ]
 
@@ -52,10 +89,32 @@ export default function ProjectsPage() {
       </header>
 
       <div className="space-y-6">
-        {projects.map(project => (
+        {featured.map(project => (
           <ProjectHeroCard key={project.title} {...project} />
         ))}
       </div>
+
+      <section className="mt-12 sm:mt-16">
+        <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4 sm:mb-6">
+          AI Tools
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {aiTools.map(tool => (
+            <UtilityCard key={tool.title} {...tool} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-12 sm:mt-16">
+        <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4 sm:mb-6">
+          macOS Utilities
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {utilities.map(util => (
+            <UtilityCard key={util.title} {...util} />
+          ))}
+        </div>
+      </section>
     </div>
   )
 }
