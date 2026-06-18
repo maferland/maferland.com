@@ -58,7 +58,7 @@ const aiTools = [
     githubUrl: 'https://github.com/maferland/burn',
   },
   {
-    title: 'relay',
+    title: 'Relay',
     tagline:
       'A local-first task tracker for coordinating work across AI agents. One agent logs a task, another claims it and hands it off for QA, while a coordinator polls for the handoff and signs it off.',
     icon: <ListTodo className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
