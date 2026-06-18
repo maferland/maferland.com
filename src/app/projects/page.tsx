@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
 import {
+  Crosshair,
   Flame,
   Footprints,
   Images,
+  ListTodo,
+  Moon,
   Scissors,
   ShieldAlert,
   Sparkles,
@@ -34,6 +37,15 @@ const featured = [
     techStack: ['TypeScript', 'Electron'],
     githubUrl: 'https://github.com/maferland/differ',
   },
+  {
+    title: 'Calm Cycle',
+    tagline: 'Private period tracker for iOS',
+    description:
+      'A period tracker that keeps everything on your device. No ads, no accounts, no cloud sync. A one-time purchase, and your data never leaves your phone.',
+    icon: <Moon className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
+    techStack: ['Swift', 'SwiftUI', 'iOS'],
+    liveUrl: 'https://getcalmcycle.com',
+  },
 ]
 
 const aiTools = [
@@ -44,6 +56,22 @@ const aiTools = [
     icon: <Flame className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
     techStack: ['Swift', 'SwiftUI'],
     githubUrl: 'https://github.com/maferland/burn',
+  },
+  {
+    title: 'relay',
+    tagline:
+      'A local-first task tracker for coordinating work across AI agents. One agent logs a task, another claims it and hands it off for QA, while a coordinator polls for the handoff and signs it off.',
+    icon: <ListTodo className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
+    techStack: ['TypeScript', 'Bun', 'MCP'],
+    githubUrl: 'https://github.com/maferland/relay',
+  },
+  {
+    title: 'Pinpoint',
+    tagline:
+      'Point at what’s wrong in any UI and Claude fixes it. Click to drop a pin, type a comment, and the agent works each annotation as a discrete fix.',
+    icon: <Crosshair className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
+    techStack: ['TypeScript', 'Bun', 'MCP'],
+    githubUrl: 'https://github.com/maferland/pinpoint',
   },
 ]
 
