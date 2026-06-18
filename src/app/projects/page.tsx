@@ -135,7 +135,7 @@ export default function ProjectsPage() {
 
       <section className="mt-12 sm:mt-16">
         <h2 className="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4 sm:mb-6">
-          macOS Utilities
+          Desktop &amp; Utilities
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {utilities.map(util => (
