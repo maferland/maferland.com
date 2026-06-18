@@ -29,13 +29,13 @@ const featured = [
     liveUrl: 'https://quebec.run',
   },
   {
-    title: 'Differ',
-    tagline: 'Pixel-level image comparison',
+    title: 'Pinpoint',
+    tagline: 'Visual review for AI agents',
     description:
-      'A desktop app for comparing images side-by-side with pixel-level diffing. Quickly spot visual differences between design iterations, screenshots, or any two images.',
-    icon: <Images className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
-    techStack: ['TypeScript', 'Electron'],
-    githubUrl: 'https://github.com/maferland/differ',
+      'Point at what’s wrong in any UI and Claude fixes it. Click to drop a pin, type a comment, and the agent works each annotation as a discrete fix. Works on web pages, simulators, Storybook, and design mockups, and packages a review into a portable file you can hand to anyone.',
+    icon: <Crosshair className="w-6 h-6 text-slate-700 dark:text-slate-300" />,
+    techStack: ['TypeScript', 'Bun', 'MCP'],
+    githubUrl: 'https://github.com/maferland/pinpoint',
   },
   {
     title: 'Calm Cycle',
@@ -65,14 +65,6 @@ const aiTools = [
     techStack: ['TypeScript', 'Bun', 'MCP'],
     githubUrl: 'https://github.com/maferland/relay',
   },
-  {
-    title: 'Pinpoint',
-    tagline:
-      'Point at what’s wrong in any UI and Claude fixes it. Click to drop a pin, type a comment, and the agent works each annotation as a discrete fix.',
-    icon: <Crosshair className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
-    techStack: ['TypeScript', 'Bun', 'MCP'],
-    githubUrl: 'https://github.com/maferland/pinpoint',
-  },
 ]
 
 const utilities = [
@@ -101,6 +93,14 @@ const utilities = [
     ),
     techStack: ['Swift', 'macOS'],
     githubUrl: 'https://github.com/maferland/clipshield',
+  },
+  {
+    title: 'Differ',
+    tagline:
+      'Compare images side-by-side with pixel-level diffing. Spot visual differences between design iterations, screenshots, or any two images.',
+    icon: <Images className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
+    techStack: ['TypeScript', 'Electron'],
+    githubUrl: 'https://github.com/maferland/differ',
   },
 ]
 
