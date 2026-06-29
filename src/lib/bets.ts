@@ -30,7 +30,7 @@ function toNumber(value: unknown): number | undefined {
   return typeof value === 'number' ? value : undefined
 }
 
-const CONTENT_DIR = 'src/content/bets'
+const CONTENT_DIR = 'src/content/lab'
 
 // Map the Foundry ledger frontmatter (snake_case) onto the Bet shape.
 function toBet(frontmatter: Record<string, unknown>, slug: string): Bet {
