@@ -5,6 +5,7 @@ import {
   Footprints,
   Images,
   ListTodo,
+  LockKeyhole,
   Moon,
   Scissors,
   ShieldAlert,
@@ -49,6 +50,16 @@ const featured = [
 ]
 
 const aiTools = [
+  {
+    title: 'Keyhole',
+    tagline:
+      'Hand a secret to your AI coding agent through a localhost form. The value goes straight to your Keychain, a file, or an env file, and the agent gets back only a reference — it never touches the chat.',
+    icon: (
+      <LockKeyhole className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+    ),
+    techStack: ['TypeScript', 'Bun', 'CLI'],
+    githubUrl: 'https://github.com/maferland/keyhole',
+  },
   {
     title: 'Burn',
     tagline:
