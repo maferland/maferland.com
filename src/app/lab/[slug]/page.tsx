@@ -16,7 +16,7 @@ export async function generateMetadata({
   const result = await getBet(slug)
   if (!result) return { title: 'Not Found' }
   return {
-    title: `${result.bet.name} | Bets`,
+    title: `${result.bet.name} | Lab`,
     description: result.bet.oneLiner,
     openGraph: {
       title: result.bet.name,

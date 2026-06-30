@@ -4,21 +4,24 @@ import BetsList from '@/components/bets/BetsList'
 
 export const metadata: Metadata = {
   title: 'Lab | Marc-Antoine Ferland',
-  description: "Startups I'm betting on, and the ones that didn't make it.",
+  description: "Ideas I'm exploring, building, parking, or killing.",
 }
 
 export default async function LabPage() {
   const bets = await getBets()
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-      <header className="mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          Lab
+    <div className="site-container py-[60px]">
+      <header className="mb-10">
+        <div className="mono mb-4 text-[11.5px] uppercase tracking-[0.14em] text-[var(--accent)]">
+          ~/lab
+        </div>
+        <h1 className="text-[44px] font-bold leading-[1.05] tracking-[-0.03em] max-sm:text-[34px]">
+          Ideas, alive and otherwise.
         </h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
-          Startups I&apos;m betting on, and the ones that didn&apos;t make it.
-          Most die at the research gate. I log them all.
+        <p className="mt-4 max-w-[640px] text-[17px] leading-7 text-[var(--body)]">
+          Ideas I&apos;m exploring, building, parking, or killing. Most die at
+          the research gate. I log them all.
         </p>
       </header>
 

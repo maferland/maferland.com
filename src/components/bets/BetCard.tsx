@@ -2,14 +2,12 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Rocket, Skull } from 'lucide-react'
 import type { Bet } from '@/lib/bets'
 import { STATUS } from './status'
 import StatusBadge from './StatusBadge'
 
 export default function BetCard({ bet }: { bet: Bet }) {
   const alive = STATUS[bet.status].alive
-  const Icon = alive ? Rocket : Skull
 
   const dateLabel = bet.date
     ? new Date(bet.date).toLocaleDateString('en-US', {
@@ -35,25 +33,30 @@ export default function BetCard({ bet }: { bet: Bet }) {
     >
       <Link
         href={`/lab/${bet.slug}`}
-        className="group relative h-full overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 p-5 flex flex-col gap-3 hover:border-slate-300 dark:hover:border-slate-600 transition-colors duration-200"
+        className="panel panel-hover flex h-full flex-col gap-3 overflow-hidden p-5 text-inherit no-underline"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 transition-colors duration-200">
-              <Icon className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+            <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-[var(--line)] bg-[var(--panel2)]">
+              <span
+                className={
+                  alive
+                    ? 'h-2.5 w-2.5 rounded-full bg-[var(--accent)]'
+                    : 'h-2.5 w-2.5 rounded-full bg-[var(--faint)]'
+                }
+                aria-hidden
+              />
             </div>
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-              {bet.name}
-            </h3>
+            <h3 className="text-lg font-semibold">{bet.name}</h3>
           </div>
           <StatusBadge status={bet.status} />
         </div>
 
-        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+        <p className="text-sm leading-relaxed text-[var(--muted)]">
           {bet.oneLiner}
         </p>
 
-        <div className="mt-auto flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+        <div className="mono mt-auto flex items-center gap-2 text-xs text-[var(--faint)]">
           {dateLabel && <span>{dateLabel}</span>}
           {dateLabel && metric && <span aria-hidden>·</span>}
           {metric && <span className="font-medium">{metric}</span>}

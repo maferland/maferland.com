@@ -13,12 +13,13 @@ export default function StatusBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium rounded-full',
-        meta.badge,
+        'tag inline-flex items-center gap-1 rounded-full',
+        meta.alive
+          ? 'border-[var(--accent)] text-[var(--accent)]'
+          : 'text-[var(--faint)]',
         className
       )}
     >
-      <span aria-hidden>{meta.emoji}</span>
       {meta.label}
     </span>
   )
