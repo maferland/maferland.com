@@ -1,6 +1,5 @@
 'use client'
 
-import { useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 const WORDS = 'hover each letter'

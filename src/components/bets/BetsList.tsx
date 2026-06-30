@@ -25,16 +25,16 @@ export default function BetsList({ bets }: { bets: Bet[] }) {
 
   return (
     <div>
-      <div className="flex gap-2 mb-6">
+      <div className="mb-6 flex gap-2">
         {FILTERS.map(({ key, label }) => (
           <button
             key={key}
             onClick={() => setFilter(key)}
             className={cn(
-              'px-3 py-1.5 text-sm rounded-lg transition-colors duration-200',
+              'mono rounded-lg border px-3 py-1.5 text-xs transition-colors duration-200',
               filter === key
-                ? 'font-medium bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100'
-                : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900'
+                ? 'border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--accent)]'
+                : 'border-[var(--line)] text-[var(--muted)] hover:text-[var(--text)]'
             )}
           >
             {label}
@@ -42,7 +42,7 @@ export default function BetsList({ bets }: { bets: Bet[] }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
         {shown.map(bet => (
           <BetCard key={bet.slug} bet={bet} />
         ))}

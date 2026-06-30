@@ -3,22 +3,25 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/lib/theme-provider'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { JetBrains_Mono, Schibsted_Grotesk } from 'next/font/google'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const schibsted = Schibsted_Grotesk({
+  display: 'swap',
+  variable: '--font-schibsted',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const jetbrains = JetBrains_Mono({
+  display: 'swap',
+  variable: '--font-jetbrains',
   subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
   title: 'Marc-Antoine Ferland',
-  description: 'Senior Frontend Engineer building delightful web experiences',
+  description:
+    'Frontend engineer building web, iOS, macOS, and AI-adjacent tools.',
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -56,12 +59,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${schibsted.variable} ${jetbrains.variable}`}>
         <ThemeProvider>
-          <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300 flex flex-col">
-            <header className="relative">
+          <div className="site-shell flex flex-col">
+            <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--bg)] transition-colors duration-300">
               <Navigation />
             </header>
             <main className="flex-1">{children}</main>

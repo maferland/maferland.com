@@ -46,12 +46,10 @@ export default function BetMetrics({ bet }: { bet: Bet }) {
     <dl className="flex flex-wrap gap-x-8 gap-y-3">
       {stats.map(stat => (
         <div key={stat.label}>
-          <dt className="text-xs uppercase tracking-wide text-slate-400 dark:text-slate-500">
+          <dt className="mono text-xs uppercase tracking-wide text-[var(--faint)]">
             {stat.label}
           </dt>
-          <dd className="text-lg font-semibold text-slate-900 dark:text-slate-100">
-            {stat.value}
-          </dd>
+          <dd className="text-lg font-semibold">{stat.value}</dd>
         </div>
       ))}
     </dl>
