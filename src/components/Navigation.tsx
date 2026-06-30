@@ -12,6 +12,7 @@ import { useClickOutside } from '@/hooks/use-click-outside'
 const links = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
+  { href: '/lab', label: 'Lab' },
   { href: '/playground', label: 'Playground' },
   { href: '/blog', label: 'Blog' },
 ]
