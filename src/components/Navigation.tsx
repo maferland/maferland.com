@@ -39,7 +39,7 @@ export default function Navigation() {
         </Link>
 
         <div className="hidden items-center gap-2.5 sm:flex">
-          <div className="mono flex items-center gap-[22px] text-[13px]">
+          <div className="mono mr-2 flex items-center gap-[22px] text-[13px]">
             {links.map(link => (
               <Link
                 key={link.href}

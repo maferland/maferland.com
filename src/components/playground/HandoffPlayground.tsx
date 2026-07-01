@@ -2,9 +2,14 @@
 
 import type { ReactNode } from 'react'
 import { useState } from 'react'
+import ElasticToggle from './ElasticToggle'
 import MagneticButtons from './MagneticButtons'
+import MorphingCards from './MorphingCards'
 import NumberTicker from './NumberTicker'
+import SpringReorder from './SpringReorder'
 import TextScramble from './TextScramble'
+import TiltCard from './TiltCard'
+import WaveText from './WaveText'
 
 function SpotlightTile() {
   const [position, setPosition] = useState({ x: 50, y: 50 })
@@ -54,15 +59,15 @@ function SpringSwitchTile() {
   return (
     <button
       aria-pressed={enabled}
-      className="relative h-[34px] w-[66px] rounded-full border border-[var(--line)] bg-[var(--panel2)]"
+      className="relative h-[34px] w-[66px] overflow-hidden rounded-full border border-[var(--line)] bg-[var(--panel2)]"
       onClick={() => setEnabled(!enabled)}
       type="button"
     >
       <span
-        className="absolute top-[3px] h-7 w-7 rounded-full bg-[var(--accent)] transition-transform duration-[450ms]"
+        className="absolute left-[3px] top-[3px] h-7 w-7 rounded-full bg-[var(--accent)] transition-transform duration-[320ms]"
         style={{
-          transform: `translateX(${enabled ? 32 : 3}px)`,
-          transitionTimingFunction: 'cubic-bezier(.5,1.7,.42,.9)',
+          transform: `translateX(${enabled ? 32 : 0}px)`,
+          transitionTimingFunction: 'cubic-bezier(.2,.9,.2,1)',
         }}
       />
     </button>
@@ -139,7 +144,7 @@ interface Tile {
   name: string
   tag: string
   tile: ReactNode
-  size?: 'compact' | 'tall'
+  size?: 'compact' | 'tall' | 'hero'
 }
 
 const tiles: Tile[] = [
@@ -156,7 +161,8 @@ const tiles: Tile[] = [
     tile: <ColorMixerTile />,
   },
   {
-    caption: 'A small overshoot curve keeps the switch from feeling flat.',
+    caption:
+      'A fast curve keeps the switch feeling responsive without leaking.',
     name: 'spring switch',
     tag: 'cubic-bezier',
     tile: <SpringSwitchTile />,
@@ -180,6 +186,34 @@ const tiles: Tile[] = [
     tile: <OrbitTile />,
   },
   {
+    caption: 'A second toggle with spring physics and state feedback.',
+    name: 'elastic toggle',
+    tag: 'spring',
+    tile: <ElasticToggle />,
+    size: 'tall',
+  },
+  {
+    caption: 'Drag rows to reorder them; the list resolves with springs.',
+    name: 'spring reorder',
+    tag: 'drag',
+    tile: <SpringReorder />,
+    size: 'tall',
+  },
+  {
+    caption: 'A card tilts under the cursor with a moving glare layer.',
+    name: 'tilt card',
+    tag: '3d',
+    tile: <TiltCard />,
+    size: 'hero',
+  },
+  {
+    caption: 'Hover individual letters and they jump with spring motion.',
+    name: 'wave text',
+    tag: 'hover',
+    tile: <WaveText />,
+    size: 'tall',
+  },
+  {
     caption: 'Buttons pull toward the cursor with a bit of parallax depth.',
     name: 'magnetic buttons',
     tag: 'motion value',
@@ -200,6 +234,13 @@ const tiles: Tile[] = [
     tile: <TextScramble />,
     size: 'tall',
   },
+  {
+    caption: 'Click a tile and it expands into a focused detail state.',
+    name: 'morphing cards',
+    tag: 'layout',
+    tile: <MorphingCards />,
+    size: 'hero',
+  },
 ]
 
 export default function HandoffPlayground() {
@@ -217,9 +258,11 @@ export default function HandoffPlayground() {
           </div>
           <div
             className={
-              tile.size === 'tall'
-                ? 'flex min-h-[156px] items-center justify-center overflow-hidden'
-                : ''
+              tile.size === 'hero'
+                ? 'flex min-h-[280px] items-center justify-center overflow-hidden'
+                : tile.size === 'tall'
+                  ? 'flex min-h-[168px] items-center justify-center overflow-hidden'
+                  : ''
             }
           >
             {tile.tile}

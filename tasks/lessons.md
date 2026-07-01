@@ -1,1 +1,2 @@
 - When a UI issue points at repeated raw markup, check whether the repetition already crosses routes before patching one instance. A tiny shared component is justified once the same CTA pattern appears in home, footer, nav, and detail pages.
+- When a screenshot shows an interaction escaping its frame, inspect the positioning and easing first. Overshooting curves need either real containment or a non-overshooting curve; do not rely on visual intent alone.

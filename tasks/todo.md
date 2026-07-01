@@ -19,6 +19,10 @@
 - [x] Make selected work cards clickable where links exist.
 - [x] Group writing posts by year.
 - [x] Convert “Also Building” to compact cards.
+- [x] Fix spring switch knob escaping the track.
+- [x] Restore more legacy interaction experiments to Playground.
+- [x] Loosen spacing after the `lab` nav item.
+- [x] Plan selected work case-study routes.
 - [x] Run lint, typecheck, build.
 - [x] Verify routes and visual pass; document Playwright blocker.
 
