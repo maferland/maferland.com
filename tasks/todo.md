@@ -23,6 +23,8 @@
 - [x] Restore more legacy interaction experiments to Playground.
 - [x] Normalize Playground demos to the site visual system.
 - [x] Test each Playground interaction in browser.
+- [x] Replace weak morphing-card demo with an in-app state panel.
+- [x] Split hover-letter demo into two balanced lines.
 - [x] Loosen spacing after the `lab` nav item.
 - [x] Plan selected work case-study routes.
 - [x] Run lint, typecheck, build.

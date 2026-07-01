@@ -4,9 +4,9 @@ import type { ReactNode } from 'react'
 import { useState } from 'react'
 import ElasticToggle from './ElasticToggle'
 import MagneticButtons from './MagneticButtons'
-import MorphingCards from './MorphingCards'
 import NumberTicker from './NumberTicker'
 import SpringReorder from './SpringReorder'
+import StatePanel from './StatePanel'
 import TextScramble from './TextScramble'
 import TiltCard from './TiltCard'
 import WaveText from './WaveText'
@@ -206,10 +206,10 @@ const tiles: Tile[] = [
     size: 'tall',
   },
   {
-    caption: 'Click a tile and it expands into a focused detail state.',
-    name: 'morphing cards',
-    tag: 'layout',
-    tile: <MorphingCards />,
+    caption: 'Switch states and watch the panel update like a small app.',
+    name: 'state panel',
+    tag: 'tabs',
+    tile: <StatePanel />,
     size: 'hero',
   },
 ]

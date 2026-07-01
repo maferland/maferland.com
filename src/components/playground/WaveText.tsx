@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
-const WORDS = 'hover each letter'
+const WORD_LINES = ['hover each', 'letter']
 const springConfig = { stiffness: 300, damping: 15 }
 
 function Letter({ char, index }: { char: string; index: number }) {
@@ -44,9 +44,17 @@ function Letter({ char, index }: { char: string; index: number }) {
 export default function WaveText() {
   return (
     <div className="flex items-center justify-center select-none">
-      <div className="flex">
-        {WORDS.split('').map((char, i) => (
-          <Letter key={i} char={char} index={i} />
+      <div className="flex flex-col items-center leading-none">
+        {WORD_LINES.map((line, lineIndex) => (
+          <div className="flex" key={line}>
+            {line.split('').map((char, charIndex) => (
+              <Letter
+                key={`${line}-${charIndex}`}
+                char={char}
+                index={lineIndex * 9 + charIndex}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </div>
