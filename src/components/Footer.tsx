@@ -1,5 +1,7 @@
 'use client'
 
+import { LinkButton } from '@/components/ui/LinkButton'
+
 export default function Footer() {
   return (
     <footer className="bg-[var(--accent-soft)]">
@@ -12,18 +14,18 @@ export default function Footer() {
           tooling, 0→1. I&apos;m around.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <a className="button-primary" href="mailto:me@maferland.com">
+          <LinkButton href="mailto:me@maferland.com">
             me@maferland.com
-          </a>
-          <a className="button-ghost" href="https://github.com/maferland">
+          </LinkButton>
+          <LinkButton href="https://github.com/maferland" variant="ghost">
             GitHub ↗
-          </a>
-          <a
-            className="button-ghost"
+          </LinkButton>
+          <LinkButton
             href="https://www.linkedin.com/in/marcantoineferland"
+            variant="ghost"
           >
             LinkedIn ↗
-          </a>
+          </LinkButton>
         </div>
         <p className="mono mt-10 text-[11px] text-[var(--faint)]">
           © 2026 Marc-Antoine Ferland · maferland.com

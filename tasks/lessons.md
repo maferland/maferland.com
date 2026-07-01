@@ -1,0 +1,1 @@
+- When a UI issue points at repeated raw markup, check whether the repetition already crosses routes before patching one instance. A tiny shared component is justified once the same CTA pattern appears in home, footer, nav, and detail pages.

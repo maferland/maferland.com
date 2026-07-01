@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import ThemeToggle from '@/components/ui/ThemeToggle'
+import { LinkButton } from '@/components/ui/LinkButton'
 import { cn } from '@/lib/utils'
 import { useClickOutside } from '@/hooks/use-click-outside'
 
@@ -56,12 +57,9 @@ export default function Navigation() {
             ))}
           </div>
           <ThemeToggle />
-          <a
-            className="button-primary !rounded-lg !px-3.5 !py-2 text-[13px]"
-            href="mailto:me@maferland.com"
-          >
+          <LinkButton href="mailto:me@maferland.com" size="small">
             Get in touch →
-          </a>
+          </LinkButton>
         </div>
 
         <div className="flex items-center gap-3 sm:hidden">

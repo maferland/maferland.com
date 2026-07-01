@@ -1,4 +1,5 @@
 import Typewriter from '@/components/Typewriter'
+import { LinkButton } from '@/components/ui/LinkButton'
 
 const selectedWork = [
   {
@@ -163,18 +164,16 @@ export default function Home() {
             Web, iOS, macOS. Lately a lot of building alongside AI too.
           </p>
           <div className="mt-[30px] flex flex-wrap items-center gap-3">
-            <a className="button-primary" href="mailto:me@maferland.com">
-              Get in touch
-            </a>
-            <a className="button-ghost" href="https://github.com/maferland">
+            <LinkButton href="mailto:me@maferland.com">Get in touch</LinkButton>
+            <LinkButton href="https://github.com/maferland" variant="ghost">
               GitHub ↗
-            </a>
-            <a
-              className="button-ghost"
+            </LinkButton>
+            <LinkButton
               href="https://www.linkedin.com/in/marcantoineferland"
+              variant="ghost"
             >
               LinkedIn ↗
-            </a>
+            </LinkButton>
           </div>
         </div>
 

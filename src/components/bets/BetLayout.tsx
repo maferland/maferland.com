@@ -1,6 +1,7 @@
 import MDXRenderer from '../../app/blog/[slug]/MDXRenderer'
 import '../../app/blog/[slug]/syntax-highlighting.css'
 import type { Bet } from '@/lib/bets'
+import { LinkButton } from '@/components/ui/LinkButton'
 import StatusBadge from './StatusBadge'
 import BetMetrics, { hasMetrics } from './BetMetrics'
 
@@ -39,15 +40,11 @@ export default function BetLayout({
 
         {(bet.site || bet.repo) && (
           <div className="mt-6 flex flex-wrap gap-3">
-            {bet.site && (
-              <a className="button-primary" href={bet.site}>
-                Visit
-              </a>
-            )}
+            {bet.site && <LinkButton href={bet.site}>Visit</LinkButton>}
             {bet.repo && (
-              <a className="button-ghost" href={bet.repo}>
+              <LinkButton href={bet.repo} variant="ghost">
                 GitHub ↗
-              </a>
+              </LinkButton>
             )}
           </div>
         )}
