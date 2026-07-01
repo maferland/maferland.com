@@ -255,6 +255,33 @@ a {
   margin-top: 30px;
 }
 
+.playground-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.playground-stage {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 96px;
+  overflow: visible;
+  padding: 6px;
+}
+
+.playground-stage-tall {
+  min-height: 170px;
+}
+
+.playground-stage-hero {
+  min-height: 276px;
+}
+
+.playground-caption {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
 .tool-card {
   background: var(--panel);
   border: 1px solid var(--line);

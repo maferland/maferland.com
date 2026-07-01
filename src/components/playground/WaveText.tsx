@@ -27,11 +27,11 @@ function Letter({ char, index }: { char: string; index: number }) {
 
   return (
     <motion.span
-      className="inline-block text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-200 cursor-default"
+      className="inline-block cursor-default text-3xl font-bold text-[var(--text)] sm:text-4xl"
       style={{
         y: springY,
         scale: springScale,
-        color: `hsl(${index * 25 + 200}, 70%, 60%)`,
+        color: index % 3 === 0 ? 'var(--accent)' : 'var(--text)',
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

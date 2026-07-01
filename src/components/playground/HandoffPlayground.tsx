@@ -53,27 +53,6 @@ function ColorMixerTile() {
   )
 }
 
-function SpringSwitchTile() {
-  const [enabled, setEnabled] = useState(false)
-
-  return (
-    <button
-      aria-pressed={enabled}
-      className="relative h-[34px] w-[66px] overflow-hidden rounded-full border border-[var(--line)] bg-[var(--panel2)]"
-      onClick={() => setEnabled(!enabled)}
-      type="button"
-    >
-      <span
-        className="absolute left-[3px] top-[3px] h-7 w-7 rounded-full bg-[var(--accent)] transition-transform duration-[320ms]"
-        style={{
-          transform: `translateX(${enabled ? 32 : 0}px)`,
-          transitionTimingFunction: 'cubic-bezier(.2,.9,.2,1)',
-        }}
-      />
-    </button>
-  )
-}
-
 function StepperTile() {
   const [count, setCount] = useState(3)
 
@@ -161,11 +140,10 @@ const tiles: Tile[] = [
     tile: <ColorMixerTile />,
   },
   {
-    caption:
-      'A fast curve keeps the switch feeling responsive without leaking.',
-    name: 'spring switch',
-    tag: 'cubic-bezier',
-    tile: <SpringSwitchTile />,
+    caption: 'A compact toggle with spring physics and state feedback.',
+    name: 'elastic toggle',
+    tag: 'spring',
+    tile: <ElasticToggle />,
   },
   {
     caption: 'Tiny state changes, visible enough to feel responsive.',
@@ -184,13 +162,6 @@ const tiles: Tile[] = [
     name: 'orbit',
     tag: 'transform',
     tile: <OrbitTile />,
-  },
-  {
-    caption: 'A second toggle with spring physics and state feedback.',
-    name: 'elastic toggle',
-    tag: 'spring',
-    tile: <ElasticToggle />,
-    size: 'tall',
   },
   {
     caption: 'Drag rows to reorder them; the list resolves with springs.',
@@ -247,7 +218,7 @@ export default function HandoffPlayground() {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[18px]">
       {tiles.map(tile => (
-        <article className="panel p-4" key={tile.name}>
+        <article className="panel playground-card p-4" key={tile.name}>
           <div className="mb-4 flex items-center justify-between gap-3">
             <h2 className="mono text-[11px] font-medium text-[var(--text)]">
               {tile.name}
@@ -259,15 +230,15 @@ export default function HandoffPlayground() {
           <div
             className={
               tile.size === 'hero'
-                ? 'flex min-h-[280px] items-center justify-center overflow-hidden'
+                ? 'playground-stage playground-stage-hero'
                 : tile.size === 'tall'
-                  ? 'flex min-h-[168px] items-center justify-center overflow-hidden'
-                  : ''
+                  ? 'playground-stage playground-stage-tall'
+                  : 'playground-stage'
             }
           >
             {tile.tile}
           </div>
-          <p className="mt-4 text-xs leading-5 text-[var(--muted)]">
+          <p className="playground-caption text-xs leading-5 text-[var(--muted)]">
             {tile.caption}
           </p>
         </article>

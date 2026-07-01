@@ -6,84 +6,72 @@ import { motion, AnimatePresence } from 'framer-motion'
 const cards = [
   {
     id: 'design',
-    emoji: '🎨',
-    label: 'Design',
-    detail: 'Pixel-perfect layouts with systematic spacing and color',
+    label: 'Shape',
+    detail: 'Layout, spacing, and hierarchy settle before color gets loud.',
   },
   {
     id: 'motion',
-    emoji: '✨',
     label: 'Motion',
-    detail: 'Spring physics and meaningful transitions',
+    detail: 'Springs and timing make state changes feel physical.',
   },
   {
     id: 'code',
-    emoji: '⚡',
     label: 'Code',
-    detail: 'Clean architecture with type safety and performance',
+    detail: 'Small components keep the interaction easy to reason about.',
   },
   {
     id: 'craft',
-    emoji: '🔧',
     label: 'Craft',
-    detail: 'Attention to detail in every interaction',
+    detail: 'Edges, focus, and empty states get the same attention.',
   },
 ]
 
 export default function MorphingCards() {
-  const [selected, setSelected] = useState<string | null>(null)
-  const activeCard = cards.find(c => c.id === selected)
+  const [selected, setSelected] = useState(cards[0].id)
+  const activeCard = cards.find(card => card.id === selected) ?? cards[0]
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
+    <div className="flex h-full min-h-[250px] w-full flex-col justify-center gap-4">
       <div className="grid grid-cols-2 gap-3">
-        {cards.map(card => (
+        {cards.map((card, index) => (
           <motion.button
             key={card.id}
-            layoutId={`card-${card.id}`}
             onClick={() => setSelected(card.id)}
-            className="flex flex-col items-center justify-center w-24 h-24 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 cursor-pointer"
+            className={
+              selected === card.id
+                ? 'flex h-[76px] cursor-pointer flex-col justify-center rounded-xl border border-[var(--accent)] bg-[var(--accent-soft)] px-4 text-left text-[var(--body)]'
+                : 'flex h-[76px] cursor-pointer flex-col justify-center rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 text-left text-[var(--body)]'
+            }
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
+            type="button"
           >
-            <span className="text-2xl">{card.emoji}</span>
-            <span className="text-xs font-medium text-slate-600 dark:text-slate-300 mt-1">
-              {card.label}
+            <span className="mono text-xs text-[var(--accent)]">
+              0{index + 1}
             </span>
+            <span className="mt-2 text-sm font-semibold">{card.label}</span>
           </motion.button>
         ))}
       </div>
 
       <AnimatePresence>
-        {selected && activeCard && (
-          <>
-            <motion.div
-              className="absolute inset-0 bg-black/20 dark:bg-black/40 rounded-2xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelected(null)}
-            />
-            <motion.div
-              layoutId={`card-${selected}`}
-              className="absolute flex flex-col items-center justify-center p-6 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 shadow-xl w-56"
-              onClick={() => setSelected(null)}
-            >
-              <span className="text-4xl">{activeCard.emoji}</span>
-              <span className="text-base font-semibold text-slate-900 dark:text-slate-100 mt-3">
-                {activeCard.label}
-              </span>
-              <motion.p
-                className="text-sm text-slate-500 dark:text-slate-400 mt-2 text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                {activeCard.detail}
-              </motion.p>
-            </motion.div>
-          </>
-        )}
+        <motion.div
+          key={activeCard.id}
+          className="rounded-xl border border-[var(--line)] bg-[var(--panel2)] p-4 text-left"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+        >
+          <span className="mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent)]">
+            selected
+          </span>
+          <h3 className="mt-1 text-base font-semibold text-[var(--text)]">
+            {activeCard.label}
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+            {activeCard.detail}
+          </p>
+        </motion.div>
       </AnimatePresence>
     </div>
   )

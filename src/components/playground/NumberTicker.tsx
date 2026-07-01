@@ -8,11 +8,11 @@ function Digit({ value, place }: { value: number; place: number }) {
   const digit = Math.floor(Math.abs(value) / Math.pow(10, place)) % 10
 
   return (
-    <div className="relative w-8 h-12 overflow-hidden">
+    <div className="relative h-12 w-8 overflow-hidden">
       <AnimatePresence mode="popLayout">
         <motion.span
           key={`${place}-${digit}`}
-          className="absolute inset-0 flex items-center justify-center text-2xl font-mono font-bold text-slate-900 dark:text-slate-100"
+          className="mono absolute inset-0 flex items-center justify-center text-2xl font-bold text-[var(--text)]"
           initial={{ y: value >= 0 ? 40 : -40 }}
           animate={{ y: 0 }}
           exit={{ y: value >= 0 ? -40 : 40 }}
@@ -33,9 +33,9 @@ export default function NumberTicker() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="flex items-center gap-0.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-600 px-4 py-2">
+      <div className="flex items-center gap-0.5 rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-2">
         {count < 0 && (
-          <span className="text-2xl font-mono font-bold text-slate-900 dark:text-slate-100 w-4">
+          <span className="mono w-4 text-2xl font-bold text-[var(--text)]">
             −
           </span>
         )}
@@ -47,21 +47,21 @@ export default function NumberTicker() {
       <div className="flex items-center gap-3">
         <button
           onClick={() => setCount(c => c - 1)}
-          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
+          className="cursor-pointer rounded-lg border border-[var(--line)] bg-[var(--panel2)] p-2 text-[var(--body)] transition-colors hover:text-[var(--accent)]"
         >
-          <Minus size={18} className="text-slate-600 dark:text-slate-300" />
+          <Minus size={18} />
         </button>
         <button
           onClick={() => setCount(0)}
-          className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors text-slate-600 dark:text-slate-300 cursor-pointer"
+          className="mono cursor-pointer rounded-lg border border-[var(--line)] bg-[var(--panel2)] px-3 py-1.5 text-xs font-medium text-[var(--muted)] transition-colors hover:text-[var(--accent)]"
         >
           Reset
         </button>
         <button
           onClick={() => setCount(c => c + 1)}
-          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
+          className="cursor-pointer rounded-lg border border-[var(--line)] bg-[var(--panel2)] p-2 text-[var(--body)] transition-colors hover:text-[var(--accent)]"
         >
-          <Plus size={18} className="text-slate-600 dark:text-slate-300" />
+          <Plus size={18} />
         </button>
       </div>
     </div>
