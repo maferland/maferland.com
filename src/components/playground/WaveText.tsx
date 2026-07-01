@@ -1,9 +1,8 @@
 'use client'
 
-import { useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
-const WORDS = 'hover each letter'
+const WORD_LINES = ['hover each', 'letter']
 const springConfig = { stiffness: 300, damping: 15 }
 
 function Letter({ char, index }: { char: string; index: number }) {
@@ -28,11 +27,11 @@ function Letter({ char, index }: { char: string; index: number }) {
 
   return (
     <motion.span
-      className="inline-block text-3xl sm:text-4xl font-bold text-slate-800 dark:text-slate-200 cursor-default"
+      className="inline-block cursor-default text-3xl font-bold text-[var(--text)] sm:text-4xl"
       style={{
         y: springY,
         scale: springScale,
-        color: `hsl(${index * 25 + 200}, 70%, 60%)`,
+        color: index % 3 === 0 ? 'var(--accent)' : 'var(--text)',
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -45,9 +44,17 @@ function Letter({ char, index }: { char: string; index: number }) {
 export default function WaveText() {
   return (
     <div className="flex items-center justify-center select-none">
-      <div className="flex">
-        {WORDS.split('').map((char, i) => (
-          <Letter key={i} char={char} index={i} />
+      <div className="flex flex-col items-center leading-none">
+        {WORD_LINES.map((line, lineIndex) => (
+          <div className="flex" key={line}>
+            {line.split('').map((char, charIndex) => (
+              <Letter
+                key={`${line}-${charIndex}`}
+                char={char}
+                index={lineIndex * 9 + charIndex}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </div>

@@ -26,7 +26,6 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params
   const post = await getPost('src/content/blog', slug)
-  console.log(post)
 
   if (!post) {
     notFound()

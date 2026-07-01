@@ -1,20 +1,5 @@
 import type { Metadata } from 'next'
-import InteractiveTypography from '@/components/playground/InteractiveTypography'
-import DemoCard from '@/components/playground/DemoCard'
-import SpringReorder from '@/components/playground/SpringReorder'
-import MagneticButtons from '@/components/playground/MagneticButtons'
-import MorphingCards from '@/components/playground/MorphingCards'
-import NumberTicker from '@/components/playground/NumberTicker'
-import ParticleField from '@/components/playground/ParticleField'
-import MagneticMesh from '@/components/playground/MagneticMesh'
-import FluidGradient from '@/components/playground/FluidGradient'
-import CursorTrail from '@/components/playground/CursorTrail'
-import TiltCard from '@/components/playground/TiltCard'
-import TextScramble from '@/components/playground/TextScramble'
-import GravityBalls from '@/components/playground/GravityBalls'
-import WaveText from '@/components/playground/WaveText'
-import Spotlight from '@/components/playground/Spotlight'
-import ElasticToggle from '@/components/playground/ElasticToggle'
+import HandoffPlayground from '@/components/playground/HandoffPlayground'
 
 export const metadata: Metadata = {
   title: 'Playground | Marc-Antoine Ferland',
@@ -24,106 +9,20 @@ export const metadata: Metadata = {
 
 export default function PlaygroundPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-      <div className="mb-12">
-        <InteractiveTypography />
-      </div>
-
-      <header className="mb-12 text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-          Playground
+    <div className="site-container py-[60px]">
+      <header className="mb-10">
+        <div className="mono mb-4 text-[11.5px] uppercase tracking-[0.14em] text-[var(--accent)]">
+          ~/playground
+        </div>
+        <h1 className="text-[44px] font-bold leading-[1.05] tracking-[-0.03em] max-sm:text-[34px]">
+          Experiments in motion &amp; interaction.
         </h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
-          Exploring interaction, motion, and the space between design and code.
+        <p className="mt-4 max-w-[620px] text-[17px] leading-7 text-[var(--body)]">
+          Small UI studies where the point is the feel: motion curves, cursor
+          response, and tiny state changes.
         </p>
       </header>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <DemoCard
-          title="Spring Reorder"
-          description="Drag items to reorder with spring physics"
-        >
-          <SpringReorder />
-        </DemoCard>
-        <DemoCard
-          title="Magnetic Buttons"
-          description="Buttons that pull toward your cursor with parallax depth"
-        >
-          <MagneticButtons />
-        </DemoCard>
-        <DemoCard
-          title="Morphing Cards"
-          description="Click cards to see shared layout animation"
-        >
-          <MorphingCards />
-        </DemoCard>
-        <DemoCard
-          title="Number Ticker"
-          description="Odometer-style counter with spring physics"
-        >
-          <NumberTicker />
-        </DemoCard>
-        <DemoCard
-          title="Particle Field"
-          description="Constellation dots with cursor repulsion"
-        >
-          <ParticleField />
-        </DemoCard>
-        <DemoCard
-          title="Magnetic Mesh"
-          description="Grid that warps toward your cursor like rubber"
-        >
-          <MagneticMesh />
-        </DemoCard>
-        <DemoCard
-          title="Fluid Gradient"
-          description="Blurred color blobs drifting with cursor influence"
-        >
-          <FluidGradient />
-        </DemoCard>
-        <DemoCard
-          title="Cursor Trail"
-          description="Rainbow trail that fades as it ages"
-        >
-          <CursorTrail />
-        </DemoCard>
-        <DemoCard
-          title="3D Tilt"
-          description="Perspective card with glare that follows your cursor"
-        >
-          <TiltCard />
-        </DemoCard>
-        <DemoCard
-          title="Text Scramble"
-          description="Characters resolve from random noise"
-        >
-          <TextScramble />
-        </DemoCard>
-        <DemoCard
-          title="Gravity Balls"
-          description="Click to drop bouncing balls with physics"
-        >
-          <GravityBalls />
-        </DemoCard>
-        <DemoCard
-          title="Wave Text"
-          description="Characters ripple on hover with staggered timing"
-        >
-          <WaveText />
-        </DemoCard>
-        <DemoCard
-          title="Spotlight"
-          description="Radial light follows your cursor across the card"
-        >
-          <Spotlight />
-        </DemoCard>
-        <DemoCard
-          title="Elastic Toggle"
-          description="Satisfying switch with spring overshoot"
-        >
-          <ElasticToggle />
-        </DemoCard>
-      </div>
+      <HandoffPlayground />
     </div>
   )
 }
