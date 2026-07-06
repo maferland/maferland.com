@@ -13,14 +13,22 @@ export default function Footer() {
           I&apos;m looking for a team that cares about the same stuff. Frontend,
           tooling, 0→1. I&apos;m around.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <LinkButton href="mailto:me@maferland.com">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
+          <LinkButton
+            className="col-span-2 w-full sm:w-auto"
+            href="mailto:me@maferland.com"
+          >
             me@maferland.com
           </LinkButton>
-          <LinkButton href="https://github.com/maferland" variant="ghost">
+          <LinkButton
+            className="w-full px-3 sm:w-auto sm:px-[18px]"
+            href="https://github.com/maferland"
+            variant="ghost"
+          >
             GitHub ↗
           </LinkButton>
           <LinkButton
+            className="w-full px-3 sm:w-auto sm:px-[18px]"
             href="https://www.linkedin.com/in/marcantoineferland"
             variant="ghost"
           >
