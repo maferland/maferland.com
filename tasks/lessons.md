@@ -2,3 +2,4 @@
 - When a screenshot shows an interaction escaping its frame, inspect the positioning and easing first. Overshooting curves need either real containment or a non-overshooting curve; do not rely on visual intent alone.
 - When importing old interaction demos, restyle the demo internals to current tokens immediately. Otherwise the page reads as a pile of unrelated prototypes even if each component works by itself.
 - If an interaction demo still needs explanation after multiple polish passes, replace the concept instead of decorating it. Clear in-app controls beat vague morphing effects.
+- When fixing a responsive CTA cluster, search for the same cluster elsewhere before stopping. Hero and footer buttons need the same mobile hierarchy.

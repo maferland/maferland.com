@@ -163,12 +163,22 @@ export default function Home() {
           <p className="mt-4 max-w-[520px] text-[15px] leading-6 text-[var(--muted)]">
             Web, iOS, macOS. Lately a lot of building alongside AI too.
           </p>
-          <div className="mt-[30px] flex flex-wrap items-center gap-3">
-            <LinkButton href="mailto:me@maferland.com">Get in touch</LinkButton>
-            <LinkButton href="https://github.com/maferland" variant="ghost">
+          <div className="mt-[30px] grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
+            <LinkButton
+              className="col-span-2 w-full sm:w-auto"
+              href="mailto:me@maferland.com"
+            >
+              Get in touch
+            </LinkButton>
+            <LinkButton
+              className="w-full px-3 sm:w-auto sm:px-[18px]"
+              href="https://github.com/maferland"
+              variant="ghost"
+            >
               GitHub ↗
             </LinkButton>
             <LinkButton
+              className="w-full px-3 sm:w-auto sm:px-[18px]"
               href="https://www.linkedin.com/in/marcantoineferland"
               variant="ghost"
             >
