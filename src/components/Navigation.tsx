@@ -9,6 +9,7 @@ import ThemeToggle from '@/components/ui/ThemeToggle'
 import { LinkButton } from '@/components/ui/LinkButton'
 import { cn } from '@/lib/utils'
 import { useClickOutside } from '@/hooks/use-click-outside'
+import { BrandMark } from './BrandMark'
 
 const links = [
   { href: '/', label: 'home' },
@@ -30,9 +31,7 @@ export default function Navigation() {
     <nav ref={navRef} className="site-container py-[15px]">
       <div className="flex items-center justify-between gap-4 max-[680px]:flex-wrap">
         <Link className="flex items-center gap-2.5 no-underline" href="/">
-          <span className="mono flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--accent)] text-sm font-semibold text-[var(--accent-text)]">
-            m
-          </span>
+          <BrandMark className="h-7 w-7" />
           <span className="mono text-sm font-semibold tracking-[-0.01em] text-[var(--text)]">
             maferland
           </span>
