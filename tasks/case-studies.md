@@ -8,14 +8,14 @@ The selected work cards are doing portfolio work, but they only link out. That m
 
 - Add first-party case-study routes for selected work.
 - Keep external links as secondary actions inside each case study.
-- Start with the strongest public projects: Pinpoint, quebec.run, Calm Cycle.
+- Start with Pinpoint and quebec.run as the strongest public case studies.
 - Keep Bonne Nuit as a preview/coming-soon case study until it has enough public detail.
+- Keep Calm Cycle as an external selected-work link for now.
 
 ## Route shape
 
 - `/work/pinpoint`
 - `/work/quebec-run`
-- `/work/calm-cycle`
 - `/work/bonne-nuit`
 
 ## Content model

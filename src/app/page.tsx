@@ -36,8 +36,8 @@ const selectedWork = [
   {
     description:
       'Everything stays on-device. No ads, no accounts, no cloud sync. One-time purchase, your data never leaves the phone.',
-    href: '/work/calm-cycle',
-    linkLabel: 'case study →',
+    href: 'https://getcalmcycle.com',
+    linkLabel: 'view ↗',
     name: 'Calm Cycle',
     subtitle: 'private period tracker',
     tag: 'iOS',

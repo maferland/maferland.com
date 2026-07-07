@@ -14,10 +14,11 @@ export function WorkCaseStudyLayout({
   return (
     <article className="site-container py-[56px]">
       <Link
-        className="mono mb-8 inline-flex text-xs text-[var(--muted)] no-underline transition-colors hover:text-[var(--accent)]"
+        className="mono mb-8 inline-flex items-center gap-2 text-xs leading-none text-[var(--muted)] no-underline transition-colors hover:text-[var(--accent)]"
         href="/#work"
       >
-        ← selected work
+        <span aria-hidden="true">←</span>
+        <span>selected work</span>
       </Link>
 
       <header className="grid grid-cols-[minmax(0,1fr)_280px] gap-8 max-md:grid-cols-1">
