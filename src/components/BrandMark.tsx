@@ -11,11 +11,19 @@ export function BrandMark({ className }: BrandMarkProps) {
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect fill="var(--accent)" height="100" rx="22" width="100" />
-      <path
-        d="M25 68V34h10v5c2-4 6-6 11-6 6 0 10 2 13 7 3-5 8-7 14-7 9 0 15 6 15 17v18H78V51c0-6-3-9-8-9s-8 3-8 9v17H52V51c0-6-3-9-8-9s-9 4-9 10v16H25Z"
+      <rect fill="var(--accent)" height="100" rx="29" width="100" />
+      <text
+        dominantBaseline="middle"
         fill="var(--accent-text)"
-      />
+        fontFamily="ui-monospace, 'JetBrains Mono', monospace"
+        fontSize="42"
+        fontWeight="600"
+        textAnchor="middle"
+        x="50"
+        y="54"
+      >
+        m
+      </text>
     </svg>
   )
 }

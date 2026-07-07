@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="22" fill="#0f9d6b"/>
-  <path fill="#ffffff" d="M25 68V34h10v5c2-4 6-6 11-6 6 0 10 2 13 7 3-5 8-7 14-7 9 0 15 6 15 17v18H78V51c0-6-3-9-8-9s-8 3-8 9v17H52V51c0-6-3-9-8-9s-9 4-9 10v16H25Z"/>
+  <style>
+    rect { fill: #0f9d6b; }
+    text { fill: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #54e6a8; }
+      text { fill: #07120d; }
+    }
+  </style>
+  <rect width="100" height="100" rx="29" fill="#0f9d6b"/>
+  <text x="50" y="66" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="42" font-weight="600" text-anchor="middle">m</text>
 </svg>
