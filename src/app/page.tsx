@@ -1,12 +1,13 @@
 import Typewriter from '@/components/Typewriter'
 import { LinkButton } from '@/components/ui/LinkButton'
+import Link from 'next/link'
 
 const selectedWork = [
   {
     description:
       'Point at what is wrong in any UI and Claude fixes it. Drop a pin, type a comment, and the agent works each annotation as a discrete fix.',
-    href: 'https://github.com/maferland/pinpoint',
-    linkLabel: 'GitHub ↗',
+    href: '/work/pinpoint',
+    linkLabel: 'case study →',
     name: 'Pinpoint',
     subtitle: 'visual review for AI agents',
     tag: 'MCP',
@@ -15,8 +16,8 @@ const selectedWork = [
   {
     description:
       'A community platform for Quebec City runners to find clubs, discover events, and explore routes.',
-    href: 'https://quebec.run',
-    linkLabel: 'view ↗',
+    href: '/work/quebec-run',
+    linkLabel: 'case study →',
     name: 'quebec.run',
     subtitle: 'running hub',
     tag: 'web',
@@ -25,7 +26,8 @@ const selectedWork = [
   {
     description:
       'A quiet wind-down companion for building a better night routine. Currently in the works.',
-    linkLabel: 'soon',
+    href: '/work/bonne-nuit',
+    linkLabel: 'preview →',
     name: 'Bonne Nuit',
     subtitle: 'a wind-down companion',
     tag: 'in progress',
@@ -34,8 +36,8 @@ const selectedWork = [
   {
     description:
       'Everything stays on-device. No ads, no accounts, no cloud sync. One-time purchase, your data never leaves the phone.',
-    href: 'https://getcalmcycle.com',
-    linkLabel: 'view ↗',
+    href: '/work/calm-cycle',
+    linkLabel: 'case study →',
     name: 'Calm Cycle',
     subtitle: 'private period tracker',
     tag: 'iOS',
@@ -127,19 +129,13 @@ function SelectedWorkCard({ work }: { work: (typeof selectedWork)[number] }) {
     </>
   )
 
-  if (!work.href) {
-    return (
-      <article className="panel panel-hover overflow-hidden">{content}</article>
-    )
-  }
-
   return (
-    <a
+    <Link
       className="panel panel-hover block overflow-hidden text-inherit no-underline"
       href={work.href}
     >
       {content}
-    </a>
+    </Link>
   )
 }
 

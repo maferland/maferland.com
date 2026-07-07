@@ -29,6 +29,9 @@
 - [x] Plan selected work case-study routes.
 - [x] Run lint, typecheck, build.
 - [x] Verify routes and visual pass; document Playwright blocker.
+- [x] Add selected-work case-study routes for primary portfolio items.
+- [x] Point homepage selected-work cards to internal case studies.
+- [x] Run lint, typecheck, build, and route smoke checks for case studies.
 
 ## Review
 
@@ -40,5 +43,7 @@
 - `npm run build` passed. The previous Turbopack workspace-root warning is fixed by pinning `turbopack.root`; remaining warning is Next/Turbopack's upstream Node `module.register()` deprecation.
 - Dev route checks passed for `/`, `/playground`, `/writing`, `/lab`, `/lab/hearth` on `http://localhost:3004`.
 - Safari visual pass completed: desktop home/playground/writing/lab/lab detail checked; mobile-width home and mobile menu checked.
+- Added `/work/pinpoint`, `/work/quebec-run`, `/work/bonne-nuit`, and `/work/calm-cycle` case-study pages. Homepage selected-work cards now point to those internal pages.
+- Case-study verification passed: `npm run lint`, `npm run typecheck`, `npm run build`, and Node fetch smoke checks for `/`, `/work/pinpoint`, `/work/quebec-run`, `/work/bonne-nuit`, `/work/calm-cycle`.
 - Pinpoint session could not be prepared from fresh screenshots in this environment: macOS `screencapture` failed with `could not create image from display`; Playwright Chromium/WebKit installs reached 100% download then hung during install/extraction.
 - `npm install` reported 22 dependency audit vulnerabilities. Not fixed because audit remediation is unrelated dependency churn.

@@ -1,0 +1,38 @@
+---
+name: Pinpoint
+subtitle: Visual review for AI agents.
+description: Point at what is wrong in any UI and turn that visual feedback into actionable agent work.
+platform: MCP
+status: public
+role: Product, design, and engineering
+order: 1
+tech:
+  - TypeScript
+  - Bun
+  - MCP
+links:
+  - label: GitHub ↗
+    href: https://github.com/maferland/pinpoint
+---
+
+## What it is
+
+Pinpoint is a visual review workflow for AI coding agents. You drop a pin on the exact part of an interface that feels wrong, add a short note, and hand the resulting review file to an agent.
+
+## Why I built it
+
+Text-only UI feedback is too lossy. A comment like "the spacing feels off near the card header" still leaves the agent guessing which edge, which viewport, and which state matters. Pinpoint keeps the feedback attached to the surface that caused it.
+
+## Product decisions
+
+- Make the pin the unit of work. Each annotation should be small enough for an agent to fix and verify.
+- Keep the artifact portable. The review should survive across tools, repos, and handoffs.
+- Avoid turning review into a project-management system. The value is precision, not another workflow.
+
+## Technical notes
+
+The useful part is not just storing coordinates. The tool needs enough context to let an agent understand the target, replay the feedback, and work through annotations one at a time. That makes the review artifact the product boundary.
+
+## Status
+
+Pinpoint is public and actively useful as a companion workflow for visual QA, design review, and agent handoff.
