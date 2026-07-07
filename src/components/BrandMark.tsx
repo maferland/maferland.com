@@ -16,11 +16,11 @@ export function BrandMark({ className }: BrandMarkProps) {
         dominantBaseline="middle"
         fill="var(--accent-text)"
         fontFamily="ui-monospace, 'JetBrains Mono', monospace"
-        fontSize="42"
-        fontWeight="600"
+        fontSize="64"
+        fontWeight="700"
         textAnchor="middle"
         x="50"
-        y="54"
+        y="56"
       >
         m
       </text>
