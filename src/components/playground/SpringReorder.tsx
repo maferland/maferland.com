@@ -20,19 +20,20 @@ export default function SpringReorder() {
       axis="y"
       values={items}
       onReorder={setItems}
-      className="w-full max-w-xs space-y-2"
+      className="w-full max-w-[280px] space-y-2 p-1"
     >
       {items.map(item => (
         <Reorder.Item
           key={item}
           value={item}
-          className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 cursor-grab active:cursor-grabbing shadow-sm active:shadow-md transition-shadow select-none"
+          className="flex cursor-grab select-none items-center gap-3 rounded-xl border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-[var(--body)] shadow-sm transition-shadow active:cursor-grabbing active:shadow-md"
           whileDrag={{ scale: 1.03 }}
         >
-          <GripVertical size={16} className="text-slate-400 flex-shrink-0" />
-          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
-            {item}
-          </span>
+          <GripVertical
+            size={16}
+            className="flex-shrink-0 text-[var(--faint)]"
+          />
+          <span className="text-sm font-medium">{item}</span>
         </Reorder.Item>
       ))}
     </Reorder.Group>

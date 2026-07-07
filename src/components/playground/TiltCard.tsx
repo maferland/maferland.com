@@ -41,9 +41,8 @@ export default function TiltCard() {
           rotateY,
           transformStyle: 'preserve-3d',
         }}
-        className="relative w-48 h-64 rounded-xl bg-gradient-to-br from-slate-800 to-slate-600 dark:from-slate-700 dark:to-slate-500 p-6 flex flex-col justify-end cursor-default shadow-xl"
+        className="relative flex h-64 w-48 cursor-default flex-col justify-end rounded-xl border border-[var(--line)] bg-[var(--panel2)] p-6 shadow-xl"
       >
-        {/* Glare overlay */}
         <motion.div
           className="absolute inset-0 rounded-xl pointer-events-none"
           style={{
@@ -56,11 +55,11 @@ export default function TiltCard() {
         />
 
         <div style={{ transform: 'translateZ(30px)' }}>
-          <div className="text-xs font-mono text-slate-400 mb-1">
+          <div className="mono mb-1 text-xs text-[var(--faint)]">
             INTERACTIVE
           </div>
-          <div className="text-lg font-bold text-white">3D Tilt</div>
-          <div className="text-sm text-slate-300 mt-1">
+          <div className="text-lg font-bold text-[var(--text)]">3D Tilt</div>
+          <div className="mt-1 text-sm text-[var(--muted)]">
             Move your cursor across the card
           </div>
         </div>

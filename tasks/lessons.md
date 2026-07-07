@@ -1,0 +1,6 @@
+- When a UI issue points at repeated raw markup, check whether the repetition already crosses routes before patching one instance. A tiny shared component is justified once the same CTA pattern appears in home, footer, nav, and detail pages.
+- When a screenshot shows an interaction escaping its frame, inspect the positioning and easing first. Overshooting curves need either real containment or a non-overshooting curve; do not rely on visual intent alone.
+- When importing old interaction demos, restyle the demo internals to current tokens immediately. Otherwise the page reads as a pile of unrelated prototypes even if each component works by itself.
+- If an interaction demo still needs explanation after multiple polish passes, replace the concept instead of decorating it. Clear in-app controls beat vague morphing effects.
+- When fixing a responsive CTA cluster, search for the same cluster elsewhere before stopping. Hero and footer buttons need the same mobile hierarchy.
+- Do not turn every selected-work card into a case study by default. If the story is thin, keep the card external until the page has a stronger reason to exist.

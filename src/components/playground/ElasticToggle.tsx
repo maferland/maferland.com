@@ -9,27 +9,29 @@ export default function ElasticToggle() {
   const [enabled, setEnabled] = useState(false)
 
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-3">
       <button
-        onClick={() => setEnabled(e => !e)}
-        className="relative w-20 h-10 rounded-full cursor-pointer"
         aria-label="Toggle"
+        aria-pressed={enabled}
+        className="relative h-10 w-20 cursor-pointer rounded-full border border-[var(--line)]"
+        onClick={() => setEnabled(current => !current)}
+        type="button"
       >
         <motion.div
           className="absolute inset-0 rounded-full"
           animate={{
-            backgroundColor: enabled ? '#3b82f6' : '#94a3b8',
+            backgroundColor: enabled ? 'var(--accent)' : 'var(--panel2)',
           }}
           transition={{ duration: 0.2 }}
         />
         <motion.div
-          className="absolute top-1 left-1 w-8 h-8 rounded-full bg-white shadow-md"
+          className="absolute left-1 top-1 h-8 w-8 rounded-full border border-[var(--line)] bg-[var(--panel)] shadow-sm"
           animate={{ x: enabled ? 40 : 0 }}
           transition={springConfig}
         />
       </button>
       <motion.span
-        className="text-sm font-medium text-slate-600 dark:text-slate-300"
+        className="mono text-xs font-medium text-[var(--muted)]"
         animate={{ scale: [1, 1.1, 1] }}
         key={String(enabled)}
         transition={{ duration: 0.3 }}

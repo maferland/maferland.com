@@ -68,14 +68,14 @@ export default function TextScramble() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="h-12 flex items-center">
-        <span className="text-2xl font-mono font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+      <div className="flex h-12 items-center">
+        <span className="mono text-2xl font-bold tracking-tight text-[var(--text)]">
           {display}
         </span>
       </div>
       <button
         onClick={handleClick}
-        className="px-4 py-2 rounded-lg text-sm font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer"
+        className="cursor-pointer rounded-lg bg-[var(--text)] px-4 py-2 text-sm font-medium text-[var(--bg)] transition-transform hover:-translate-y-0.5"
       >
         Scramble
       </button>

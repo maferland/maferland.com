@@ -4,16 +4,18 @@ import { usePathname } from 'next/navigation'
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import Link from '@/components/ui/Link'
+import Link from 'next/link'
 import ThemeToggle from '@/components/ui/ThemeToggle'
+import { LinkButton } from '@/components/ui/LinkButton'
 import { cn } from '@/lib/utils'
 import { useClickOutside } from '@/hooks/use-click-outside'
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/playground', label: 'Playground' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/', label: 'home' },
+  { href: '/#work', label: 'work' },
+  { href: '/playground', label: 'playground' },
+  { href: '/writing', label: 'writing' },
+  { href: '/lab', label: 'lab' },
 ]
 
 export default function Navigation() {
@@ -25,28 +27,29 @@ export default function Navigation() {
   useClickOutside(navRef, () => setIsMobileMenuOpen(false), isMobileMenuOpen)
 
   return (
-    <nav
-      ref={navRef}
-      className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6"
-    >
-      <div className="flex items-center justify-between">
-        <Link href="/" className="font-medium text-base sm:text-lg">
-          Marc-Antoine Ferland
+    <nav ref={navRef} className="site-container py-[15px]">
+      <div className="flex items-center justify-between gap-4 max-[680px]:flex-wrap">
+        <Link className="flex items-center gap-2.5 no-underline" href="/">
+          <span className="mono flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--accent)] text-sm font-semibold text-[var(--accent-text)]">
+            m
+          </span>
+          <span className="mono text-sm font-semibold tracking-[-0.01em] text-[var(--text)]">
+            maferland
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden sm:flex items-center gap-4 md:gap-8">
-          <div className="flex items-center gap-4 md:gap-8">
+        <div className="hidden items-center gap-2.5 sm:flex">
+          <div className="mono mr-2 flex items-center gap-[22px] text-[13px]">
             {links.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                variant={pathname === link.href ? 'default' : 'subtle'}
                 className={cn(
-                  'px-3 py-2 rounded-lg transition-all duration-200',
-                  pathname === link.href
-                    ? 'font-medium bg-slate-100 dark:bg-slate-800'
-                    : 'hover:bg-slate-50 dark:hover:bg-slate-900'
+                  'transition-colors hover:text-[var(--text)]',
+                  (link.href === '/' && pathname === '/') ||
+                    (link.href !== '/' && pathname.startsWith(link.href))
+                    ? 'text-[var(--accent)]'
+                    : 'text-[var(--muted)]'
                 )}
               >
                 {link.label}
@@ -54,14 +57,16 @@ export default function Navigation() {
             ))}
           </div>
           <ThemeToggle />
+          <LinkButton href="mailto:me@maferland.com" size="small">
+            Get in touch →
+          </LinkButton>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="flex sm:hidden items-center gap-3">
+        <div className="flex items-center gap-3 sm:hidden">
           <ThemeToggle />
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative"
+            className="relative rounded-lg border border-[var(--line)] p-2 text-[var(--text)] transition-colors"
             aria-label="Toggle mobile menu"
             whileTap={{ scale: 0.95 }}
           >
@@ -92,7 +97,6 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -103,13 +107,13 @@ export default function Navigation() {
             transition={{ duration: 0.15 }}
           >
             <motion.div
-              className="absolute left-0 right-0 top-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 shadow-lg z-50"
+              className="absolute left-0 right-0 top-full z-50 border-t border-[var(--line)] bg-[var(--bg)] shadow-lg"
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >
-              <div className="max-w-4xl mx-auto px-4 py-4 space-y-2">
+              <div className="site-container space-y-2 py-4">
                 {links.map((link, index) => (
                   <motion.div
                     key={link.href}
@@ -123,12 +127,11 @@ export default function Navigation() {
                   >
                     <Link
                       href={link.href}
-                      variant={pathname === link.href ? 'default' : 'subtle'}
                       className={cn(
-                        'block px-3 py-3 rounded-lg transition-all duration-200 text-base',
+                        'mono block rounded-lg px-3 py-3 text-base transition-colors',
                         pathname === link.href
-                          ? 'font-medium bg-slate-100 dark:bg-slate-800'
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-900'
+                          ? 'bg-[var(--accent-soft)] text-[var(--accent)]'
+                          : 'text-[var(--muted)] hover:text-[var(--text)]'
                       )}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
