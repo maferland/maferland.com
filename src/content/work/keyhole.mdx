@@ -1,0 +1,41 @@
+---
+name: Keyhole
+subtitle: Secret handoff for AI coding agents.
+description: Hand a secret to your AI coding agent through a localhost form; the agent gets a reference, not the raw value.
+platform: CLI
+status: public
+role: Product, design, and engineering
+order: 3
+tech:
+  - TypeScript
+  - Bun
+  - CLI
+links:
+  - label: GitHub ↗
+    href: https://github.com/maferland/keyhole
+---
+
+## What it is
+
+Keyhole is a local secret handoff tool for AI coding agents. You enter a value through a localhost form, store it in Keychain, a file, or an env file, and give the agent only a reference.
+
+## Why I built it
+
+AI coding workflows constantly need credentials: API keys, tokens, webhook secrets, test account passwords. Pasting those values into chat is convenient, but it turns a local development task into a data-handling problem.
+
+Keyhole keeps the agent productive without making the raw secret part of the conversation.
+
+## Product decisions
+
+- Keep the sensitive input outside chat.
+- Return a reference the agent can use in commands or configuration.
+- Make the workflow local-first and boring on purpose.
+- Support common destinations instead of inventing a new secret store.
+
+## Technical notes
+
+The useful boundary is the handoff. The agent can still complete the setup task, but the secret itself stays in a local system the developer controls.
+
+## Status
+
+Keyhole is public and fits the shape of tooling I want more of: small, local, pragmatic utilities that make agent workflows safer without adding ceremony.

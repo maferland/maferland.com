@@ -4,3 +4,4 @@
 - If an interaction demo still needs explanation after multiple polish passes, replace the concept instead of decorating it. Clear in-app controls beat vague morphing effects.
 - When fixing a responsive CTA cluster, search for the same cluster elsewhere before stopping. Hero and footer buttons need the same mobile hierarchy.
 - Do not turn every selected-work card into a case study by default. If the story is thin, keep the card external until the page has a stronger reason to exist.
+- Keep taxonomy strict: selected work needs a concrete public artifact or strong case-study story; early product ideas belong in Lab.

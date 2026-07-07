@@ -25,13 +25,13 @@ const selectedWork = [
   },
   {
     description:
-      'A quiet wind-down companion for building a better night routine. Currently in the works.',
-    href: '/work/bonne-nuit',
-    linkLabel: 'preview →',
-    name: 'Bonne Nuit',
-    subtitle: 'a wind-down companion',
-    tag: 'in progress',
-    tech: ['Swift'],
+      'Hand secrets to AI coding agents through local references instead of raw chat messages.',
+    href: '/work/keyhole',
+    linkLabel: 'case study →',
+    name: 'Keyhole',
+    subtitle: 'secret handoff for agents',
+    tag: 'CLI',
+    tech: ['TypeScript', 'Bun'],
   },
   {
     description:
