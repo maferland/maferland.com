@@ -434,8 +434,7 @@ export default function SnipLanding() {
           </h2>
           <div className={styles.steps}>
             {steps.map(step => (
-              <div key={step.index}>
-                <div className={styles.stepIndex}>{step.index}</div>
+              <div className={styles.stepItem} key={step.index}>
                 <div
                   className={`${styles.glyph} ${
                     step.mono ? styles.monoGlyph : ''
@@ -443,8 +442,11 @@ export default function SnipLanding() {
                 >
                   {step.glyph}
                 </div>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepText}>{step.text}</p>
+                <div className={styles.stepBody}>
+                  <div className={styles.stepIndex}>{step.index}</div>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepText}>{step.text}</p>
+                </div>
               </div>
             ))}
           </div>

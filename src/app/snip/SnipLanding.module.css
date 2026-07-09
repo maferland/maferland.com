@@ -464,7 +464,7 @@
 }
 
 .howSection {
-  padding: 80px 40px;
+  padding: clamp(56px, 10vw, 80px) clamp(18px, 5vw, 40px);
   background: var(--snip-alt);
   border-top: 1px solid rgb(22 21 15 / 7%);
   border-bottom: 1px solid rgb(22 21 15 / 7%);
@@ -478,27 +478,51 @@
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(28px, 6vw, 40px);
   text-align: left;
 }
 
-.stepIndex {
-  margin-bottom: 18px;
-  color: #c0bdb8;
-  font-family: var(--font-dm-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.06em;
+.stepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .glyph {
-  margin-bottom: 16px;
-  font-size: 28px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
   line-height: 1;
+  background: #ffffff;
+  border: 1px solid rgb(22 21 15 / 8%);
+  border-radius: 10px;
 }
 
 .monoGlyph {
   font-family: var(--font-dm-mono), monospace;
+  font-size: 14px;
+}
+
+.stepItem:last-child .glyph {
+  color: var(--snip-green);
+  font-size: 16px;
+}
+
+.stepBody {
+  min-width: 0;
+}
+
+.stepIndex {
+  margin-bottom: 6px;
+  color: #c0bdb8;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
 }
 
 .stepTitle {
@@ -618,11 +642,6 @@
   .primaryButton {
     min-width: min(100%, 324px);
     min-height: 52px;
-  }
-
-  .steps {
-    grid-template-columns: 1fr;
-    gap: 34px;
   }
 
   .cleanedRow {

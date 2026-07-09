@@ -22,9 +22,10 @@
 - [x] Let mobile URL demo wrap so stripped params are visible.
 - [x] Verify with typecheck, lint, Vercel preview build, and mobile Safari screenshot.
 - [x] Humanize Snip landing copy.
+- [x] Port updated handoff steps layout from `65e41743108b7c06900d51347f7138d916491546`.
 
 ## Review result
 
-- Review app: `https://maferland-7o5la74qy-mafer.vercel.app/snip`.
+- Review app: `https://maferland-2ou990f1x-mafer.vercel.app/snip`.
 - `npm run typecheck` passed.
 - `npm run lint` passed with existing `WaveText.tsx` unused `useRef` warning.
