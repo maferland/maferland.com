@@ -10,8 +10,9 @@ export default function Footer() {
           If something here resonated, say hi.
         </h2>
         <p className="mt-2 max-w-[620px] text-base leading-7 text-[var(--muted)]">
-          I&apos;m looking for a team that cares about the same stuff. Frontend,
-          tooling, 0→1. I&apos;m around.
+          Staff-track frontend, tooling, 0
+          <span className="inline-block translate-y-[0.5px]">→</span>1 bets. If
+          the team ships things worth caring about, I want to hear.
         </p>
         <div className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
           <LinkButton

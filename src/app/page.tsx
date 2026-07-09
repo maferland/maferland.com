@@ -65,12 +65,6 @@ const tools = [
     platform: 'macOS',
   },
   {
-    description: 'Auto-clears secrets from the clipboard.',
-    href: 'https://github.com/maferland/clipshield',
-    name: 'ClipShield',
-    platform: 'macOS',
-  },
-  {
     description: 'Pixel-level diffing for two images.',
     href: 'https://github.com/maferland/differ',
     name: 'Differ',
@@ -207,7 +201,8 @@ export default function Home() {
             <div className="text-[var(--muted)]">
               focus&nbsp;&nbsp;&nbsp;
               <span className="text-[var(--body)]">
-                ships · sweats details · 0→1
+                ships · sweats details · 0
+                <span className="inline-block translate-y-[0.5px]">→</span>1
               </span>
             </div>
             <div className="text-[var(--muted)]">
