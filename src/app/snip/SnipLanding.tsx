@@ -80,21 +80,21 @@ const steps = [
     index: '01',
     glyph: '↓',
     title: 'Install',
-    text: 'Drag snip.app to /Applications. Launch it once and it settles into your menu bar.',
+    text: 'Drag snip.app to /Applications. Open it once. It lives in your menu bar.',
     mono: false,
   },
   {
     index: '02',
     glyph: '⌘C',
     title: 'Copy any URL',
-    text: 'From your browser, Slack, email — wherever. snip watches every copy event.',
+    text: 'Copy from Safari, Chrome, Slack, Mail, anywhere. snip checks the URL.',
     mono: true,
   },
   {
     index: '03',
     glyph: '✓',
     title: 'Paste clean',
-    text: 'The URL in your clipboard is already stripped. No UTM noise. Just the link.',
+    text: 'Paste the same link, minus the tracking junk.',
     mono: false,
   },
 ] as const
@@ -287,8 +287,7 @@ export default function SnipLanding() {
 
           <h1 className={`${styles.display} ${styles.h1}`}>Copy clean.</h1>
           <p className={styles.subhead}>
-            Strips tracking parameters from every URL you copy. Silently.
-            Automatically.
+            snip removes tracking parameters from URLs after you copy them.
           </p>
 
           <div className={styles.demoCard}>
@@ -403,7 +402,7 @@ export default function SnipLanding() {
 
           {noTrackingFound && (
             <div className={styles.cleanBanner}>
-              <span>✓ Already clean — no tracking params found</span>
+              <span>✓ Already clean. No tracking params found.</span>
             </div>
           )}
         </div>
@@ -412,7 +411,7 @@ export default function SnipLanding() {
       <section className={styles.strippedSection}>
         <p className={styles.eyebrow}>What gets stripped</p>
         <h2 className={`${styles.display} ${styles.sectionHeading}`}>
-          Every tracker, recognized.
+          Common trackers, gone.
         </h2>
         <div className={styles.chips}>
           {trackingParams.map(param => (
@@ -423,7 +422,7 @@ export default function SnipLanding() {
           <span className={styles.moreChip}>+ more</span>
         </div>
         <p className={styles.caption}>
-          Hover any param to preview snip doing its thing.
+          Hover a param to watch snip remove it.
         </p>
       </section>
 
@@ -431,7 +430,7 @@ export default function SnipLanding() {
         <div className={styles.howInner}>
           <p className={styles.eyebrow}>How it works</p>
           <h2 className={`${styles.display} ${styles.sectionHeading}`}>
-            Three steps, then never again.
+            Set it up once.
           </h2>
           <div className={styles.steps}>
             {steps.map(step => (
@@ -454,10 +453,10 @@ export default function SnipLanding() {
 
       <section className={styles.bottomCta}>
         <h2 className={`${styles.display} ${styles.bottomHeading}`}>
-          Start copying clean.
+          Copy cleaner links.
         </h2>
         <p className={styles.bottomText}>
-          Free, open source, MIT licensed. Runs quietly on macOS, forever.
+          Free, open source, MIT licensed. Built for macOS.
         </p>
         <a className={styles.primaryButton} href={githubUrl} target="_blank">
           <span aria-hidden="true">↓</span>

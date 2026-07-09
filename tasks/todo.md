@@ -21,6 +21,7 @@
 - [x] Fix primary CTA text color.
 - [x] Let mobile URL demo wrap so stripped params are visible.
 - [x] Verify with typecheck, lint, Vercel preview build, and mobile Safari screenshot.
+- [x] Humanize Snip landing copy.
 
 ## Review result
 
