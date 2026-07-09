@@ -1,6 +1,4 @@
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
-import { ThemeProvider } from '@/lib/theme-provider'
+import SiteFrame from '@/components/SiteFrame'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -59,15 +57,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300 flex flex-col">
-            <header className="relative">
-              <Navigation />
-            </header>
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <SiteFrame>{children}</SiteFrame>
         <Analytics />
       </body>
     </html>
