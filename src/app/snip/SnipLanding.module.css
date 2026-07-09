@@ -46,18 +46,9 @@
 }
 
 .logoMark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 24px;
   height: 24px;
-  color: #f5f3ee;
-  font-family: var(--font-dm-mono), monospace;
-  font-size: 13px;
-  line-height: 1;
-  background: var(--snip-text);
   border-radius: 7px;
-  box-shadow: 0 1px 0 rgb(255 255 255 / 22%) inset;
 }
 
 .wordmark {

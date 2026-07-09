@@ -23,9 +23,10 @@
 - [x] Verify with typecheck, lint, Vercel preview build, and mobile Safari screenshot.
 - [x] Humanize Snip landing copy.
 - [x] Port updated handoff steps layout from `65e41743108b7c06900d51347f7138d916491546`.
+- [x] Replace placeholder header mark with handoff `snip-mark.svg`.
 
 ## Review result
 
-- Review app: `https://maferland-2ou990f1x-mafer.vercel.app/snip`.
+- Review app: `https://maferland-d0s6499nc-mafer.vercel.app/snip`.
 - `npm run typecheck` passed.
 - `npm run lint` passed with existing `WaveText.tsx` unused `useRef` warning.

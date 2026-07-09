@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from './SnipLanding.module.css'
 
@@ -266,9 +267,14 @@ export default function SnipLanding() {
     <div className={styles.page}>
       <nav className={styles.nav}>
         <div className={styles.mark}>
-          <span className={styles.logoMark} aria-hidden="true">
-            ✂
-          </span>
+          <Image
+            alt=""
+            aria-hidden="true"
+            className={styles.logoMark}
+            height={24}
+            src="/snip/snip-mark.svg"
+            width={24}
+          />
           <span className={styles.wordmark}>snip.</span>
           <span className={styles.platform}>macOS</span>
         </div>
