@@ -45,6 +45,21 @@
   gap: 9px;
 }
 
+.logoMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #f5f3ee;
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 13px;
+  line-height: 1;
+  background: var(--snip-text);
+  border-radius: 7px;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 22%) inset;
+}
+
 .wordmark {
   font-family: var(--font-dm-mono), monospace;
   font-size: 15px;
@@ -235,11 +250,13 @@
 .primaryButton {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  color: #f5f3ee;
+  color: #f5f3ee !important;
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.2;
   letter-spacing: 0.01em;
   background: var(--snip-text);
   border-radius: 9px;
@@ -584,6 +601,23 @@
 
   .h1 {
     font-size: clamp(64px, 18vw, 84px);
+  }
+
+  .demoCard {
+    padding: 18px 16px 20px;
+  }
+
+  .urlBox {
+    overflow: visible;
+    font-size: 11px;
+    line-height: 1.7;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .primaryButton {
+    min-width: min(100%, 324px);
+    min-height: 52px;
   }
 
   .steps {

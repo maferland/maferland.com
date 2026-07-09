@@ -266,6 +266,9 @@ export default function SnipLanding() {
     <div className={styles.page}>
       <nav className={styles.nav}>
         <div className={styles.mark}>
+          <span className={styles.logoMark} aria-hidden="true">
+            ✂
+          </span>
           <span className={styles.wordmark}>snip.</span>
           <span className={styles.platform}>macOS</span>
         </div>
@@ -348,7 +351,8 @@ export default function SnipLanding() {
 
           <div className={styles.buttonRow}>
             <a className={styles.primaryButton} href={githubUrl} target="_blank">
-              ↓ Download on GitHub
+              <span aria-hidden="true">↓</span>
+              <span>Download on GitHub</span>
             </a>
             <a className={styles.secondaryLink} href={githubUrl} target="_blank">
               View source ↗
@@ -456,7 +460,8 @@ export default function SnipLanding() {
           Free, open source, MIT licensed. Runs quietly on macOS, forever.
         </p>
         <a className={styles.primaryButton} href={githubUrl} target="_blank">
-          ↓ Download on GitHub
+          <span aria-hidden="true">↓</span>
+          <span>Download on GitHub</span>
         </a>
       </section>
 

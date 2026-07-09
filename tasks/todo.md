@@ -14,3 +14,16 @@
 - Source file: `design_handoff_snip_landing/snip landing page.dc.html`.
 - Production URL: `https://www.maferland.com/snip`.
 - Verification: `npm run typecheck`, `npm run lint`, Vercel preview build, Vercel production build, public HTTP 200.
+
+## Review fixes
+
+- [x] Restore visible header mark on mobile.
+- [x] Fix primary CTA text color.
+- [x] Let mobile URL demo wrap so stripped params are visible.
+- [x] Verify with typecheck, lint, Vercel preview build, and mobile Safari screenshot.
+
+## Review result
+
+- Review app: `https://maferland-7o5la74qy-mafer.vercel.app/snip`.
+- `npm run typecheck` passed.
+- `npm run lint` passed with existing `WaveText.tsx` unused `useRef` warning.
