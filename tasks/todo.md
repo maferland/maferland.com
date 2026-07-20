@@ -8,6 +8,10 @@
 
 ## Plan
 
+- [x] Reduce dependency audit findings to zero without major framework upgrades.
+- [x] Align Node types with the Node 24 CI/runtime baseline.
+- [x] Document the remaining local Turbopack deprecation as upstream/tooling noise.
+- [x] Clean merged stale local worktrees and leave worktrees with local edits untouched.
 - [x] Update GitHub Actions checkout/setup-node majors to Node 24-compatible releases.
 - [x] Run local lint/typecheck/build before opening the CI cleanup PR.
 - [x] Align detail body with project/lab notes column.
@@ -49,6 +53,9 @@
 
 ## Review
 
+- Dependency hygiene pass updated Next 15 patch packages, Storybook 9.1 patch packages, Vitest lockfile packages, Playwright lockfile packages, and Node 24 typings; `npm audit` now reports zero vulnerabilities.
+- Added narrow npm overrides for vulnerable transitive `postcss` and `brace-expansion` versions instead of forcing major Next/Storybook downgrades or upgrades.
+- The remaining local `npm run build` deprecation is still Next/Turbopack using Node's deprecated `module.register()` API; not fixed locally because it is upstream tooling output.
 - CI and Chromatic workflows now use `actions/checkout@v7`, `actions/setup-node@v7`, and `node-version: '24'` to remove the Node 20 deprecation annotation.
 - Detail pages keep the notes column in the header, while the body panel now uses the full container width below it.
 - Detail body panel padding is reduced, and the first MDX `h2` margin is reset only inside the detail panel.
