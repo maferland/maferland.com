@@ -8,6 +8,8 @@
 
 ## Plan
 
+- [x] Update GitHub Actions checkout/setup-node majors to Node 24-compatible releases.
+- [x] Run local lint/typecheck/build before opening the CI cleanup PR.
 - [x] Align detail body with project/lab notes column.
 - [x] Reduce detail body panel vertical padding.
 - [x] Run lint/typecheck/build and visual check.
@@ -47,6 +49,7 @@
 
 ## Review
 
+- CI and Chromatic workflows now use `actions/checkout@v7`, `actions/setup-node@v7`, and `node-version: '24'` to remove the Node 20 deprecation annotation.
 - Detail pages keep the notes column in the header, while the body panel now uses the full container width below it.
 - Detail body panel padding is reduced, and the first MDX `h2` margin is reset only inside the detail panel.
 - Snip homepage and `/projects` links now point to `https://snip.maferland.com`.
