@@ -9,6 +9,7 @@ interface UtilityCardProps {
   tagline: string
   icon: ReactNode
   techStack: string[]
+  liveUrl?: string
   githubUrl: string
 }
 
@@ -17,11 +18,12 @@ export default function UtilityCard({
   tagline,
   icon,
   techStack,
+  liveUrl,
   githubUrl,
 }: UtilityCardProps) {
   return (
     <motion.a
-      href={githubUrl}
+      href={liveUrl ?? githubUrl}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ opacity: 0, y: 16 }}

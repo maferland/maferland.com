@@ -60,7 +60,7 @@ const tools = [
   },
   {
     description: 'Strips tracking params from copied URLs.',
-    href: 'https://github.com/maferland/snip',
+    href: 'https://snip.maferland.com',
     name: 'Snip',
     platform: 'macOS',
   },

@@ -103,8 +103,10 @@ export function DetailLayout({
         </aside>
       </header>
 
-      <div className="mt-12 grid grid-cols-[minmax(0,760px)_1fr] gap-8 max-lg:block">
-        <div className="panel p-6 sm:p-8">{children}</div>
+      <div className="mt-12">
+        <div className="panel px-6 py-5 [&_h2:first-child]:mt-0 sm:px-7 sm:py-6">
+          {children}
+        </div>
       </div>
     </article>
   )
