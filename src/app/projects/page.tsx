@@ -85,6 +85,7 @@ const utilities = [
       'Automatically strips tracking parameters from URLs when you copy them. No manual action required.',
     icon: <Scissors className="w-5 h-5 text-slate-700 dark:text-slate-300" />,
     techStack: ['Swift', 'macOS'],
+    liveUrl: 'https://snip.maferland.com',
     githubUrl: 'https://github.com/maferland/snip',
   },
   {

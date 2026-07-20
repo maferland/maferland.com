@@ -20,7 +20,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${result.work.name} | Selected Work`,
+    title: `${result.work.name} | maferland.com`,
     description: result.work.description,
     openGraph: {
       title: result.work.name,

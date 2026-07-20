@@ -8,6 +8,13 @@
 
 ## Plan
 
+- [x] Align detail body with project/lab notes column.
+- [x] Reduce detail body panel vertical padding.
+- [x] Run lint/typecheck/build and visual check.
+- [x] Let detail body use full container width.
+- [x] Point Snip product links to `https://snip.maferland.com`.
+- [x] Add Lab graveyard empty state.
+- [x] Make detail page browser titles show the site.
 - [x] Merge Labs branch into overhaul worktree.
 - [x] Inspect current routes/components and handoff artifact structure.
 - [x] Implement shared visual tokens/layout/nav from handoff.
@@ -40,6 +47,12 @@
 
 ## Review
 
+- Detail pages keep the notes column in the header, while the body panel now uses the full container width below it.
+- Detail body panel padding is reduced, and the first MDX `h2` margin is reset only inside the detail panel.
+- Snip homepage and `/projects` links now point to `https://snip.maferland.com`.
+- Lab filters now show a focused empty state when the selected bucket has no public ideas, including the graveyard.
+- Work and Lab detail browser titles now use `Name | maferland.com`.
+- Verification passed: `npm run lint`, `npm run typecheck`, `npm run build`, local `/work/pinpoint` HTTP 200, and Playwright screenshot check in dark mode.
 - Merged `origin/maferland/bets` into `maferland/overhaul`.
 - Implemented handoff tokens, nav, home, playground, writing, footer, and Lab styling.
 - Imported useful legacy playground demos: magnetic buttons, number ticker, and text scramble.
