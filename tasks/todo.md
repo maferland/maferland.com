@@ -78,3 +78,18 @@
 - App screenshots were evaluated but not added in this pass because the repo does not currently contain real screenshots for Pinpoint, Keyhole, quebec.run, or Bonne Nuit. Avoided placeholder imagery.
 - Pinpoint session could not be prepared from fresh screenshots in this environment: macOS `screencapture` failed with `could not create image from display`; Playwright Chromium/WebKit installs reached 100% download then hung during install/extraction.
 - `npm install` reported 22 dependency audit vulnerabilities. Not fixed because audit remediation is unrelated dependency churn.
+
+# mise website update
+
+- [x] Review the current Hearth Lab entry and Lab routing/data model.
+- [x] Map the mise handoff pitch into the existing public Lab format.
+- [x] Rename the Lab slug/content from Hearth to mise with minimal code impact.
+- [x] Verify lint, typecheck, build, and relevant routes.
+- [x] Review the final diff and document results.
+
+## mise review
+
+- Renamed the public Lab entry and route from Hearth to mise.
+- Reframed the pitch around the weekly household loop, chef supply-side workflow, behavioral record, and three-week dogfood test.
+- Added a permanent `/lab/hearth` to `/lab/mise` redirect.
+- Verification passed: lint, typecheck, production build, `/lab/mise` HTTP 200, and legacy redirect HTTP 308.
