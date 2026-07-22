@@ -15,7 +15,7 @@ export default function Error({
   }, [error])
 
   return (
-    <section className="site-container flex min-h-[70vh] items-center justify-center py-16">
+    <section className="site-container flex min-h-[70vh] items-center py-16">
       <div className="w-full max-w-[640px]">
         <div className="panel overflow-hidden shadow-[0_24px_50px_-28px_rgba(0,0,0,0.6)]">
           <div className="flex items-center gap-[7px] border-b border-[var(--line)] px-[15px] py-[13px]">
@@ -23,7 +23,7 @@ export default function Error({
             <span className="h-[11px] w-[11px] rounded-full bg-[#febc2e]" />
             <span className="h-[11px] w-[11px] rounded-full bg-[#28c840]" />
             <span className="mono ml-2 text-[11px] text-[var(--faint)]">
-              ~/maferland — zsh
+              ~/maferland — fish
             </span>
           </div>
           <div className="mono px-5 py-[22px] pb-6 text-[13px] leading-[1.9]">
