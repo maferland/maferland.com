@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { LinkButton } from '@/components/ui/LinkButton'
 
 export const metadata: Metadata = {
-  title: '404 · page not found',
+  title: '404 | Marc-Antoine Ferland',
   description: "This one didn't ship.",
 }
 
@@ -54,7 +54,7 @@ export default function NotFound() {
           <div className="flex flex-wrap gap-2.5">
             <LinkButton href="/">← Back home</LinkButton>
             <LinkButton href="/lab" variant="ghost">
-              check the lab
+              Check the lab
             </LinkButton>
           </div>
         </div>

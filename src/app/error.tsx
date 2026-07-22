@@ -65,7 +65,7 @@ export default function Error({
               ↻ Try again
             </button>
             <LinkButton href="/" variant="ghost">
-              go home
+              Go home
             </LinkButton>
             <span className="mono flex items-center gap-1.5 text-[11px] text-[var(--faint)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#f0b35e] [animation:pulse_2s_infinite]" />
